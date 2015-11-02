@@ -2,6 +2,13 @@ sessionname pfitmap-eval
 setenv ROOT $PWD
 chdir doc
 screen -t doc
+chdir $ROOT/src
+screen -t src
+chdir sql
+screen -t sql
+screen -t psql
+chdir ddl
+screen -t ddl
 chdir $ROOT
 screen -t man
 screen -t root
