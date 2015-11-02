@@ -1,5 +1,7 @@
 DB = pfitmap-eval-dev
 
+all_tables: $(subst .sql,.table,$(wildcard *.sql))
+
 db:
 	createdb $(DB)
 	echo '$(DB)' > $@
