@@ -9,6 +9,8 @@ screen -t sql
 screen -t psql
 chdir ddl
 screen -t ddl
+chdir ../dml
+screen -t dml
 chdir $ROOT
 screen -t man
 screen -t root
