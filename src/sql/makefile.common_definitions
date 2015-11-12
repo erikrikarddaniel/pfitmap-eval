@@ -1,0 +1,7 @@
+DB = pfitmap-eval-dev
+
+PSQL_CALL = psql `cat $<` -f $(word 2, $^) && touch $@
+
+db:
+	createdb $(DB)
+	echo '$(DB)' > $@
