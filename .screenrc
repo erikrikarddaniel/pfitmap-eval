@@ -11,6 +11,10 @@ chdir ddl
 screen -t ddl
 chdir ../dml
 screen -t dml
+chdir $ROOT/src/ruby
+screen -t ruby
+chdir test
+screen -t truby
 chdir $ROOT/data
 screen -t data
 chdir $ROOT
