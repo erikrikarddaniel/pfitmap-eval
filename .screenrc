@@ -11,6 +11,8 @@ chdir ddl
 screen -t ddl
 chdir ../dml
 screen -t dml
+chdir $ROOT/data
+screen -t data
 chdir $ROOT
 screen -t man
 screen -t root
