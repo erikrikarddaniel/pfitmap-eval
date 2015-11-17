@@ -1,0 +1,6 @@
+I need four non-option arguments: db hmmout tblout domtblout
+import_hmmer: Imports hmmer output files.
+  Needs all three possible files: NN.hmmout NN.tblout and NN.domtblout
+    import_hmmer [options] db NN.hmmout NN.tblout NN.domtblout
+    -h, --help                       This info
+    -v, --verbose                    Be verbose

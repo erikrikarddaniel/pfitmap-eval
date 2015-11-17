@@ -2,6 +2,8 @@ CREATE TABLE hmm_result_domains (
   id			serial			PRIMARY KEY,
   hmm_result_row_id	integer			REFERENCES hmm_result_rows(id)
     ON DELETE CASCADE ON UPDATE CASCADE,
+  tname			text			NOT NULL,
+  qname			text			NOT NULL,
   tlen			integer			NOT NULL,
   qlen			integer			NOT NULL,
   i			integer			NOT NULL,
@@ -19,4 +21,4 @@ CREATE TABLE hmm_result_domains (
   acc			double precision	NOT NULL
 );
 
-CREATE INDEX hmm_result_domains_hmm_result_rows ON hmm_result_domains(hmm_result_row_id);
+CREATE INDEX hmm_result_domains_i00 ON hmm_result_domains(hmm_result_row_id);

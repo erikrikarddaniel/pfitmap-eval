@@ -1,0 +1,79 @@
+#!/usr/bin/env ruby
+#
+# = NAME
+#
+# import_hmmer
+#
+# = SYNOPSIS
+#
+# See below, in opt parser block.
+#
+# = USAGE
+#
+# See below, in opt parser block.
+#
+# = AUTHOR
+#
+# daniel.lundin@scilifelab.se
+
+$VERBOSE = true
+
+require 'optparse'
+
+@options = {}
+opt_parser = OptionParser.new do |opts|
+  opts.banner = <<BANNER
+import_hmmer: Imports hmmer output files.
+  Needs all three possible files: NN.hmmout NN.tblout and NN.domtblout
+
+    import_hmmer [options] db NN.hmmout NN.tblout NN.domtblout
+BANNER
+
+  opts.on "-h", "--help", "This info"  do 
+    puts opts
+    exit 0
+  end
+
+  opts.on "--ss STRING", "Sequence source encoded like 'ORGANISATION:SOURCE:VERSION'" do |v|
+    ss = v.split(':')
+  end
+
+  opts.on "-v", "--verbose", "Be verbose"  do |v| 
+    @options[:verbose] = v 
+  end
+end
+begin
+  opt_parser.parse!
+  mandatory = [ :ss ]	# Fill in with mandatory option names (i.e. starting with :)
+  missing = mandatory.select { |param| @options[param].nil? }
+  unless missing.empty?
+    warn "Missing options: #{missing.map { |m| "--#{m}" }.join(", ")}"
+    warn opt_parser
+    exit 1
+  end
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+  warn "#{$!}"
+  warn opt_parser
+  exit 1
+end
+
+unless ARGV.length == 4
+  warn "I need four non-option arguments: db hmmout tblout domtblout"
+  warn opt_parser
+  exit 0
+end
+
+( db, hmmout, tblout, domtblout ) = ARGV
+
+# Loop over infiles
+hmmout_data = nil
+tblout_data = nil
+domtblout_data = nil
+
+begin
+  io = File.new(hmmout)
+  io.each do |line|
+  end
+rescue
+  warn "Failed to process hmmout file '#{hmmout}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+end

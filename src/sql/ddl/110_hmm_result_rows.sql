@@ -2,6 +2,8 @@ CREATE TABLE hmm_result_rows (
   id		serial			PRIMARY KEY,
   hmm_result_id	integer			REFERENCES hmm_results(id)
     ON DELETE CASCADE ON UPDATE CASCADE,
+  tname		text			NOT NULL,
+  qname		text			NOT NULL,
   e_value	double precision	NOT NULL,
   score		double precision	NOT NULL,
   bias		double precision	NOT NULL,
@@ -15,4 +17,6 @@ CREATE TABLE hmm_result_rows (
   dom_n_inc	integer			NOT NULL
 );
 
-CREATE INDEX hmm_result_rows_hmm_results ON hmm_result_rows(hmm_result_id);
+CREATE UNIQUE INDEX hmm_result_rows_i00 ON hmm_result_rows(hmm_result_id, qname, tname);
+
+CREATE UNIQUE INDEX hmm_result_rows_tname ON hmm_result_rows(hmm_result_id, qname, tname);
