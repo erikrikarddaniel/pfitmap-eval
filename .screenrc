@@ -11,6 +11,8 @@ chdir ddl
 screen -t ddl
 chdir ../dml
 screen -t dml
+chdir ../func
+screen -t func
 chdir $ROOT/src/ruby
 screen -t ruby
 chdir test
