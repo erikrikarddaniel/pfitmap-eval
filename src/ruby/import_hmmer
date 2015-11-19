@@ -70,27 +70,40 @@ end
 
 ( db, hmmout, tblout, domtblout ) = ARGV
 
-conn = PG.connect( dbname: db )
+con = PG.connect( dbname: db )
 
 # Insert the hmm_result row
 hmm_result_id = nil
 begin
   s = "SELECT * FROM insert_hmm_result('#{@options[:profile]}', '#{@options[:ss].join("','")}');"
-  rs = conn.exec(s)
+  rs = con.exec(s)
   hmm_result_id = rs.getvalue 0, 0
 rescue
   warn "Failed to insert sequence_source: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   exit 2
 end
 
-# Loop over infiles
-hmmout_data = nil
-tblout_data = nil
-domtblout_data = nil
-
+# Read the tblout file and insert each row
 begin
-  io = File.new(hmmout)
+  io = File.new(tblout)
+  con.prepare 'ins_row', <<INS_HRR
+INSERT INTO hmm_result_rows(
+    hmm_result_id, tname, qname, e_value, score, bias,
+    dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
+  )
+  VALUES(#{hmm_result_id}, $1::text, $2::text, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+INS_HRR
   io.each do |line|
+    line.sub!(/\s*#.*/, '')
+    next if line =~ /^\s*$/
+    fields = line.split(/\s+/)
+    ( tname, qname ) = fields.values_at(0,2)
+    ( e_value, score, bias, dom_n_exp ) = fields.values_at(4, 5, 6, 10).map { |n| n.to_f }
+    ( dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc ) = fields[11, 7].map { |n| n.to_i }
+    rs = con.exec_prepared 'ins_row', 
+      [tname, qname, e_value, score, bias,
+      dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, 
+      dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc]
   end
 rescue
   warn "Failed to process hmmout file '#{hmmout}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"

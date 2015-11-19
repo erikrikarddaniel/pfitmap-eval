@@ -19,5 +19,5 @@ import_hmmer.000:
 import_hmmer.010:
 	@psql $(DB) -f clean_hmmer.sql >/dev/null 2>&1
 	@../import_hmmer --profile NrdAz --ss 'NCBI:NR:20141101' $(DB) $@.hmmout $@.tblout $@.domtblout
-	@psql $(DB) --tuples-only -f select_hmmer.sql | sed 's/ *| */\t/g' | sed 's/^ *//' > $@.out 2>&1
+	@psql $(DB) --tuples-only -f select_hmmer.sql | sed 's/  *|  */\t/g' | sed 's/^ *//' > $@.out 2>&1
 	@$(CHECK)
