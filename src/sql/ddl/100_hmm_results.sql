@@ -4,6 +4,7 @@ CREATE TABLE hmm_results (
     ON DELETE NO ACTION ON UPDATE NO ACTION,
   sequence_source_id	integer		REFERENCES sequence_sources (id),
   executed		timestamp	NOT NULL
+    DEFAULT now()
 );
 
 CREATE INDEX hmm_results_hmm_profile_id ON hmm_results(hmm_profile_id);

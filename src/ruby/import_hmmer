@@ -19,6 +19,7 @@
 $VERBOSE = true
 
 require 'optparse'
+require 'pg'
 
 @options = {}
 opt_parser = OptionParser.new do |opts|
@@ -34,8 +35,12 @@ BANNER
     exit 0
   end
 
+  opts.on "--profile STRING", "Name of hmm profile" do |v|
+    @options[:profile] = v
+  end
+
   opts.on "--ss STRING", "Sequence source encoded like 'ORGANISATION:SOURCE:VERSION'" do |v|
-    ss = v.split(':')
+    @options[:ss] = v.split(':')
   end
 
   opts.on "-v", "--verbose", "Be verbose"  do |v| 
@@ -44,7 +49,7 @@ BANNER
 end
 begin
   opt_parser.parse!
-  mandatory = [ :ss ]	# Fill in with mandatory option names (i.e. starting with :)
+  mandatory = [ :profile, :ss ]	# Fill in with mandatory option names (i.e. starting with :)
   missing = mandatory.select { |param| @options[param].nil? }
   unless missing.empty?
     warn "Missing options: #{missing.map { |m| "--#{m}" }.join(", ")}"
@@ -64,6 +69,19 @@ unless ARGV.length == 4
 end
 
 ( db, hmmout, tblout, domtblout ) = ARGV
+
+conn = PG.connect( dbname: db )
+
+# Insert the hmm_result row
+hmm_result_id = nil
+begin
+  s = "SELECT * FROM insert_hmm_result('#{@options[:profile]}', '#{@options[:ss].join("','")}');"
+  rs = conn.exec(s)
+  hmm_result_id = rs.getvalue 0, 0
+rescue
+  warn "Failed to insert sequence_source: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+  exit 2
+end
 
 # Loop over infiles
 hmmout_data = nil
