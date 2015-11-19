@@ -26,3 +26,13 @@ FROM
 ORDER BY
   hp.name, hrr.tname, hrr.qname
 ;
+
+SELECT sn.seq_src, sn.gi, sn.accno, sn.accno_version, sn.name
+FROM
+  hmm_profiles hp JOIN
+  hmm_results hr ON hp.id = hr.hmm_profile_id JOIN
+  hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
+  seqnames sn ON hrr.id = sn.hmm_result_row_id
+ORDER BY
+  1, 2, 3, 5
+;

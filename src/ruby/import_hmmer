@@ -84,26 +84,52 @@ rescue
 end
 
 # Read the tblout file and insert each row
+tnameindex = Hash.new	# Will contain a map from tname to id in hmm_result_rows
 begin
   io = File.new(tblout)
+
+  # Prepared statements for inserts
+  # hmm_result_rows
   con.prepare 'ins_row', <<INS_HRR
-INSERT INTO hmm_result_rows(
-    hmm_result_id, tname, qname, e_value, score, bias,
-    dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
-  )
-  VALUES(#{hmm_result_id}, $1::text, $2::text, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+SELECT * FROM insert_hmm_result_row(
+  #{hmm_result_id}::int, $1::text, $2::text, 
+  $3::float, $4::float, $5::float, $6::float, $7, $8, $9, $10, $11, $12, $13
+);
 INS_HRR
+
+  # seqnames
+  con.prepare 'ins_name', <<INS_NAME
+INSERT INTO seqnames(hmm_result_row_id, seq_src, gi, accno, accno_version, name)
+  VALUES($1, $2::text, $3::text, $4::text, $5::text, $6::text);
+INS_NAME
+
   io.each do |line|
     line.sub!(/\s*#.*/, '')
     next if line =~ /^\s*$/
     fields = line.split(/\s+/)
+
+    # Insert main row
     ( tname, qname ) = fields.values_at(0,2)
     ( e_value, score, bias, dom_n_exp ) = fields.values_at(4, 5, 6, 10).map { |n| n.to_f }
     ( dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc ) = fields[11, 7].map { |n| n.to_i }
-    rs = con.exec_prepared 'ins_row', 
-      [tname, qname, e_value, score, bias,
+    rs = con.exec_prepared 'ins_row', [
+      tname, qname, e_value, score, bias,
       dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, 
-      dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc]
+      dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
+    ]
+    tnameindex[tname] = rs.getvalue(0, 0)
+
+    # Insert all alternative names
+    [ fields[0], fields[18..-1] ].join(' ').split('\0').each do |n|
+      f = n.split(/\s+/)
+      fs = f[0].split('|')
+      name = f[1..-1].join(' ')
+      ( seq_src, gi ) = fs.values_at(2, 1)
+      ( accno, accno_version ) = fs[3].split('.')
+      rs = con.exec_prepared 'ins_name', [
+	tnameindex[tname], seq_src, gi, accno, accno_version, name
+      ]
+    end
   end
 rescue
   warn "Failed to process hmmout file '#{hmmout}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
