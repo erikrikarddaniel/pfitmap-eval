@@ -72,93 +72,110 @@ end
 
 con = PG.connect( dbname: db )
 
-# Insert the hmm_result row
-hmm_result_id = nil
-begin
-  s = "SELECT * FROM insert_hmm_result('#{@options[:profile]}', '#{@options[:ss].join("','")}');"
-  rs = con.exec(s)
-  hmm_result_id = rs.getvalue 0, 0
-rescue
-  warn "Failed to insert sequence_source: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
-  exit 2
-end
+tname = nil	# To keep it global for error messages
 
-# Read the tblout file and insert each row
-tnameindex = Hash.new	# Will contain a map from tname to id in hmm_result_rows
-begin
-  io = File.new(tblout)
+con.transaction do |con|
+  # Insert the hmm_result row
+  hmm_result_id = nil
+  begin
+    s = "SELECT * FROM insert_hmm_result('#{@options[:profile]}', '#{@options[:ss].join("','")}');"
+    rs = con.exec(s)
+    hmm_result_id = rs.getvalue 0, 0
+    warn "Inserted hmm_result #{hmm_result_id}, profile: #{@options[:profile]}, sequence source: #{@options[:ss].join(":")}" if @options[:verbose]
+  rescue
+    warn "Failed to insert sequence_source: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+    exit 2
+  end
 
-  # Prepared statements for inserts
-  # hmm_result_rows
-  con.prepare 'ins_row', <<INS_HRR
+  # Read the tblout file and insert each row
+  tnameindex = Hash.new	# Will contain a map from tname to id in hmm_result_rows
+  begin
+    warn "Reading tblout file #{tblout}" if @options[:verbose]
+    io = File.new(tblout)
+
+    # Prepared statements for inserts
+    # hmm_result_rows
+    con.prepare 'ins_row', <<INS_HRR
 SELECT * FROM insert_hmm_result_row(
   #{hmm_result_id}::int, $1::text, $2::text, 
   $3::float, $4::float, $5::float, $6::float, $7, $8, $9, $10, $11, $12, $13
 );
 INS_HRR
 
-  # seqnames
-  con.prepare 'ins_name', <<INS_NAME
+    # seqnames
+    con.prepare 'ins_name', <<INS_NAME
 SELECT * FROM insert_hmm_result_row_sequence($1, $2::text, $3::text, $4::text, $5::text, $6::text);
 INS_NAME
 
-  io.each do |line|
-    line.sub!(/\s*#.*/, '')
-    next if line =~ /^\s*$/
-    fields = line.split(/\s+/)
+    io.each do |line|
+      line.sub!(/\s*#.*/, '')
+      next if line =~ /^\s*$/
+      fields = line.split(/\s+/)
 
-    # Insert main row
-    ( tname, qname ) = fields.values_at(0,2)
-    ( e_value, score, bias, dom_n_exp ) = fields.values_at(4, 5, 6, 10).map { |n| n.to_f }
-    ( dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc ) = fields[11, 7].map { |n| n.to_i }
-    rs = con.exec_prepared 'ins_row', [
-	tname, qname, e_value, score, bias,
-	dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, 
-	dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
-      ]
-    tnameindex[tname] = { id: rs.getvalue(0, 0) }
-
-    # Insert all sequences (i.e. not sequences but names and accnos)
-    [ fields[0], fields[18..-1] ].join(' ').split("\x01").each do |n|
-      f = n.split(/\s+/)
-      fs = f[0].split('|')
-      name = f[1..-1].join(' ')
-      ( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
-      rs = con.exec_prepared 'ins_name', [
-	  tnameindex[tname][:id], @options[:ss][0], seq_src, gi, accno, name
+      # Insert main row
+      ( tname, qname ) = fields.values_at(0,2)
+      ( e_value, score, bias, dom_n_exp ) = fields.values_at(4, 5, 6, 10).map { |n| n.to_f }
+      ( dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc ) = fields[11, 7].map { |n| n.to_i }
+      rs = con.exec_prepared 'ins_row', [
+	  tname, qname, e_value, score, bias,
+	  dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, 
+	  dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
 	]
+      tnameindex[tname] = { id: rs.getvalue(0, 0) }
+
+      # Insert all sequences (i.e. not sequences but names and accnos)
+      begin
+	n = nil
+	s = [ fields[0], fields[18..-1] ].join(' ')
+	s.split("\x01").each do |n|
+	  next unless n
+	  f = n.split(/\s+/)
+	  fs = f[0].split('|')
+	  name = f[1..-1].join(' ')
+	  ( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
+	  rs = con.exec_prepared 'ins_name', [
+	      tnameindex[tname][:id], @options[:ss][0], seq_src, gi, accno, name
+	    ]
+	end
+      rescue
+	warn "Failed to insert name '#{n}' from '"
+	raise $!
+      end
     end
+  rescue
+    warn "Failed to process tblout file '#{tblout}', target #{tname}: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+    exit 2
   end
-rescue
-  warn "Failed to process tblout file '#{tblout}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
-end
 
-# Read the domtblout and insert rows with links to tblout rows
-begin
-  io = File.new(domtblout)
+  # Read the domtblout and insert rows with links to tblout rows
+  begin
+    warn "Reading domtblout file #{domtblout}" if @options[:verbose]
+    io = File.new(domtblout)
 
-  # Prepared statements
-  con.prepare 'ins_domain', <<INS_DOMAIN
+    # Prepared statements
+    con.prepare 'ins_domain', <<INS_DOMAIN
 SELECT * FROM insert_hmm_result_domain(
   $1, $2, $3, $4, $5, $6::float, $7::float, $8::float, $9::float, $10, $11, $12, $13, $14, $15, $16::float
 );
 INS_DOMAIN
 
-  io.each do |line|
-    line.sub!(/\s*#.*/, '')
-    next if line =~ /^\s*$/
+    io.each do |line|
+      line.sub!(/\s*#.*/, '')
+      next if line =~ /^\s*$/
 
-    fields = line.split(/\s+/)
-    ( tname, tlen, qlen, i, n ) = fields.values_at(0, 2, 5, 9, 10)
-    ( c_e_value, i_e_value, score, bias ) = fields[11..14]
-    ( hmm_from, hmm_to, ali_from, ali_to, env_from, env_to, acc ) = fields[15..21]
-    rs = con.exec_prepared 'ins_domain', [
-	tnameindex[tname][:id], tlen, qlen, i, n,
-	c_e_value, i_e_value, score, bias,
-	hmm_from, hmm_to, ali_from, ali_to, env_from, env_to, acc 
-      ]
-    tnameindex[tname][:dom_id] = rs.getvalue(0, 0)
+      fields = line.split(/\s+/)
+      ( tname, tlen, qlen, i, n ) = fields.values_at(0, 2, 5, 9, 10)
+      ( c_e_value, i_e_value, score, bias ) = fields[11..14]
+      ( hmm_from, hmm_to, ali_from, ali_to, env_from, env_to, acc ) = fields[15..21]
+      rs = con.exec_prepared 'ins_domain', [
+	  tnameindex[tname][:id], tlen, qlen, i, n,
+	  c_e_value, i_e_value, score, bias,
+	  hmm_from, hmm_to, ali_from, ali_to, env_from, env_to, acc 
+	]
+      tnameindex[tname][:dom_id] = rs.getvalue(0, 0)
+    end
+  rescue
+    warn "Failed to process domtblout file '#{domtblout}', target: #{tname}: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
-rescue
-  warn "Failed to process domtblout file '#{domtblout}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
-end
+
+end	# End transaction
