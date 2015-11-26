@@ -34,7 +34,8 @@ SELECT
   hp.name, hrr.tname, 
   hrd.tlen, hrd.qlen, hrd.i, hrd.n,
   hrd.c_e_value, hrd.i_e_value, hrd.score, hrd.bias,
-  hrd.hmm_from, hrd.hmm_to, hrd.ali_from, hrd.ali_to, hrd.env_from, hrd.env_to, hrd.acc
+  hrd.hmm_from, hrd.hmm_to, hrd.ali_from, hrd.ali_to, hrd.env_from, hrd.env_to, hrd.acc,
+  hrd.qali, hrd.cali, hrd.tali, hrd.sali
 FROM
   hmm_profiles hp JOIN
   hmm_results hr ON hp.id = hr.hmm_profile_id JOIN

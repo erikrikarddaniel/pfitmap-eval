@@ -20,3 +20,10 @@ CREATE TABLE hmm_result_domains (
 );
 
 CREATE UNIQUE INDEX hmm_result_domains_i00 ON hmm_result_domains(hmm_result_row_id, i);
+
+ALTER TABLE hmm_result_domains
+  ADD qali		text,
+  ADD cali		text,
+  ADD tali		text,
+  ADD sali		text
+;
