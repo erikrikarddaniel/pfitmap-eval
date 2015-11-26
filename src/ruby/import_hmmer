@@ -171,4 +171,29 @@ INS_DOMAIN
     warn "Failed to process domtblout file '#{domtblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
 
+  # Read the hmmout and insert alignment data
+  begin
+    warn "Reading hmmout file #{hmmout}" if @options[:verbose]
+    io = File.new(hmmout)
+
+    # Prepared statements
+
+    tname = nil
+    ( qali, cali, tali, sali ) = [ nil, nil, nil, nil ]
+    io.each do |line|
+      line.sub!(/\s*#.*/, '')
+      next if line =~ /^\s*$/
+
+      if line =~ /^>> +([^ ]+)/
+	tname_next = $1
+	warn "#{__LINE__}: New domain(s) for '#{tname_next}', old tname: '#{tname}'"
+      elsif line =~ /^  == domain (\n+)/
+	n_domains = $1
+      end
+
+    end
+  rescue
+    warn "Failed to process hmmout file '#{hmmout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+  end
+
 end	# End transaction
