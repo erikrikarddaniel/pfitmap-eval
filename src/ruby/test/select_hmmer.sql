@@ -1,3 +1,4 @@
+-- Select all sequence_sources with profiles
 SELECT
   ss.source,
   ss.name,
@@ -14,6 +15,7 @@ ORDER BY
   1, 2, 3
 ;
 
+-- Result rows
 SELECT
   hp.name, hrr.tname, hrr.qname,
   hrr.e_value, hrr.score, hrr.bias,
@@ -27,6 +29,7 @@ ORDER BY
   hp.name, hrr.tname, hrr.qname
 ;
 
+-- Sequences
 SELECT sn.seq_src, sn.gi, sn.accno, sn.accno_version, sn.name
 FROM
   hmm_profiles hp JOIN
@@ -34,5 +37,5 @@ FROM
   hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
   seqnames sn ON hrr.id = sn.hmm_result_row_id
 ORDER BY
-  1, 2, 3, 5
+  sn.hmm_result_row_id, sn.accno, sn.accno_version
 ;

@@ -120,7 +120,7 @@ INS_NAME
     tnameindex[tname] = rs.getvalue(0, 0)
 
     # Insert all alternative names
-    [ fields[0], fields[18..-1] ].join(' ').split('\0').each do |n|
+    [ fields[0], fields[18..-1] ].join(' ').split("\x01").each do |n|
       f = n.split(/\s+/)
       fs = f[0].split('|')
       name = f[1..-1].join(' ')
