@@ -11,11 +11,261 @@
 # number of worker threads:        16
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Query:       NrdAz  [M=948]
+Query:       NrdAz  [M=707]
 Scores for complete sequences (score includes all domains):
    --- full sequence ---   --- best 1 domain ---    -#dom-
     E-value  score  bias    E-value  score  bias    exp  N  Sequence                                Description
     ------- ------ -----    ------- ------ -----   ---- --  --------                                -----------
-          0 1662.6   0.0          0 1662.3   0.0    1.0  1  gi|648294963|ref|WP_026075985.1|         ribonucleotide-diphosphate reduc
-          0 1658.5   0.0          0 1658.2   0.0    1.0  1  gi|518389577|ref|WP_019559784.1|         ribonucleotide-diphosphate reduc
+          0 1320.4   0.0          0 1319.9   0.0    1.2  1  gi|771615357|ref|WP_045226243.1|         ribonucleotide-diphosphate reduc
+          0 1318.6   0.1          0 1317.6   0.1    1.4  1  gi|517784233|ref|WP_018954441.1|         ribonucleoside-diphosphate reduc
+          0 1316.1   0.2          0 1315.2   0.2    1.4  1  gi|501783657|ref|WP_012639165.1|         ribonucleotide-diphosphate reduc
+          0 1315.5   0.4          0 1307.9   0.0    2.1  2  gi|651614567|ref|WP_026608691.1|         ribonucleotide-diphosphate reduc
+
+
 Domain annotation for each sequence (and alignments):
+>> gi|771615357|ref|WP_045226243.1|  ribonucleotide-diphosphate reductase subunit alpha [Methylococcaceae bacterium 73a]
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1319.9   0.0         0         0       9     707 .]     246     956 .]     240     956 .] 0.98
+
+  Alignments for each domain:
+  == domain 1  score: 1319.9 bits;  conditional E-value: 0
+                             NrdAz   9 eeateeelaeaykeafkeyiekgveaelldeklaefdleklaealkperdlkfeylglqtlydryllkaeekrlelp 85 
+                                       +eat++e+ae+y e+f++yi++g + ell+++l+++dle+l++alkperdl+f+ylglqtlydry+++++++r+elp
+  gi|771615357|ref|WP_045226243.1| 246 SEATQTEMAERYGEYFADYIRRGADLELLSPDLTRYDLERLGAALKPERDLQFSYLGLQTLYDRYFIHSHGQRFELP 322
+                                       568999*********************************************************************** PP
+
+                             NrdAz  86 qaffmrvamGlalneedreeraiefyellssfdfvsstPtlfnsgtlrpqlsscylttveddlegifkaikdnalls 162
+                                       qaffmrvamGla +e dre+raiefy+llssfdf+sstPtlfnsgtlrpqlsscylt+v+ddl+gi+ aikdnalls
+  gi|771615357|ref|WP_045226243.1| 323 QAFFMRVAMGLASAEIDREDRAIEFYNLLSSFDFMSSTPTLFNSGTLRPQLSSCYLTSVPDDLDGIYGAIKDNALLS 399
+                                       ***************************************************************************** PP
+
+                             NrdAz 163 kyaGGlGndWtkvralgalikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWhldieeflelrkntGd 239
+                                       kyaGGlGndWt+vr++ga+ikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWh+dieefl+lrkntGd
+  gi|771615357|ref|WP_045226243.1| 400 KYAGGLGNDWTRVRGMGAHIKGTNGKSQGVVPFLKVANDTAVAVNQGGKRKGAVCAYLETWHIDIEEFLDLRKNTGD 476
+                                       ***************************************************************************** PP
+
+                             NrdAz 240 drrrthdmntanWvpdlfmkrveedeeWtlfspdevpdlhdlyGkefekryeeyeakaeegeiklfkkveavelWrk 316
+                                       drrrthdmntanWvpdlfmkrv+e++eWtlfsp++vpdlhdl+G++fek+y++ye+ka++ge+klfk+++a +lWrk
+  gi|771615357|ref|WP_045226243.1| 477 DRRRTHDMNTANWVPDLFMKRVAEEGEWTLFSPNDVPDLHDLTGAAFEKAYQAYEEKADRGELKLFKRMPALTLWRK 553
+                                       ***************************************************************************** PP
+
+                             NrdAz 317 mlsllfetGhPWitfkdpcnlrspqdhvGvvhssnlcteitlntseeeiavcnlGsvnlaahlkee..ldeeklekt 391
+                                       mls+lfetGhPWi+fkdpcnlrspq+h+Gvvhssnlcteitlnts+ eiavcnlGsvnlaah+++e  ld++kle+t
+  gi|771615357|ref|WP_045226243.1| 554 MLSMLFETGHPWIAFKDPCNLRSPQQHAGVVHSSNLCTEITLNTSDAEIAVCNLGSVNLAAHVTDEglLDSAKLERT 630
+                                       ***************************************************************876569******** PP
+
+                             NrdAz 392 vktavrmldnvidinfyaveearesnlrhrpvGlGlmgfqdalyklkipyaseeavefadesmelisyyaieassel 468
+                                       v+ta+rmldnvidin+y+v++ar+snlrhrpvGlG+mgfqdalyk++i+yase+a++fad sme++syyai+as+el
+  gi|771615357|ref|WP_045226243.1| 631 VATAMRMLDNVIDINYYSVPQARRSNLRHRPVGLGIMGFQDALYKMRIAYASEDALKFADASMEAVSYYAIKASTEL 707
+                                       ***************************************************************************** PP
+
+                             NrdAz 469 akerGayesfegskWdrgilPidsielleeergeelevdrsekldWealrekvkkkGmrnsnvlaiaPtatisnivG 545
+                                       a+erGay++f+gs+W++gilP+dsi llee+rg +l++drs +ldW+alre+vkk Gmrnsn++aiaPtatisni+G
+  gi|771615357|ref|WP_045226243.1| 708 AEERGAYSTFQGSLWSQGILPMDSIGLLEEARGGYLQMDRSFTLDWDALRERVKKFGMRNSNTMAIAPTATISNICG 784
+                                       ***************************************************************************** PP
+
+                             NrdAz 546 vsqsiePtyknlyvksnlsGeftvvnealvedlkerglWdeemvedlkyfdGsvqeieriPeelkelyatafeidpe 622
+                                       vsqsiePty+nl+vksnlsGeftvvn++lv+dlk+++lWd++m++dlky+dGs+q++eriPe+lk+ly tafeidp+
+  gi|771615357|ref|WP_045226243.1| 785 VSQSIEPTYQNLFVKSNLSGEFTVVNPYLVNDLKKLNLWDAVMINDLKYYDGSLQKVERIPEDLKALYSTAFEIDPR 861
+                                       ***************************************************************************** PP
+
+                             NrdAz 623 wlveaaarrqkWidqaqslnlylaepsgkkldelyklaWkkGlkttyylrslgatqvekstldakklnava...... 693
+                                       wlveaa+rrqkWidqaqslnly++ep+gkkld+lyklaW +Glkttyylrslgat+vekstl+++klnav+      
+  gi|771615357|ref|WP_045226243.1| 862 WLVEAASRRQKWIDQAQSLNLYMSEPNGKKLDSLYKLAWLRGLKTTYYLRSLGATHVEKSTLAEGKLNAVKmdpidd 938
+                                       *****************************************************************999875333333 PP
+
+                             NrdAz 694 ....kacsiedeeceacq 707
+                                           k+csi d+eceacq
+  gi|771615357|ref|WP_045226243.1| 939 aipvKMCSIADPECEACQ 956
+                                       344479***********9 PP
+
+>> gi|517784233|ref|WP_018954441.1|  ribonucleoside-diphosphate reductase [Thioalkalivibrio sulfidiphilus]
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1317.6   0.1         0         0       9     707 .]     256     971 .]     250     971 .] 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 1317.6 bits;  conditional E-value: 0
+                             NrdAz   9 eeateeelaeaykeafkeyiekgveaelldeklaefdleklaealkperdlkfeylglqtlydryllkaeekrlelp 85 
+                                       ++at++e++++y e+fk+y++++ e elld++l+++dl++l++alkperdl+f+ylglqtlydry++++ + r+elp
+  gi|517784233|ref|WP_018954441.1| 256 QAATQAEMTQRYPEYFKAYVKRAAELELLDSELTRYDLDRLGAALKPERDLQFTYLGLQTLYDRYFIHSGGVRFELP 332
+                                       57899************************************************************************ PP
+
+                             NrdAz  86 qaffmrvamGlalneedreeraiefyellssfdfvsstPtlfnsgtlrpqlsscylttveddlegifkaikdnalls 162
+                                       qaffmrvamGla++e dre raiefy+llssfdf+sstPtlfnsgtlrpqlsscylttv+ddl+gif aikdnalls
+  gi|517784233|ref|WP_018954441.1| 333 QAFFMRVAMGLAIHEIDREGRAIEFYNLLSSFDFMSSTPTLFNSGTLRPQLSSCYLTTVPDDLDGIFGAIKDNALLS 409
+                                       ***************************************************************************** PP
+
+                             NrdAz 163 kyaGGlGndWtkvralgalikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWhldieeflelrkntGd 239
+                                       k+aGGlGndWt+vr++ga+ikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWh+d+eef+elrkntGd
+  gi|517784233|ref|WP_018954441.1| 410 KFAGGLGNDWTRVRGMGAHIKGTNGKSQGVVPFLKVANDTAVAVNQGGKRKGAVCAYLETWHVDVEEFIELRKNTGD 486
+                                       ***************************************************************************** PP
+
+                             NrdAz 240 drrrthdmntanWvpdlfmkrveedeeWtlfspdevpdlhdlyGkefekryeeyeakaeegeiklfkkveavelWrk 316
+                                       drrrthdmn+anW+pdlfmkrv+e++eWtlfsp+e+pdlhdl+G++fe+ry+eyeaka++geik+fkk++av+lWrk
+  gi|517784233|ref|WP_018954441.1| 487 DRRRTHDMNSANWIPDLFMKRVAEEGEWTLFSPNETPDLHDLVGEAFERRYTEYEAKAARGEIKVFKKLKAVDLWRK 563
+                                       ***************************************************************************** PP
+
+                             NrdAz 317 mlsllfetGhPWitfkdpcnlrspqdhvGvvhssnlcteitlntseeeiavcnlGsvnlaahlke.eldeeklektv 392
+                                       ml++lfetGhPW+tfkdpcnlrspq+hvGvvhssnlcteitlnts++eiavcnlGsvnlaah++e  l+ ekle+tv
+  gi|517784233|ref|WP_018954441.1| 564 MLAMLFETGHPWMTFKDPCNLRSPQQHVGVVHSSNLCTEITLNTSDDEIAVCNLGSVNLAAHVDEnGLNLEKLERTV 640
+                                       ***************************************************************8626********** PP
+
+                             NrdAz 393 ktavrmldnvidinfyaveearesnlrhrpvGlGlmgfqdalyklkipyaseeavefadesmelisyyaieassela 469
+                                       +ta+rmldnvid+n+y+v++ar+snlrhrpvGlG+mgfqdaly+++ipyaseeavefad+sme++syyai+as++la
+  gi|517784233|ref|WP_018954441.1| 641 STAMRMLDNVIDYNYYSVPQARRSNLRHRPVGLGIMGFQDALYQQRIPYASEEAVEFADRSMEAVSYYAIKASTDLA 717
+                                       ***************************************************************************** PP
+
+                             NrdAz 470 kerGayesfegskWdrgilPidsielleeergeelevdrsekldWealrekvkkkGmrnsnvlaiaPtatisnivGv 546
+                                       +erG+y+sf+gs+W++g+lPidsiell+++rg +l++d+s ++dW++lr++vk+ Gmrnsn++aiaPtatisni+Gv
+  gi|517784233|ref|WP_018954441.1| 718 EERGRYQSFDGSLWSQGVLPIDSIELLAKARGPYLQQDTSMTFDWDSLRDRVKTVGMRNSNTMAIAPTATISNICGV 794
+                                       ***************************************************************************** PP
+
+                             NrdAz 547 sqsiePtyknlyvksnlsGeftvvnealvedlkerglWdeemvedlkyfdGsvqeieriPeelkelyatafeidpew 623
+                                       sqsiePty+nl+vksnlsGeftv+n+ lv+dlk+r+lWde+mv+dlky+dGsvq i+r+Pe+lk+ly tafeidp+w
+  gi|517784233|ref|WP_018954441.1| 795 SQSIEPTYQNLFVKSNLSGEFTVINPNLVNDLKARKLWDEVMVNDLKYYDGSVQPIDRVPEDLKRLYSTAFEIDPRW 871
+                                       ***************************************************************************** PP
+
+                             NrdAz 624 lveaaarrqkWidqaqslnlylaepsgkkldelyklaWkkGlkttyylrslgatqvekstlda....kklnav.... 692
+                                       lveaa+rrqkWidqaqslnly+aepsgkkld+lyklaW +Glkttyylrs+gat+vekst+++    +klnav    
+  gi|517784233|ref|WP_018954441.1| 872 LVEAASRRQKWIDQAQSLNLYMAEPSGKKLDNLYKLAWVRGLKTTYYLRSMGATHVEKSTVADasraNKLNAVkgad 948
+                                       ************************************************************96511113343322222 PP
+
+                             NrdAz 693 ........akacsiedeeceacq 707
+                                               +k+csi d+eceacq
+  gi|517784233|ref|WP_018954441.1| 949 aaapateaPKMCSILDPECEACQ 971
+                                       22222222689***********8 PP
+
+>> gi|501783657|ref|WP_012639165.1|  ribonucleotide-diphosphate reductase subunit alpha [Thioalkalivibrio sulfidiphilus]
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1315.2   0.2         0         0       9     707 .]     256     971 .]     250     971 .] 0.97
+
+  Alignments for each domain:
+  == domain 1  score: 1315.2 bits;  conditional E-value: 0
+                             NrdAz   9 eeateeelaeaykeafkeyiekgveaelldeklaefdleklaealkperdlkfeylglqtlydryllkaeekrlelp 85 
+                                       ++at++e++++y e+fk+y++++ e elld++l+++dl++l++alkperdl+f+ylglqtlydry++++ + r+elp
+  gi|501783657|ref|WP_012639165.1| 256 QAATQAEMTQRYPEYFKAYVKRAAELELLDSELTRYDLDRLGAALKPERDLQFTYLGLQTLYDRYFIHSGGVRFELP 332
+                                       57899************************************************************************ PP
+
+                             NrdAz  86 qaffmrvamGlalneedreeraiefyellssfdfvsstPtlfnsgtlrpqlsscylttveddlegifkaikdnalls 162
+                                       qaffmrvamGla++e dre raiefy+llssfdf+sstPtlfnsgtlrpqlsscylttv+ddl+gif aikdnalls
+  gi|501783657|ref|WP_012639165.1| 333 QAFFMRVAMGLAIHEIDREGRAIEFYNLLSSFDFMSSTPTLFNSGTLRPQLSSCYLTTVPDDLDGIFGAIKDNALLS 409
+                                       ***************************************************************************** PP
+
+                             NrdAz 163 kyaGGlGndWtkvralgalikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWhldieeflelrkntGd 239
+                                       k+aGGlGndWt+vr++ga+ikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWh+d+eef+elrkntGd
+  gi|501783657|ref|WP_012639165.1| 410 KFAGGLGNDWTRVRGMGAHIKGTNGKSQGVVPFLKVANDTAVAVNQGGKRKGAVCAYLETWHVDVEEFIELRKNTGD 486
+                                       ***************************************************************************** PP
+
+                             NrdAz 240 drrrthdmntanWvpdlfmkrveedeeWtlfspdevpdlhdlyGkefekryeeyeakaeegeiklfkkveavelWrk 316
+                                       drrrthdmn+anW+pdlfmkrv+e++eWtlfsp+e+pdlhdl+G++fe+ry+eyeaka++geik+fkk++av+lWrk
+  gi|501783657|ref|WP_012639165.1| 487 DRRRTHDMNSANWIPDLFMKRVAEEGEWTLFSPNETPDLHDLVGEAFEQRYAEYEAKAARGEIKVFKKLKAVDLWRK 563
+                                       ***************************************************************************** PP
+
+                             NrdAz 317 mlsllfetGhPWitfkdpcnlrspqdhvGvvhssnlcteitlntseeeiavcnlGsvnlaahlke.eldeeklektv 392
+                                       ml++lfetGhPW+tfkdpcnlrspq+hvGvvhssnlcteitlnts++eiavcnlGsvnlaah++e  l+ ekle+tv
+  gi|501783657|ref|WP_012639165.1| 564 MLAMLFETGHPWMTFKDPCNLRSPQQHVGVVHSSNLCTEITLNTSDDEIAVCNLGSVNLAAHVDEnGLNLEKLERTV 640
+                                       ***************************************************************8626********** PP
+
+                             NrdAz 393 ktavrmldnvidinfyaveearesnlrhrpvGlGlmgfqdalyklkipyaseeavefadesmelisyyaieassela 469
+                                       +ta+rmldnvid+n+y+v++ar+snlrhrpvGlG+mgfqdaly+++ipyase+avefad+sme++syyai+as++la
+  gi|501783657|ref|WP_012639165.1| 641 STAMRMLDNVIDYNYYSVPQARRSNLRHRPVGLGIMGFQDALYQQRIPYASEDAVEFADRSMEAVSYYAIKASTDLA 717
+                                       ***************************************************************************** PP
+
+                             NrdAz 470 kerGayesfegskWdrgilPidsielleeergeelevdrsekldWealrekvkkkGmrnsnvlaiaPtatisnivGv 546
+                                       +erG+y+sf+gs+W++g+lPidsiell+++rg++l++d+s ++dW++lr++vk+ Gmrnsn++aiaPtatisni+Gv
+  gi|501783657|ref|WP_012639165.1| 718 EERGRYQSFDGSLWSQGVLPIDSIELLAKSRGQYLQQDTSMTFDWDSLRDRVKTVGMRNSNTMAIAPTATISNICGV 794
+                                       ***************************************************************************** PP
+
+                             NrdAz 547 sqsiePtyknlyvksnlsGeftvvnealvedlkerglWdeemvedlkyfdGsvqeieriPeelkelyatafeidpew 623
+                                       sqsiePty+nl+vksnlsGeftv+n+ lv+dlk+r+lWde+mv+dlky+dGsvq i+r+P++lk+lyatafe+d++w
+  gi|501783657|ref|WP_012639165.1| 795 SQSIEPTYQNLFVKSNLSGEFTVINPNLVNDLKARKLWDEVMVNDLKYYDGSVQPIDRVPADLKQLYATAFELDARW 871
+                                       ***************************************************************************** PP
+
+                             NrdAz 624 lveaaarrqkWidqaqslnlylaepsgkkldelyklaWkkGlkttyylrslgatqvekstlda....kklnav.... 692
+                                       lveaa+rrqkW+dqaqslnly+aepsgkkld+lyklaW +Glkttyylrs+gat+vekst+++    +klnav    
+  gi|501783657|ref|WP_012639165.1| 872 LVEAASRRQKWLDQAQSLNLYMAEPSGKKLDNLYKLAWVRGLKTTYYLRSMGATHVEKSTVADasraNKLNAVkgad 948
+                                       ************************************************************96511113343322222 PP
+
+                             NrdAz 693 ........akacsiedeeceacq 707
+                                               +k+csi d+eceacq
+  gi|501783657|ref|WP_012639165.1| 949 aaapateaPKMCSILDPECEACQ 971
+                                       22222222689***********8 PP
+
+>> gi|651614567|ref|WP_026608691.1|  ribonucleotide-diphosphate reductase subunit alpha [Methylocaldum szegediense]
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 ! 1307.9   0.0         0         0      10     693 ..     247     932 ..     242     940 .. 0.99
+   2 ?    5.6   0.4       4.4   1.4e+04     682     707 .]     949     974 .]     941     974 .] 0.81
+
+  Alignments for each domain:
+  == domain 1  score: 1307.9 bits;  conditional E-value: 0
+                             NrdAz  10 eateeelaeaykeafkeyiekgveaelldeklaefdleklaealkperdlkfeylglqtlydryllkaeekrlelpq 86 
+                                       eat++e+ae+y+e+f +y+++g e ell+++l++fdl++l++alkperdl+f+ylglqtlydry+++ ++ r+elpq
+  gi|651614567|ref|WP_026608691.1| 247 EATQDEMAERYAEYFVDYVKRGAELELLSPELTRFDLQRLGAALKPERDLQFTYLGLQTLYDRYFIHCKGIRFELPQ 323
+                                       56899************************************************************************ PP
+
+                             NrdAz  87 affmrvamGlalneedreeraiefyellssfdfvsstPtlfnsgtlrpqlsscylttveddlegifkaikdnallsk 163
+                                       affmrvamGla+ne dre++aiefy+llssfdf+sstPtlfnsgtlrpqlsscylttv+ddl+gif+aikd+allsk
+  gi|651614567|ref|WP_026608691.1| 324 AFFMRVAMGLAINEIDREAKAIEFYDLLSSFDFMSSTPTLFNSGTLRPQLSSCYLTTVPDDLDGIFSAIKDDALLSK 400
+                                       ***************************************************************************** PP
+
+                             NrdAz 164 yaGGlGndWtkvralgalikgtngksqGvvPflkvandtavavnqgGkrkGavcayletWhldieeflelrkntGdd 240
+                                       yaGGlGndWt+vra+g++ikgtngksqGvvPflkvandtavavnqgGkrkGa+cayletWhldieeflelrkntGdd
+  gi|651614567|ref|WP_026608691.1| 401 YAGGLGNDWTRVRAMGSHIKGTNGKSQGVVPFLKVANDTAVAVNQGGKRKGAMCAYLETWHLDIEEFLELRKNTGDD 477
+                                       ***************************************************************************** PP
+
+                             NrdAz 241 rrrthdmntanWvpdlfmkrveedeeWtlfspdevpdlhdlyGkefekryeeyeakaeegeiklfkkveavelWrkm 317
+                                       rrrthdmntanWvpdlfmkrv+e++eWtlf+p++vpdlhdl+G++fekry eyeak+++gei+l+k+v+av+lWrkm
+  gi|651614567|ref|WP_026608691.1| 478 RRRTHDMNTANWVPDLFMKRVAEEGEWTLFTPSDVPDLHDLTGEAFEKRYLEYEAKVDRGEITLYKRVPAVQLWRKM 554
+                                       ***************************************************************************** PP
+
+                             NrdAz 318 lsllfetGhPWitfkdpcnlrspqdhvGvvhssnlcteitlntseeeiavcnlGsvnlaahlke..eldeeklektv 392
+                                       ls+lfetGhPWitfkdpcnlr++++hvGvvhssnlcteitl+t+++eiavcnlGsvnl++h++e  +ld++kle+t+
+  gi|651614567|ref|WP_026608691.1| 555 LSMLFETGHPWITFKDPCNLRYTNQHVGVVHSSNLCTEITLHTNDNEIAVCNLGSVNLSNHITEdgTLDTRKLERTI 631
+                                       **************************************************************75227********** PP
+
+                             NrdAz 393 ktavrmldnvidinfyaveearesnlrhrpvGlGlmgfqdalyklkipyaseeavefadesmelisyyaieassela 469
+                                       +ta+rmldnvidin+y+v++ar+snlrhrpvGlG+mgfqdalykl+ipyas+eav+fad+smel+syyai+as++la
+  gi|651614567|ref|WP_026608691.1| 632 STAMRMLDNVIDINYYSVPQARRSNLRHRPVGLGIMGFQDALYKLRIPYASDEAVNFADKSMELVSYYAIKASTDLA 708
+                                       ***************************************************************************** PP
+
+                             NrdAz 470 kerGayesfegskWdrgilPidsielleeergeelevdrsekldWealrekvkkkGmrnsnvlaiaPtatisnivGv 546
+                                       +erG+y++fegs+W+rgilP ds++lle+ rg +l++drs +ldW+alre+vk+ Gmrnsn++aiaPtatisni+Gv
+  gi|651614567|ref|WP_026608691.1| 709 EERGRYSTFEGSLWSRGILPYDSMALLEQGRGGYLQQDRSFTLDWDALRERVKTVGMRNSNTMAIAPTATISNICGV 785
+                                       ***************************************************************************** PP
+
+                             NrdAz 547 sqsiePtyknlyvksnlsGeftvvnealvedlkerglWdeemvedlkyfdGsvqeieriPeelkelyatafeidpew 623
+                                       sqsiePty+nl+vksnlsGeftvvn++lv+dlk+++lWd +m++dlky+dGsvq+ier+P++lk+lyatafeidp+w
+  gi|651614567|ref|WP_026608691.1| 786 SQSIEPTYQNLFVKSNLSGEFTVVNPYLVKDLKKLDLWDPVMINDLKYYDGSVQKIERVPDDLKQLYATAFEIDPRW 862
+                                       ***************************************************************************** PP
+
+                             NrdAz 624 lveaaarrqkWidqaqslnlylaepsgkkldelyklaWkkGlkttyylrslgatqvekstldakklnava 693
+                                       lveaa+rrqkWidqaqslnly++epsgkkld+lyklaW +Glkttyylr+lgat+vekst  ++klnav+
+  gi|651614567|ref|WP_026608691.1| 863 LVEAASRRQKWIDQAQSLNLYMSEPSGKKLDNLYKLAWIRGLKTTYYLRTLGATHVEKSTAFDGKLNAVK 932
+                                       **************************************************************99999885 PP
+
+  == domain 2  score: 5.6 bits;  conditional E-value: 4.4
+                             NrdAz 682 stldakklnavakacsiedeeceacq 707
+                                       +t  ++++++  k+csi+d+eceacq
+  gi|651614567|ref|WP_026608691.1| 949 ATAYTEAAASGVKMCSIDDPECEACQ 974
+                                       5666777778899************9 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (707 nodes)
+Target sequences:                     77182484  (28059480556 residues searched)
+Passed MSV filter:                   1577606  (0.0204399); expected 1543649.7 (0.02)
+Passed bias filter:                  1110226  (0.0143844); expected 1543649.7 (0.02)
+Passed Vit filter:                     96511  (0.00125043); expected 77182.5 (0.001)
+Passed Fwd filter:                     24641  (0.000319256); expected 771.8 (1e-05)
+Initial search space (Z):           77182484  [actual number of targets]
+Domain search space  (domZ):           23732  [number of targets reported over threshold]
+# CPU time: 1397.57u 17.89s 00:23:35.46 Elapsed: 00:06:31.74
+# Mc/sec: 50640.87
+//
+[ok]
