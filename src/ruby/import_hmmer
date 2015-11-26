@@ -99,8 +99,7 @@ INS_HRR
 
   # seqnames
   con.prepare 'ins_name', <<INS_NAME
-INSERT INTO seqnames(hmm_result_row_id, seq_src, gi, accno, accno_version, name)
-  VALUES($1, $2::text, $3::text, $4::text, $5::text, $6::text);
+SELECT * FROM insert_hmm_result_row_sequence($1, $2::text, $3::text, $4::text, $5::text, $6::text);
 INS_NAME
 
   io.each do |line|
@@ -119,15 +118,14 @@ INS_NAME
     ]
     tnameindex[tname] = rs.getvalue(0, 0)
 
-    # Insert all alternative names
+    # Insert all sequences (i.e. not sequences but names and accnos)
     [ fields[0], fields[18..-1] ].join(' ').split("\x01").each do |n|
       f = n.split(/\s+/)
       fs = f[0].split('|')
       name = f[1..-1].join(' ')
-      ( seq_src, gi ) = fs.values_at(2, 1)
-      ( accno, accno_version ) = fs[3].split('.')
+      ( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
       rs = con.exec_prepared 'ins_name', [
-	tnameindex[tname], seq_src, gi, accno, accno_version, name
+	tnameindex[tname], @options[:ss][0], seq_src, gi, accno, name
       ]
     end
   end

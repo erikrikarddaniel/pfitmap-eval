@@ -30,12 +30,13 @@ ORDER BY
 ;
 
 -- Sequences
-SELECT sn.seq_src, sn.gi, sn.accno, sn.accno_version, sn.name
+SELECT s.seq_src, s.db, s.gi, s.accno, s.name
 FROM
   hmm_profiles hp JOIN
   hmm_results hr ON hp.id = hr.hmm_profile_id JOIN
   hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
-  seqnames sn ON hrr.id = sn.hmm_result_row_id
+  hmm_result_row_sequences hrrs ON hrr.id = hrrs.hmm_result_row_id JOIN
+  sequences s ON hrrs.sequence_id = s.id
 ORDER BY
-  sn.hmm_result_row_id, sn.accno, sn.accno_version
+  hrrs.hmm_result_row_id, s.seq_src, s.accno
 ;
