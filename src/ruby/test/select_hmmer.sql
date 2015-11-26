@@ -29,6 +29,21 @@ ORDER BY
   hp.name, hrr.tname, hrr.qname
 ;
 
+-- Domains
+SELECT
+  hp.name, hrr.tname, 
+  hrd.tlen, hrd.qlen, hrd.i, hrd.n,
+  hrd.c_e_value, hrd.i_e_value, hrd.score, hrd.bias,
+  hrd.hmm_from, hrd.hmm_to, hrd.ali_from, hrd.ali_to, hrd.env_from, hrd.env_to, hrd.acc
+FROM
+  hmm_profiles hp JOIN
+  hmm_results hr ON hp.id = hr.hmm_profile_id JOIN
+  hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
+  hmm_result_domains hrd ON hrr.id = hrd.hmm_result_row_id
+ORDER BY
+  hrr.id, hrd.i
+;
+
 -- Sequences
 SELECT s.seq_src, s.db, s.gi, s.accno, s.name
 FROM
