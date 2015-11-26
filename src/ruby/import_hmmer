@@ -124,26 +124,19 @@ INS_NAME
       tnameindex[tname] = { id: rs.getvalue(0, 0) }
 
       # Insert all sequences (i.e. not sequences but names and accnos)
-      begin
-	n = nil
-	s = [ fields[0], fields[18..-1] ].join(' ')
-	s.split("\x01").each do |n|
-	  next unless n
-	  f = n.split(/\s+/)
-	  fs = f[0].split('|')
-	  name = f[1..-1].join(' ')
-	  ( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
-	  rs = con.exec_prepared 'ins_name', [
-	      tnameindex[tname][:id], @options[:ss][0], seq_src, gi, accno, name
-	    ]
-	end
-      rescue
-	warn "Failed to insert name '#{n}' from '"
-	raise $!
+      s = [ fields[0], fields[18..-1] ].join(' ')
+      s.split("\x01").each do |n|
+	f = n.split(/\s+/)
+	fs = f[0].split('|')
+	name = f[1..-1].join(' ')
+	( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
+	rs = con.exec_prepared 'ins_name', [
+	    tnameindex[tname][:id], @options[:ss][0], seq_src, gi, accno, name
+	  ]
       end
     end
   rescue
-    warn "Failed to process tblout file '#{tblout}', target #{tname}: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+    warn "Failed to process tblout file '#{tblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
     exit 2
   end
 
@@ -175,7 +168,7 @@ INS_DOMAIN
       tnameindex[tname][:dom_id] = rs.getvalue(0, 0)
     end
   rescue
-    warn "Failed to process domtblout file '#{domtblout}', target: #{tname}: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+    warn "Failed to process domtblout file '#{domtblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
 
 end	# End transaction

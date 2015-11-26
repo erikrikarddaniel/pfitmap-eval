@@ -6,5 +6,5 @@ CREATE TABLE hmm_result_row_sequences (
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE UNIQUE INDEX hmm_result_row_sequences_hmm_result_rows ON hmm_result_row_sequences(hmm_result_row_id, sequence_id);
-CREATE UNIQUE INDEX hmm_result_row_sequences_sequences ON hmm_result_row_sequences(sequence_id, hmm_result_row_id);
+CREATE INDEX hmm_result_row_sequences_hmm_result_rows ON hmm_result_row_sequences(hmm_result_row_id, sequence_id);
+CREATE INDEX hmm_result_row_sequences_sequences ON hmm_result_row_sequences(sequence_id, hmm_result_row_id);
