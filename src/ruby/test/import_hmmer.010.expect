@@ -1,8 +1,10 @@
 NCBI	NR	20141101	NrdA	NrdAz	subclass
 NrdAz	gi|501783657|ref|WP_012639165.1|	NrdAz	0	1316.1	0.2	1.4	1	1	0	1	1	1	1
+NrdAz	gi|517784233|ref|WP_018954441.1|	NrdAz	0	1318.6	0.1	1.4	1	1	0	1	1	1	1
 NrdAz	gi|651614567|ref|WP_026608691.1|	NrdAz	0	1315.5	0.4	2.1	2	0	0	2	2	2	2
 NrdAz	gi|771615357|ref|WP_045226243.1|	NrdAz	0	1320.4	0	1.2	1	0	0	1	1	1	1
 NCBI	ref	771615357	WP_045226243.1	ribonucleotide-diphosphate reductase subunit alpha [Methylococcaceae bacterium 73a]
+NCBI	ref	517784233	WP_018954441.1	ribonucleoside-diphosphate reductase [Thioalkalivibrio sulfidiphilus]
 NCBI	gb	219997088	ACL73690.1	Ribonucleoside-diphosphate reductase [Thioalkalivibrio sulfidiphilus HL-EbGr7]
 NCBI	ref	501783657	WP_012639165.1	ribonucleotide-diphosphate reductase subunit alpha [Thioalkalivibrio sulfidiphilus]
 NCBI	ref	651614567	WP_026608691.1	ribonucleotide-diphosphate reductase subunit alpha [Methylocaldum szegediense]
