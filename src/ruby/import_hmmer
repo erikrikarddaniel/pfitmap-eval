@@ -21,6 +21,8 @@ $VERBOSE = true
 require 'optparse'
 require 'pg'
 
+N_ROWS_REPORT = 1000
+
 @options = {}
 opt_parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
@@ -77,6 +79,8 @@ tname = nil	# To keep it global for error messages
 con.transaction do |con|
   # Insert the hmm_result row
   hmm_result_id = nil
+  r = 0
+
   begin
     s = "SELECT * FROM insert_hmm_result('#{@options[:profile]}', '#{@options[:ss].join("','")}');"
     rs = con.exec(s)
@@ -90,7 +94,7 @@ con.transaction do |con|
   # Read the tblout file and insert each row
   tnameindex = Hash.new	# Will contain a map from tname to id in hmm_result_rows
   begin
-    warn "Reading tblout file #{tblout}" if @options[:verbose]
+    STDERR.print "Reading tblout file #{tblout}, one '.' per #{N_ROWS_REPORT} lines read." if @options[:verbose]
     io = File.new(tblout)
 
     # Prepared statements for inserts
@@ -108,6 +112,9 @@ SELECT * FROM insert_hmm_result_row_sequence($1, $2::text, $3::text, $4::text, $
 INS_NAME
 
     io.each do |line|
+      r += 1
+      STDERR.print "." if @options[:verbose] and r % N_ROWS_REPORT == 0 
+
       line.sub!(/\s*#.*/, '')
       next if line =~ /^\s*$/
       fields = line.split(/\s+/)
@@ -135,6 +142,7 @@ INS_NAME
 	  ]
       end
     end
+    warn "done" if @options[:verbose]
   rescue
     warn "Failed to process tblout file '#{tblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
     exit 2
