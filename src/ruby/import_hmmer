@@ -74,6 +74,40 @@ end
 
 con = PG.connect( dbname: db )
 
+# Prepared statements
+# hmm_result_rows
+con.prepare 'ins_row', <<INS_HRR
+SELECT * FROM insert_hmm_result_row(
+  $1::int, $2::text, $3::text, 
+  $4::float, $5::float, $6::float, $7::float, $8, $9, $10, $11, $12, $13, $14
+);
+INS_HRR
+
+# seqnames
+con.prepare 'ins_name', <<INS_NAME
+SELECT * FROM insert_hmm_result_row_sequence($1, $2::text, $3::text, $4::text, $5::text, $6::text);
+INS_NAME
+
+# Domain
+con.prepare 'ins_domain', <<INS_DOMAIN
+SELECT * FROM insert_hmm_result_domain(
+  $1, $2, $3, $4, $5, $6::float, $7::float, $8::float, $9::float, $10, $11, $12, $13, $14, $15, $16::float
+);
+INS_DOMAIN
+
+# Update alignment part of domain
+con.prepare 'upd_domali', <<UPD_DOMALI
+UPDATE hmm_result_domains
+  SET 
+    qali = $1::text,
+    cali = $2::text,
+    tali = $3::text,
+    sali = $4::text
+  WHERE
+    id = $5
+;
+UPD_DOMALI
+
 tname = nil	# To keep it global for error messages
 
 con.transaction do |con|
@@ -97,20 +131,6 @@ con.transaction do |con|
     STDERR.print "Reading tblout file #{tblout}, one '.' per #{N_ROWS_REPORT} lines read." if @options[:verbose]
     io = File.new(tblout)
 
-    # Prepared statements for inserts
-    # hmm_result_rows
-    con.prepare 'ins_row', <<INS_HRR
-SELECT * FROM insert_hmm_result_row(
-  #{hmm_result_id}::int, $1::text, $2::text, 
-  $3::float, $4::float, $5::float, $6::float, $7, $8, $9, $10, $11, $12, $13
-);
-INS_HRR
-
-    # seqnames
-    con.prepare 'ins_name', <<INS_NAME
-SELECT * FROM insert_hmm_result_row_sequence($1, $2::text, $3::text, $4::text, $5::text, $6::text);
-INS_NAME
-
     io.each do |line|
       r += 1
       STDERR.print "." if @options[:verbose] and r % N_ROWS_REPORT == 0 
@@ -124,11 +144,11 @@ INS_NAME
       ( e_value, score, bias, dom_n_exp ) = fields.values_at(4, 5, 6, 10).map { |n| n.to_f }
       ( dom_n_reg, dom_n_clu, dom_n_ov, dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc ) = fields[11, 7].map { |n| n.to_i }
       rs = con.exec_prepared 'ins_row', [
-	  tname, qname, e_value, score, bias,
+	  hmm_result_id, tname, qname, e_value, score, bias,
 	  dom_n_exp, dom_n_reg, dom_n_clu, dom_n_ov, 
 	  dom_n_env, dom_n_dom, dom_n_rep, dom_n_inc
 	]
-      tnameindex[tname] = { id: rs.getvalue(0, 0) }
+      tnameindex[tname] = { id: rs.getvalue(0, 0).to_i, dom_id: [] }
 
       # Insert all sequences (i.e. not sequences but names and accnos)
       s = [ fields[0], fields[18..-1] ].join(' ')
@@ -153,13 +173,6 @@ INS_NAME
     warn "Reading domtblout file #{domtblout}" if @options[:verbose]
     io = File.new(domtblout)
 
-    # Prepared statements
-    con.prepare 'ins_domain', <<INS_DOMAIN
-SELECT * FROM insert_hmm_result_domain(
-  $1, $2, $3, $4, $5, $6::float, $7::float, $8::float, $9::float, $10, $11, $12, $13, $14, $15, $16::float
-);
-INS_DOMAIN
-
     io.each do |line|
       line.sub!(/\s*#.*/, '')
       next if line =~ /^\s*$/
@@ -173,7 +186,7 @@ INS_DOMAIN
 	  c_e_value, i_e_value, score, bias,
 	  hmm_from, hmm_to, ali_from, ali_to, env_from, env_to, acc 
 	]
-      tnameindex[tname][:dom_id] = rs.getvalue(0, 0)
+      tnameindex[tname][:dom_id] << rs.getvalue(0, 0).to_i
     end
   rescue
     warn "Failed to process domtblout file '#{domtblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
@@ -184,24 +197,71 @@ INS_DOMAIN
     warn "Reading hmmout file #{hmmout}" if @options[:verbose]
     io = File.new(hmmout)
 
-    # Prepared statements
-
-    tname = nil
-    ( qali, cali, tali, sali ) = [ nil, nil, nil, nil ]
+    ( tname, tname_next ) = [ nil, nil ]
+    domain_n = nil
+    ( sindex, slen, read ) = [ nil, nil, false ]
+    ( qali, cali, tali, sali ) = [ '', '', '', '' ]
+    rn = 0
     io.each do |line|
+      rn += 1
       line.sub!(/\s*#.*/, '')
+      line.chomp!
       next if line =~ /^\s*$/
 
+      #warn "#{__LINE__}: *** #{rn}: #{line} ***"
       if line =~ /^>> +([^ ]+)/
 	tname_next = $1
-	warn "#{__LINE__}: New domain(s) for '#{tname_next}', old tname: '#{tname}'"
-      elsif line =~ /^  == domain (\n+)/
-	n_domains = $1
+	read = false
+      elsif line =~ /^  == domain (\d+)/
+	n = $1.to_i
+	if tname
+	  id = tnameindex[tname][:dom_id][domain_n-1]
+	  rs = con.exec_prepared 'upd_domali', [
+	      qali, cali, tali, sali, id
+	    ]
+	end
+	tname = tname_next
+	domain_n = n
+	( sindex, slen ) = [ nil, nil ]
+	( qali, cali, tali, sali ) = [ '', '', '', '' ]
+	read = true
+      elsif line =~ /Internal pipeline statistics summary/
+	if tname
+	  id = tnameindex[tname][:dom_id][domain_n-1]
+	  rs = con.exec_prepared 'upd_domali', [
+	      qali, cali, tali, sali, id
+	    ]
+	end
+	tname = tname_next
+	tname_next = nil
+	domain_n = n
+	( sindex, slen ) = [ nil, nil ]
+	( qali, cali, tali, sali ) = [ '', '', '', '' ]
+      elsif domain_n
+	if qali == ''
+	  if line =~ /^(\s+\S+\s+\d+ )(\S+) (\d+)\s*$/
+	    sindex = $1.length
+	    qali = $2
+	    slen = qali.length
+	  end
+	elsif read 
+	  if cali.length < qali.length
+	    cali += line[sindex, slen]
+	  elsif tali.length < cali.length
+	    tali += line[sindex, slen]
+	  elsif sali.length < tali.length
+	    sali += line[sindex, slen]
+	  else
+	    # Special case for last four lines which are shorter
+	    if line[sindex, slen] =~ /(\S+)\s+\d+\s*$/
+	      slen = $1.length
+	    end
+	    qali += line[sindex, slen]
+	  end
+	end
       end
-
     end
   rescue
     warn "Failed to process hmmout file '#{hmmout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
-
 end	# End transaction
