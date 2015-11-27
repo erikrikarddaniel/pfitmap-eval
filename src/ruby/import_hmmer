@@ -169,11 +169,15 @@ con.transaction do |con|
   end
 
   # Read the domtblout and insert rows with links to tblout rows
+  r = 0
   begin
-    warn "Reading domtblout file #{domtblout}" if @options[:verbose]
+    STDERR.print "Reading domtblout file #{domtblout}, one '.' per #{N_ROWS_REPORT} lines read." if @options[:verbose]
     io = File.new(domtblout)
 
     io.each do |line|
+      r += 1
+      STDERR.print "." if @options[:verbose] and r % N_ROWS_REPORT == 0 
+
       line.sub!(/\s*#.*/, '')
       next if line =~ /^\s*$/
 
@@ -188,13 +192,15 @@ con.transaction do |con|
 	]
       tnameindex[tname][:dom_id] << rs.getvalue(0, 0).to_i
     end
+    warn "done" if @options[:verbose]
   rescue
     warn "Failed to process domtblout file '#{domtblout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
 
   # Read the hmmout and insert alignment data
+  r = 0
   begin
-    warn "Reading hmmout file #{hmmout}" if @options[:verbose]
+    STDERR.print "Reading hmmout file #{hmmout}, one '.' per #{N_ROWS_REPORT} lines read." if @options[:verbose]
     io = File.new(hmmout)
 
     ( tname, tname_next ) = [ nil, nil ]
@@ -203,7 +209,9 @@ con.transaction do |con|
     ( qali, cali, tali, sali ) = [ '', '', '', '' ]
     rn = 0
     io.each do |line|
-      rn += 1
+      r += 1
+      STDERR.print "." if @options[:verbose] and r % N_ROWS_REPORT == 0 
+
       line.sub!(/\s*#.*/, '')
       line.chomp!
       next if line =~ /^\s*$/
@@ -261,6 +269,7 @@ con.transaction do |con|
 	end
       end
     end
+    warn "done" if @options[:verbose]
   rescue
     warn "Failed to process hmmout file '#{hmmout}', target: '#{tname}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
   end
