@@ -200,7 +200,7 @@ con.transaction do |con|
   # Read the hmmout and insert alignment data
   r = 0
   begin
-    STDERR.print "Reading hmmout file #{hmmout}, one '.' per #{N_ROWS_REPORT} lines read." if @options[:verbose]
+    STDERR.print "Reading hmmout file #{hmmout}, one '.' per #{N_ROWS_REPORT * 10} lines read." if @options[:verbose]
     io = File.new(hmmout)
 
     ( tname, tname_next ) = [ nil, nil ]
@@ -210,7 +210,7 @@ con.transaction do |con|
     rn = 0
     io.each do |line|
       r += 1
-      STDERR.print "." if @options[:verbose] and r % N_ROWS_REPORT == 0 
+      STDERR.print "." if @options[:verbose] and r % ( N_ROWS_REPORT * 10 ) == 0 
 
       line.sub!(/\s*#.*/, '')
       line.chomp!
