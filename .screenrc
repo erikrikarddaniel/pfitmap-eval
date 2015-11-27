@@ -17,6 +17,8 @@ chdir $ROOT/src/ruby
 screen -t ruby
 chdir test
 screen -t truby
+chdir $ROOT/src/sh
+screen sh
 chdir $ROOT/data
 screen -t data
 chdir $ROOT
