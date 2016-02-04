@@ -20,7 +20,7 @@ screen -t truby
 chdir $ROOT/src/sh
 screen sh
 chdir $ROOT/src/python
-screen python
+screen -t python
 chdir $ROOT/data
 screen -t data
 chdir $ROOT

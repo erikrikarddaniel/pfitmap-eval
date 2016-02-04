@@ -1,22 +1,45 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from Bio import Entrez
-from Bio import SeqIO
-from BioSQL import BioSeqDatabase
-from argparse import ArgumentParser
+from Bio        import Entrez
+from Bio        import SeqIO
+from BioSQL     import BioSeqDatabase
+from argparse   import ArgumentParser
+from time       import sleep
+
+import traceback
 
 BATCH_SIZE = 200
 TOOL = 'fetch_ncbi_store'
 
-def _fetch(accnos, email, db):
-  print accnos, email, db
+def _fetch(accnos, email, db, storedir):
+  # Fetch data from NCBI
+  try:
+    Entrez.email = email
+    Entrez.tool  = TOOL
+
+    fh = Entrez.efetch(db='protein', rettype='gp', retmode='text', id=accnos)
+    sleep(0.5)
+    for seq in SeqIO.parse(fh, 'gb'):
+#      of = os.path.join(storedir, seq.annotations['gi'] + '.gb')
+      print 'Fetched: ', seq#, ", writing to: ", of
+#      oh = open(of, 'w')
+#      SeqIO.write(seq, oh, "gp")
+#      oh.close()
+
+
+  except Exception as e:
+    traceback.format_exc()
+  finally:
+    fh.close()
+
 
 if __name__=='__main__':
   parser = ArgumentParser(description='Script to fetch protein GenBank entries from NCBI and store in BioSQL database')
   parser.add_argument('email', help='Email for NCBI web service')
   parser.add_argument('db', help='Local database to connect to, using credentials of UNIX user')
   parser.add_argument('accno_file', help='File with accession numbers, one per line, to fetch')
+  parser.add_argument('storedir', help='Directory in which files will be stored')
   parser.add_argument('--verbose', dest='verbose', action='store_true')
   parser.add_argument('--no-verbose', dest='verbose', action='store_false')
   parser.set_defaults(verbose=True)
@@ -34,4 +57,4 @@ for line in file:
     accnos = []
 
 # Call for the last set of accession numbers
-_fetch(accnos, vars(args)['email'], vars(args)['db'])
+_fetch(accnos, vars(args)['email'], vars(args)['db'], vars(args)['storedir'])
