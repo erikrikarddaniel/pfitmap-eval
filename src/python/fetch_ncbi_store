@@ -7,6 +7,7 @@ from BioSQL     import BioSeqDatabase
 from argparse   import ArgumentParser
 from time       import sleep
 
+import os
 import traceback
 
 BATCH_SIZE = 200
@@ -21,12 +22,16 @@ def _fetch(accnos, email, db, storedir):
     fh = Entrez.efetch(db='protein', rettype='gp', retmode='text', id=accnos)
     sleep(0.5)
     for seq in SeqIO.parse(fh, 'gb'):
-#      of = os.path.join(storedir, seq.annotations['gi'] + '.gb')
-      print 'Fetched: ', seq#, ", writing to: ", of
-#      oh = open(of, 'w')
-#      SeqIO.write(seq, oh, "gp")
-#      oh.close()
+      of = os.path.join(storedir, seq.annotations['accessions'][0] + '.' + str(seq.annotations['sequence_version']))
 
+      # Genbank file
+      oh = open(of + '.gb', 'w')
+      SeqIO.write(seq, oh, "gb")
+      oh.close()
+      # Fasta file
+      oh = open(of + '.faa', 'w')
+      SeqIO.write(seq, oh, "fasta")
+      oh.close()
 
   except Exception as e:
     traceback.format_exc()
