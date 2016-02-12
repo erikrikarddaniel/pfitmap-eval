@@ -1,0 +1,163 @@
+---
+title: "pfitmap-eval: Basic db statistics"
+author: "daniel.lundin@dbb.su.se"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 9
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+```{r libraries, echo=F}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(kfigr))
+suppressPackageStartupMessages(library(knitr))
+#suppressPackageStartupMessages(library(readr))
+#suppressPackageStartupMessages(library(tidyr))
+
+```
+
+```{r constants, echo=F}
+
+```
+
+```{r functions, echo=F}
+
+plot_class_distribution = function(d) {
+  ggplot(collect(d), aes(x=score)) + 
+    geom_histogram(binwidth=100) +
+    facet_wrap(~name)
+}
+
+```
+
+```{r db-connect, echo=F}
+
+db = src_postgres('pfitmap-eval-prod')
+
+```
+
+# Available data sources
+
+```{r read-data, echo=F}
+
+d = tbl(db, 'sequence_sources')
+
+kable(d %>% select(id, source, name, version))
+
+latest_ss = tbl(db, 'sequence_sources') %>% 
+  inner_join(tbl(db, 'sequence_sources') %>% summarise(id=max(id)), by=c('id')) %>% 
+  transmute(ssid=id, ssname=name, ssource=source, ssversion=version)
+
+
+```
+
+# HMM profiles with data
+
+```{r profiles, echo=F}
+
+profiles = tbl(db, 'hmm_profiles') %>%
+  transmute(hmm_profile_id = id, name, version, rank, parent_id) %>%
+  left_join(
+    tbl(db, 'hmm_profiles') %>% transmute(id, parent=name),
+    by=c('parent_id'='id')
+  ) %>%
+  inner_join(
+    tbl(db, 'hmm_results') %>% transmute(hmm_result_id = id, hmm_profile_id, sequence_source_id, executed),
+    by =c('hmm_profile_id')
+  ) %>%
+  inner_join(latest_ss, by=c('sequence_source_id' = 'ssid')) %>%
+  inner_join(
+    tbl(db, 'hmm_result_rows') %>%
+      group_by(hmm_result_id) %>%
+      summarise(n=n()) %>%
+      ungroup(),
+    by=c('hmm_result_id')
+  )
+
+ss = collect(latest_ss)
+
+kable(
+  profiles %>%
+    arrange(parent, name) %>%
+    select(parent, name, rank, n),
+  col.names=c('Parent', 'Profile', 'Rank', 'N. hits'),
+  caption=sprintf('HMM profiles searched against the %s:%s database, version %s.', ss$ssname, ss$ssource, ss$ssversion)
+)
+
+```
+
+## NrdA
+
+Distribution of NrdA, with subclasses, scores `r figr('nrda', T, type='Figure')`.
+
+```{r nrda, echo=F, fig.cap='Distribution of NrdA hmmer scores.'}
+
+nrda = profiles %>%
+  filter(name=='NrdA' | parent=='NrdA') %>%
+  inner_join(
+    tbl(db, 'hmm_result_rows'),
+    by=c('hmm_result_id')
+  )
+
+plot_class_distribution(nrda)
+
+```
+
+## NrdB
+
+Distribution of NrdB, with subclasses, scores `r figr('nrdb', T, type='Figure')`.
+
+```{r nrdb, echo=F, fig.cap='Distribution of NrdB hmmer scores.'}
+
+nrdb = profiles %>%
+  filter(name=='NrdB' | parent=='NrdB') %>%
+  inner_join(
+    tbl(db, 'hmm_result_rows'),
+    by=c('hmm_result_id')
+  )
+
+plot_class_distribution(nrdb)
+
+```
+
+## NrdJ
+
+Distribution of NrdJ, with subclasses, scores `r figr('nrdj', T, type='Figure')`.
+
+```{r nrdj, echo=F, fig.cap='Distribution of NrdJ hmmer scores.'}
+
+nrdj = profiles %>%
+  filter(name=='NrdJ' | parent=='NrdJ') %>%
+  inner_join(
+    tbl(db, 'hmm_result_rows'),
+    by=c('hmm_result_id')
+  )
+
+plot_class_distribution(nrdj)
+
+```
+
+## NrdD
+
+Distribution of NrdD, with subclasses, scores `r figr('nrdd', T, type='Figure')`.
+
+```{r nrdd, echo=F, fig.cap='Distribution of NrdD hmmer scores.'}
+
+nrdd = profiles %>%
+  filter(name=='NrdD' | parent=='NrdD') %>%
+  inner_join(
+    tbl(db, 'hmm_result_rows'),
+    by=c('hmm_result_id')
+  )
+
+plot_class_distribution(nrdd)
+
+```
