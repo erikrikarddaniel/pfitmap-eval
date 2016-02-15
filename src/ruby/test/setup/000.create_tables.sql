@@ -714,7 +714,8 @@ CREATE TABLE hmm_result_rows (
     dom_n_env integer NOT NULL,
     dom_n_dom integer NOT NULL,
     dom_n_rep integer NOT NULL,
-    dom_n_inc integer NOT NULL
+    dom_n_inc integer NOT NULL,
+    best_score boolean NULL
 );
 
 

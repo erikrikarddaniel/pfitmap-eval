@@ -20,3 +20,7 @@ CREATE TABLE hmm_result_rows (
 CREATE UNIQUE INDEX hmm_result_rows_i00 ON hmm_result_rows(hmm_result_id, qname, tname);
 
 CREATE UNIQUE INDEX hmm_result_rows_tname ON hmm_result_rows(hmm_result_id, qname, tname);
+
+ALTER TABLE hmm_result_rows ADD		
+  best_score	boolean			NULL
+;
