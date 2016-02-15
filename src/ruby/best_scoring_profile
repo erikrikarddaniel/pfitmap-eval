@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+#
+# = NAME
+#
+# best_scoring_profile
+#
+# = SYNOPSIS
+#
+# See below, in opt parser block.
+#
+# = USAGE
+#
+# See below, in opt parser block.
+#
+# = AUTHOR
+#
+# daniel.lundin@dbb.su.se
+
+$VERBOSE = true
+
+require 'optparse'
+
+@options = {}
+opt_parser = OptionParser.new do |opts|
+  opts.banner = <<BANNER
+best_scoring_profile: Identifies the best score protein gets *per hierarchy*.
+  Needs the name of a database.
+    best_scoring_profile [options] db
+BANNER
+
+  opts.on "-h", "--help", "This info"  do 
+    puts opts
+    exit 0
+  end
+
+  opts.on "--ss STRING", "Sequence source encoded like 'ORGANISATION:SOURCE:VERSION'" do |v|
+    @options[:ss] = v.split(':')
+  end
+
+  opts.on "-v", "--verbose", "Be verbose"  do |v| 
+    @options[:verbose] = v 
+  end
+end
+begin
+  opt_parser.parse!
+  mandatory = [ :ss ]	# Fill in with mandatory option names (i.e. starting with :)
+  missing = mandatory.select { |param| @options[param].nil? }
+  unless missing.empty?
+    warn "Missing options: #{missing.map { |m| "--#{m}" }.join(", ")}"
+    warn opt_parser
+    exit 1
+  end
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+  warn "#{$!}"
+  warn opt_parser
+  exit 1
+end
+
+# Loop over infiles
+begin
+  file = nil
+  ARGV.each do |file|
+    if file == '-'
+      warn "Parsing STDIN" if @options[:verbose]
+      io = STDIN
+    else
+      warn "Parsing #{file}" if @options[:verbose]
+      if file =~ /.gz$/
+	io = IO.popen("gunzip -c #{file}", "r")
+      elsif file =~ /.bz2$/
+	io = IO.popen("bunzip2 -c #{file}", "r")
+      else
+	io = File.new(file)
+      end
+    end
+    io.each do |line|
+    end
+  end
+rescue
+  warn "Failed to process file '#{file}': #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"
+end
