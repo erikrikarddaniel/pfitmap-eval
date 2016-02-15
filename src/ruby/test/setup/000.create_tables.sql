@@ -1311,3 +1311,13 @@ ALTER TABLE ONLY sequence_sources ALTER COLUMN id SET DEFAULT nextval('sequence_
 --
 
 ALTER TABLE ONLY sequences ALTER COLUMN id SET DEFAULT nextval('sequences_id_seq'::regclass);
+
+CREATE TABLE hmm_profile_hierarchies (
+  hmm_profile_id	integer		PRIMARY KEY,
+  superfamily		text		NULL,
+  family		text		NULL,
+  class			text		NULL,
+  subclass		text		NULL,
+  "group"		text		NULL,
+  version		text		NULL
+);
