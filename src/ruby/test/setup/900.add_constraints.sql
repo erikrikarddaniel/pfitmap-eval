@@ -159,14 +159,6 @@ ALTER TABLE ONLY hmm_result_domains
 
 
 --
--- Name: hmm_result_row_sequences_pkey; Type: CONSTRAINT; Schema: public; Owner: dl; Tablespace: 
---
-
-ALTER TABLE ONLY hmm_result_row_sequences
-    ADD CONSTRAINT hmm_result_row_sequences_pkey PRIMARY KEY (id);
-
-
---
 -- Name: hmm_result_rows_pkey; Type: CONSTRAINT; Schema: public; Owner: dl; Tablespace: 
 --
 
@@ -579,20 +571,6 @@ CREATE INDEX hmm_profiles_parent_id ON hmm_profiles USING btree (parent_id);
 --
 
 CREATE UNIQUE INDEX hmm_result_domains_i00 ON hmm_result_domains USING btree (hmm_result_row_id, i);
-
-
---
--- Name: hmm_result_row_sequences_hmm_result_rows; Type: INDEX; Schema: public; Owner: dl; Tablespace: 
---
-
-CREATE INDEX hmm_result_row_sequences_hmm_result_rows ON hmm_result_row_sequences USING btree (hmm_result_row_id, sequence_id);
-
-
---
--- Name: hmm_result_row_sequences_sequences; Type: INDEX; Schema: public; Owner: dl; Tablespace: 
---
-
-CREATE INDEX hmm_result_row_sequences_sequences ON hmm_result_row_sequences USING btree (sequence_id, hmm_result_row_id);
 
 
 --
@@ -1580,22 +1558,6 @@ ALTER TABLE ONLY hmm_profiles
 
 ALTER TABLE ONLY hmm_result_domains
     ADD CONSTRAINT hmm_result_domains_hmm_result_row_id_fkey FOREIGN KEY (hmm_result_row_id) REFERENCES hmm_result_rows(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: hmm_result_row_sequences_hmm_result_row_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: dl
---
-
-ALTER TABLE ONLY hmm_result_row_sequences
-    ADD CONSTRAINT hmm_result_row_sequences_hmm_result_row_id_fkey FOREIGN KEY (hmm_result_row_id) REFERENCES hmm_result_rows(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: hmm_result_row_sequences_sequence_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: dl
---
-
-ALTER TABLE ONLY hmm_result_row_sequences
-    ADD CONSTRAINT hmm_result_row_sequences_sequence_id_fkey FOREIGN KEY (sequence_id) REFERENCES sequences(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

@@ -204,33 +204,6 @@ CREATE FUNCTION insert_hmm_result_row(v_hmm_result_id integer, v_tname text, v_q
 ALTER FUNCTION public.insert_hmm_result_row(v_hmm_result_id integer, v_tname text, v_qname text, v_e_value double precision, v_score double precision, v_bias double precision, v_dom_n_exp double precision, v_dom_n_reg integer, v_dom_n_clu integer, v_dom_n_ov integer, v_dom_n_env integer, v_dom_n_dom integer, v_dom_n_rep integer, v_dom_n_inc integer) OWNER TO dl;
 
 --
--- Name: insert_hmm_result_row_sequence(integer, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: dl
---
-
-CREATE FUNCTION insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_seq_src text, v_db text, v_gi text, v_accno text, v_name text) RETURNS integer
-    LANGUAGE plpgsql
-    AS $$
-    DECLARE
-      v_return int;
-      v_sequence_id int;
-
-    BEGIN
-      v_sequence_id := insert_sequence(v_seq_src, v_db, v_gi, v_accno, v_name);
-
-      INSERT INTO hmm_result_row_sequences(hmm_result_row_id, sequence_id)
-        VALUES(v_hmm_result_row_id, v_sequence_id)
-      ;
-
-      SELECT currval('hmm_result_row_sequences_id_seq') INTO v_return;
-
-      RETURN v_return;
-    END;
-  $$;
-
-
-ALTER FUNCTION public.insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_seq_src text, v_db text, v_gi text, v_accno text, v_name text) OWNER TO dl;
-
---
 -- Name: insert_sequence(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: dl
 --
 
@@ -659,40 +632,6 @@ ALTER TABLE hmm_result_domains_id_seq OWNER TO dl;
 --
 
 ALTER SEQUENCE hmm_result_domains_id_seq OWNED BY hmm_result_domains.id;
-
-
---
--- Name: hmm_result_row_sequences; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
---
-
-CREATE TABLE hmm_result_row_sequences (
-    id integer NOT NULL,
-    hmm_result_row_id integer,
-    sequence_id integer
-);
-
-
-ALTER TABLE hmm_result_row_sequences OWNER TO dl;
-
---
--- Name: hmm_result_row_sequences_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
---
-
-CREATE SEQUENCE hmm_result_row_sequences_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE hmm_result_row_sequences_id_seq OWNER TO dl;
-
---
--- Name: hmm_result_row_sequences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
---
-
-ALTER SEQUENCE hmm_result_row_sequences_id_seq OWNED BY hmm_result_row_sequences.id;
 
 
 --
@@ -1270,13 +1209,6 @@ ALTER TABLE ONLY hmm_profiles ALTER COLUMN id SET DEFAULT nextval('hmm_profiles_
 --
 
 ALTER TABLE ONLY hmm_result_domains ALTER COLUMN id SET DEFAULT nextval('hmm_result_domains_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: dl
---
-
-ALTER TABLE ONLY hmm_result_row_sequences ALTER COLUMN id SET DEFAULT nextval('hmm_result_row_sequences_id_seq'::regclass);
 
 
 --
