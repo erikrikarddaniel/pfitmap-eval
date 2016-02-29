@@ -23,6 +23,7 @@ best_score.setup:
 	@createdb $(DB)-integration >/dev/null 2>&1
 	@psql $(DB)-integration -f setup/000.create_tables.sql >/dev/null 2>&1
 	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
+	@echo "Copying data and creating indexes -- will take some time"
 	@gunzip -c setup/200.copy_hmm_results.sql.gz | psql $(DB)-integration >/dev/null 2>&1
 	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
 
