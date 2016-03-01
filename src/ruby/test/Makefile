@@ -22,18 +22,8 @@ db.setup:
 	@echo "Setting up $(DB)-integration for testing"
 	@dropdb $(DB)-integration; exit 0 >/dev/null 2>&1
 	@createdb $(DB)-integration >/dev/null 2>&1
-<<<<<<< HEAD
-	@for sql in setup/tables/*.sql; do psql $(DB)-integration -f $$sql; done >/dev/null 2>&1
-	@for sql in setup/funcs/*.sql; do psql $(DB)-integration -f $$sql; done >/dev/null 2>&1
 
 best_score.setup: db.setup
-=======
-	@psql $(DB)-integration -f setup/000.create_tables.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
-	@echo "Copying data and creating indexes -- will take some time"
-	@gunzip -c setup/200.copy_hmm_results.sql.gz | psql $(DB)-integration >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
->>>>>>> d9472189857442d0cacd696ec392af882a9c4c47
 
 best_score.000:
 
