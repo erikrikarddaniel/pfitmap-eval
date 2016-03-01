@@ -54,5 +54,5 @@ FROM
   hmm_result_row_sequences hrrs ON hrr.id = hrrs.hmm_result_row_id JOIN
   sequences s ON hrrs.sequence_id = s.id
 ORDER BY
-  hrrs.hmm_result_row_id, s.seq_src, s.accno
+  s.db, s.accno, hrr.score desc
 ;

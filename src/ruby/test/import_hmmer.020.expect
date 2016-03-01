@@ -34,36 +34,36 @@ NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	1	4	2.9e-75	9.4e-72	253.9	0	1	175
 NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	2	4	1.9e-67	6.1e-64	228.2	0.1	170	340	532	708	511	728	0.94	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
 NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	3	4	7.3e-16	2.3e-12	58.1	0.2	339	390	750	801	724	810	0.9	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP	4789*********************************************986
 NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	4	4	3.9e-24	1.2e-20	85.4	0	385	463	831	909	817	913	0.93	|	| 
-NCBI	ref	652968157	WP_027221072.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	emb	53751472	CAH12890.1	hypothetical protein lpp1738 [Legionella pneumophila str. Paris]
 NCBI	dbj	762001067	GAN27051.1	ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
-NCBI	ref	499527617	WP_011214037.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	gb	5006420	AAD37491.1	ribonucleotide reductase M1 subunit [Homo sapiens]
-NCBI	pdb	323714414	3HNC	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714414	3HNC	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714416	3HND	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714416	3HND	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714418	3HNE	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714418	3HNE	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714420	3HNF	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	323714420	3HNF	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	951272645	4X3V	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
-NCBI	pdb	951272645	4X3V	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
-NCBI	gb	13676332	AAH06498.1	Ribonucleotide reductase M1 [Homo sapiens]
-NCBI	gb	123991808	ABM83954.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
-NCBI	gb	123999422	ABM87271.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
-NCBI	gb	649121060	AIC55076.1	RRM1, partial [synthetic construct]
 NCBI	emb	36065	CAA42118.1	M1 subunit of ribonucleotide reductase [Homo sapiens]
 NCBI	emb	36153	CAA42180.1	large subunit ribonucleotide reductase [Homo sapiens]
-NCBI	gb	119622988	EAX02583.1	ribonucleotide reductase M1 polypeptide [Homo sapiens]
-NCBI	ref	4506749	NP_001024.1	ribonucleoside-diphosphate reductase large subunit [Homo sapiens]
-NCBI	sp	132608	P23921.1	RecName: Full=Ribonucleoside-diphosphate reductase large subunit; AltName: Full=Ribonucleoside-diphosphate reductase subunit M1; AltName: Full=Ribonucleotide reductase large subunit
-NCBI	ref	149634836	XP_001505371.1	PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anatinus]
-NCBI	ref	653015206	WP_027267236.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	emb	53751472	CAH12890.1	hypothetical protein lpp1738 [Legionella pneumophila str. Paris]
+NCBI	gb	5006420	AAD37491.1	ribonucleotide reductase M1 subunit [Homo sapiens]
+NCBI	gb	13676332	AAH06498.1	Ribonucleotide reductase M1 [Homo sapiens]
 NCBI	gb	52629112	AAU27853.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]
+NCBI	gb	123991808	ABM83954.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
+NCBI	gb	123999422	ABM87271.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
 NCBI	gb	295649266	ADG25113.1	ribonucleoside-diphosphate reductase alpha chain [Legionella pneumophila 2300/99 Alcoy]
 NCBI	gb	364508450	AEW51974.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila ATCC 43290]
 NCBI	gb	469491661	AGH53506.1	Ribonucleotide reductase of class Ia (aerobic), alpha subunit [Legionella pneumophila subsp. pneumophila LPE509]
 NCBI	gb	509082411	AGN14659.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Thunder Bay]
+NCBI	gb	649121060	AIC55076.1	RRM1, partial [synthetic construct]
+NCBI	gb	119622988	EAX02583.1	ribonucleotide reductase M1 polypeptide [Homo sapiens]
+NCBI	pdb	323714413	3HNC	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	pdb	323714414	3HNC	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	pdb	323714415	3HND	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	pdb	323714416	3HND	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	pdb	323714417	3HNE	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	pdb	323714418	3HNE	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	pdb	323714419	3HNF	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	pdb	323714420	3HNF	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	pdb	951272644	4X3V	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	pdb	951272645	4X3V	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	ref	4506749	NP_001024.1	ribonucleoside-diphosphate reductase large subunit [Homo sapiens]
 NCBI	ref	499249960	WP_010947500.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	ref	499527617	WP_011214037.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	ref	652968157	WP_027221072.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	ref	653015206	WP_027267236.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	ref	149634836	XP_001505371.1	PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anatinus]
 NCBI	ref	52842001	YP_095800.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]
+NCBI	sp	132608	P23921.1	RecName: Full=Ribonucleoside-diphosphate reductase large subunit; AltName: Full=Ribonucleoside-diphosphate reductase subunit M1; AltName: Full=Ribonucleotide reductase large subunit
