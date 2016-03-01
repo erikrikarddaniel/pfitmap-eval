@@ -18,24 +18,21 @@ import_hmmer: import_hmmer.setup import_hmmer.000 import_hmmer.010 import_hmmer.
 
 update_hmm_profile_hierarchies: update_hmm_profile_hierarchies.setup update_hmm_profile_hierarchies.000
 
-best_score.setup:
+db.setup:
+	@echo "Setting up $(DB)-integration for testing"
 	@dropdb $(DB)-integration; exit 0 >/dev/null 2>&1
 	@createdb $(DB)-integration >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/000.create_tables.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
-	@gunzip -c setup/200.copy_hmm_results.sql.gz | psql $(DB)-integration >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
+	@for sql in setup/tables/*.sql; do psql $(DB)-integration -f $$sql; done >/dev/null 2>&1
+	@for sql in setup/funcs/*.sql; do psql $(DB)-integration -f $$sql; done >/dev/null 2>&1
+
+best_score.setup: db.setup
 
 best_score.000:
 
-import_hmmer.setup:
-	@dropdb $(DB)-integration; exit 0 >/dev/null 2>&1
-	@createdb $(DB)-integration >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/000.create_tables.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
+import_hmmer.setup: db.setup
 
 import_hmmer.000:
+	@echo 'Testing'
 	@../import_hmmer --profile NrdAz --ss 'NCBI:NR:20141101' > $@.out 2>&1 ; exit 0
 	@$(CHECK)
 
@@ -51,12 +48,7 @@ import_hmmer.020:
 	@psql $(DB)-integration --tuples-only -f select_hmmer.sql | sed 's/  *|  */\t/g' | sed 's/^ *//' > $@.out 2>&1
 	@$(CHECK)
 
-update_hmm_profile_hierarchies.setup:
-	@dropdb $(DB)-integration; exit 0 >/dev/null 2>&1
-	@createdb $(DB)-integration >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/000.create_tables.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
-	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
+update_hmm_profile_hierarchies.setup: db.setup
 
 update_hmm_profile_hierarchies.000:
 	@../update_hmm_profile_hierarchies $(DB)-integration
