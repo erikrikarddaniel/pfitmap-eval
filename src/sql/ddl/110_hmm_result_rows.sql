@@ -24,3 +24,8 @@ CREATE UNIQUE INDEX hmm_result_rows_tname ON hmm_result_rows(hmm_result_id, qnam
 ALTER TABLE hmm_result_rows ADD		
   best_score	boolean			NULL
 ;
+
+ALTER TABLE hmm_result_rows ADD		
+  sequence_id	integer			NOT NULL REFERENCES sequences(id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+;
