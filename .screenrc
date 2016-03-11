@@ -1,5 +1,6 @@
 sessionname pfitmap-eval
 setenv ROOT $PWD
+setenv DBDEV pfitmap-eval-dev
 chdir doc
 screen -t doc
 chdir $ROOT/src
