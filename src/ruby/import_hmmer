@@ -157,6 +157,15 @@ con.transaction do |con|
 	fs = f[0].split('|')
 	name = f[1..-1].join(' ')
 	( seq_src, gi, accno ) = fs.values_at(2, 1, 3)
+
+	if seq_src == 'pdb'
+	  if name =~ /Chain\s+([A-Z])/
+	    accno = "#{accno}:#{$1}"
+	  else
+	    warn "PDB entry without chain, possible duplicate entry"
+	  end
+	end
+
 	rs = con.exec_prepared 'ins_name', [
 	    tnameindex[tname][:id], @options[:ss][0], seq_src, gi, accno, name
 	  ]

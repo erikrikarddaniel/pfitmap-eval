@@ -49,16 +49,16 @@ NCBI	gb	469491661	AGH53506.1	Ribonucleotide reductase of class Ia (aerobic), alp
 NCBI	gb	509082411	AGN14659.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Thunder Bay]
 NCBI	gb	649121060	AIC55076.1	RRM1, partial [synthetic construct]
 NCBI	gb	119622988	EAX02583.1	ribonucleotide reductase M1 polypeptide [Homo sapiens]
-NCBI	pdb	323714413	3HNC	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714414	3HNC	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714415	3HND	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714416	3HND	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714417	3HNE	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714418	3HNE	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714419	3HNF	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	323714420	3HNF	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	951272644	4X3V	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
-NCBI	pdb	951272645	4X3V	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	pdb	323714413	3HNC:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	pdb	323714414	3HNC:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	pdb	323714415	3HND:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	pdb	323714416	3HND:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	pdb	323714417	3HNE:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	pdb	323714418	3HNE:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	pdb	323714419	3HNF:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	pdb	323714420	3HNF:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	pdb	951272644	4X3V:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	pdb	951272645	4X3V:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
 NCBI	ref	4506749	NP_001024.1	ribonucleoside-diphosphate reductase large subunit [Homo sapiens]
 NCBI	ref	499249960	WP_010947500.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
 NCBI	ref	499527617	WP_011214037.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
