@@ -244,7 +244,8 @@ CREATE FUNCTION insert_sequence(v_seq_src text, v_db text, v_gi text, v_accno te
       SELECT id INTO v_return
       FROM sequences
       WHERE 
-	v_gi = gi
+        v_seq_src = seq_src AND
+	v_accno = accno
       ;
       IF NOT FOUND THEN
 	INSERT INTO sequences(seq_src, db, gi, accno, name)
