@@ -12,8 +12,7 @@ CREATE OR REPLACE FUNCTION
       SELECT id INTO v_return
       FROM sequences
       WHERE 
-        v_seq_src = seq_src AND
-	v_accno = accno
+	v_gi = gi
       ;
       IF NOT FOUND THEN
 	INSERT INTO sequences(seq_src, db, gi, accno, name)
