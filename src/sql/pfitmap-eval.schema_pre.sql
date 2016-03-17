@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -349,7 +350,7 @@ CREATE SEQUENCE biodatabase_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.biodatabase_pk_seq OWNER TO dl;
+ALTER TABLE biodatabase_pk_seq OWNER TO dl;
 
 SET default_tablespace = '';
 
@@ -367,7 +368,7 @@ CREATE TABLE biodatabase (
 );
 
 
-ALTER TABLE public.biodatabase OWNER TO dl;
+ALTER TABLE biodatabase OWNER TO dl;
 
 --
 -- Name: bioentry_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -381,7 +382,7 @@ CREATE SEQUENCE bioentry_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.bioentry_pk_seq OWNER TO dl;
+ALTER TABLE bioentry_pk_seq OWNER TO dl;
 
 --
 -- Name: bioentry; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -400,7 +401,7 @@ CREATE TABLE bioentry (
 );
 
 
-ALTER TABLE public.bioentry OWNER TO dl;
+ALTER TABLE bioentry OWNER TO dl;
 
 --
 -- Name: bioentry_dbxref; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -413,7 +414,7 @@ CREATE TABLE bioentry_dbxref (
 );
 
 
-ALTER TABLE public.bioentry_dbxref OWNER TO dl;
+ALTER TABLE bioentry_dbxref OWNER TO dl;
 
 --
 -- Name: bioentry_path; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -427,7 +428,7 @@ CREATE TABLE bioentry_path (
 );
 
 
-ALTER TABLE public.bioentry_path OWNER TO dl;
+ALTER TABLE bioentry_path OWNER TO dl;
 
 --
 -- Name: bioentry_qualifier_value; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -441,7 +442,7 @@ CREATE TABLE bioentry_qualifier_value (
 );
 
 
-ALTER TABLE public.bioentry_qualifier_value OWNER TO dl;
+ALTER TABLE bioentry_qualifier_value OWNER TO dl;
 
 --
 -- Name: bioentry_reference; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -456,7 +457,7 @@ CREATE TABLE bioentry_reference (
 );
 
 
-ALTER TABLE public.bioentry_reference OWNER TO dl;
+ALTER TABLE bioentry_reference OWNER TO dl;
 
 --
 -- Name: bioentry_relationship_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -470,7 +471,7 @@ CREATE SEQUENCE bioentry_relationship_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.bioentry_relationship_pk_seq OWNER TO dl;
+ALTER TABLE bioentry_relationship_pk_seq OWNER TO dl;
 
 --
 -- Name: bioentry_relationship; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -485,7 +486,7 @@ CREATE TABLE bioentry_relationship (
 );
 
 
-ALTER TABLE public.bioentry_relationship OWNER TO dl;
+ALTER TABLE bioentry_relationship OWNER TO dl;
 
 --
 -- Name: biosequence; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -500,7 +501,7 @@ CREATE TABLE biosequence (
 );
 
 
-ALTER TABLE public.biosequence OWNER TO dl;
+ALTER TABLE biosequence OWNER TO dl;
 
 --
 -- Name: comment_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -514,7 +515,7 @@ CREATE SEQUENCE comment_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.comment_pk_seq OWNER TO dl;
+ALTER TABLE comment_pk_seq OWNER TO dl;
 
 --
 -- Name: comment; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -528,7 +529,7 @@ CREATE TABLE comment (
 );
 
 
-ALTER TABLE public.comment OWNER TO dl;
+ALTER TABLE comment OWNER TO dl;
 
 --
 -- Name: dbxref_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -542,7 +543,7 @@ CREATE SEQUENCE dbxref_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.dbxref_pk_seq OWNER TO dl;
+ALTER TABLE dbxref_pk_seq OWNER TO dl;
 
 --
 -- Name: dbxref; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -556,7 +557,7 @@ CREATE TABLE dbxref (
 );
 
 
-ALTER TABLE public.dbxref OWNER TO dl;
+ALTER TABLE dbxref OWNER TO dl;
 
 --
 -- Name: dbxref_qualifier_value; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -570,24 +571,7 @@ CREATE TABLE dbxref_qualifier_value (
 );
 
 
-ALTER TABLE public.dbxref_qualifier_value OWNER TO dl;
-
---
--- Name: hmm_profile_hierarchies; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
---
-
-CREATE TABLE hmm_profile_hierarchies (
-    hmm_profile_id integer NOT NULL,
-    superfamily text,
-    family text,
-    class text,
-    subclass text,
-    "group" text,
-    version text
-);
-
-
-ALTER TABLE public.hmm_profile_hierarchies OWNER TO dl;
+ALTER TABLE dbxref_qualifier_value OWNER TO dl;
 
 --
 -- Name: hmm_profiles; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -602,7 +586,7 @@ CREATE TABLE hmm_profiles (
 );
 
 
-ALTER TABLE public.hmm_profiles OWNER TO dl;
+ALTER TABLE hmm_profiles OWNER TO dl;
 
 --
 -- Name: hmm_profiles_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -616,7 +600,7 @@ CREATE SEQUENCE hmm_profiles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hmm_profiles_id_seq OWNER TO dl;
+ALTER TABLE hmm_profiles_id_seq OWNER TO dl;
 
 --
 -- Name: hmm_profiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -654,7 +638,7 @@ CREATE TABLE hmm_result_domains (
 );
 
 
-ALTER TABLE public.hmm_result_domains OWNER TO dl;
+ALTER TABLE hmm_result_domains OWNER TO dl;
 
 --
 -- Name: hmm_result_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -668,7 +652,7 @@ CREATE SEQUENCE hmm_result_domains_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hmm_result_domains_id_seq OWNER TO dl;
+ALTER TABLE hmm_result_domains_id_seq OWNER TO dl;
 
 --
 -- Name: hmm_result_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -688,7 +672,7 @@ CREATE TABLE hmm_result_row_sequences (
 );
 
 
-ALTER TABLE public.hmm_result_row_sequences OWNER TO dl;
+ALTER TABLE hmm_result_row_sequences OWNER TO dl;
 
 --
 -- Name: hmm_result_row_sequences_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -702,7 +686,7 @@ CREATE SEQUENCE hmm_result_row_sequences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hmm_result_row_sequences_id_seq OWNER TO dl;
+ALTER TABLE hmm_result_row_sequences_id_seq OWNER TO dl;
 
 --
 -- Name: hmm_result_row_sequences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -730,12 +714,11 @@ CREATE TABLE hmm_result_rows (
     dom_n_env integer NOT NULL,
     dom_n_dom integer NOT NULL,
     dom_n_rep integer NOT NULL,
-    dom_n_inc integer NOT NULL,
-    best_score boolean
+    dom_n_inc integer NOT NULL
 );
 
 
-ALTER TABLE public.hmm_result_rows OWNER TO dl;
+ALTER TABLE hmm_result_rows OWNER TO dl;
 
 --
 -- Name: hmm_result_rows_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -749,7 +732,7 @@ CREATE SEQUENCE hmm_result_rows_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hmm_result_rows_id_seq OWNER TO dl;
+ALTER TABLE hmm_result_rows_id_seq OWNER TO dl;
 
 --
 -- Name: hmm_result_rows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -770,7 +753,7 @@ CREATE TABLE hmm_results (
 );
 
 
-ALTER TABLE public.hmm_results OWNER TO dl;
+ALTER TABLE hmm_results OWNER TO dl;
 
 --
 -- Name: hmm_results_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -784,7 +767,7 @@ CREATE SEQUENCE hmm_results_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.hmm_results_id_seq OWNER TO dl;
+ALTER TABLE hmm_results_id_seq OWNER TO dl;
 
 --
 -- Name: hmm_results_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -805,7 +788,7 @@ CREATE SEQUENCE location_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.location_pk_seq OWNER TO dl;
+ALTER TABLE location_pk_seq OWNER TO dl;
 
 --
 -- Name: location; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -823,7 +806,7 @@ CREATE TABLE location (
 );
 
 
-ALTER TABLE public.location OWNER TO dl;
+ALTER TABLE location OWNER TO dl;
 
 --
 -- Name: location_qualifier_value; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -837,7 +820,7 @@ CREATE TABLE location_qualifier_value (
 );
 
 
-ALTER TABLE public.location_qualifier_value OWNER TO dl;
+ALTER TABLE location_qualifier_value OWNER TO dl;
 
 --
 -- Name: ontology_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -851,7 +834,7 @@ CREATE SEQUENCE ontology_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.ontology_pk_seq OWNER TO dl;
+ALTER TABLE ontology_pk_seq OWNER TO dl;
 
 --
 -- Name: ontology; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -864,7 +847,7 @@ CREATE TABLE ontology (
 );
 
 
-ALTER TABLE public.ontology OWNER TO dl;
+ALTER TABLE ontology OWNER TO dl;
 
 --
 -- Name: reference_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -878,7 +861,7 @@ CREATE SEQUENCE reference_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.reference_pk_seq OWNER TO dl;
+ALTER TABLE reference_pk_seq OWNER TO dl;
 
 --
 -- Name: reference; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -894,7 +877,7 @@ CREATE TABLE reference (
 );
 
 
-ALTER TABLE public.reference OWNER TO dl;
+ALTER TABLE reference OWNER TO dl;
 
 --
 -- Name: result_row_sequences; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -907,7 +890,7 @@ CREATE TABLE result_row_sequences (
 );
 
 
-ALTER TABLE public.result_row_sequences OWNER TO dl;
+ALTER TABLE result_row_sequences OWNER TO dl;
 
 --
 -- Name: result_row_sequences_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -921,7 +904,7 @@ CREATE SEQUENCE result_row_sequences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.result_row_sequences_id_seq OWNER TO dl;
+ALTER TABLE result_row_sequences_id_seq OWNER TO dl;
 
 --
 -- Name: result_row_sequences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -942,7 +925,7 @@ CREATE SEQUENCE seqfeature_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.seqfeature_pk_seq OWNER TO dl;
+ALTER TABLE seqfeature_pk_seq OWNER TO dl;
 
 --
 -- Name: seqfeature; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -958,7 +941,7 @@ CREATE TABLE seqfeature (
 );
 
 
-ALTER TABLE public.seqfeature OWNER TO dl;
+ALTER TABLE seqfeature OWNER TO dl;
 
 --
 -- Name: seqfeature_dbxref; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -971,7 +954,7 @@ CREATE TABLE seqfeature_dbxref (
 );
 
 
-ALTER TABLE public.seqfeature_dbxref OWNER TO dl;
+ALTER TABLE seqfeature_dbxref OWNER TO dl;
 
 --
 -- Name: seqfeature_path; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -985,7 +968,7 @@ CREATE TABLE seqfeature_path (
 );
 
 
-ALTER TABLE public.seqfeature_path OWNER TO dl;
+ALTER TABLE seqfeature_path OWNER TO dl;
 
 --
 -- Name: seqfeature_qualifier_value; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -999,7 +982,7 @@ CREATE TABLE seqfeature_qualifier_value (
 );
 
 
-ALTER TABLE public.seqfeature_qualifier_value OWNER TO dl;
+ALTER TABLE seqfeature_qualifier_value OWNER TO dl;
 
 --
 -- Name: seqfeature_relationship_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1013,7 +996,7 @@ CREATE SEQUENCE seqfeature_relationship_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.seqfeature_relationship_pk_seq OWNER TO dl;
+ALTER TABLE seqfeature_relationship_pk_seq OWNER TO dl;
 
 --
 -- Name: seqfeature_relationship; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1028,7 +1011,7 @@ CREATE TABLE seqfeature_relationship (
 );
 
 
-ALTER TABLE public.seqfeature_relationship OWNER TO dl;
+ALTER TABLE seqfeature_relationship OWNER TO dl;
 
 --
 -- Name: sequence_sources; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1042,7 +1025,7 @@ CREATE TABLE sequence_sources (
 );
 
 
-ALTER TABLE public.sequence_sources OWNER TO dl;
+ALTER TABLE sequence_sources OWNER TO dl;
 
 --
 -- Name: sequence_sources_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1056,7 +1039,7 @@ CREATE SEQUENCE sequence_sources_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.sequence_sources_id_seq OWNER TO dl;
+ALTER TABLE sequence_sources_id_seq OWNER TO dl;
 
 --
 -- Name: sequence_sources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -1080,7 +1063,7 @@ CREATE TABLE sequences (
 );
 
 
-ALTER TABLE public.sequences OWNER TO dl;
+ALTER TABLE sequences OWNER TO dl;
 
 --
 -- Name: sequences_id_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1094,7 +1077,7 @@ CREATE SEQUENCE sequences_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.sequences_id_seq OWNER TO dl;
+ALTER TABLE sequences_id_seq OWNER TO dl;
 
 --
 -- Name: sequences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dl
@@ -1115,7 +1098,7 @@ CREATE SEQUENCE taxon_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.taxon_pk_seq OWNER TO dl;
+ALTER TABLE taxon_pk_seq OWNER TO dl;
 
 --
 -- Name: taxon; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1133,7 +1116,7 @@ CREATE TABLE taxon (
 );
 
 
-ALTER TABLE public.taxon OWNER TO dl;
+ALTER TABLE taxon OWNER TO dl;
 
 --
 -- Name: taxon_name; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1146,7 +1129,7 @@ CREATE TABLE taxon_name (
 );
 
 
-ALTER TABLE public.taxon_name OWNER TO dl;
+ALTER TABLE taxon_name OWNER TO dl;
 
 --
 -- Name: term_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1160,7 +1143,7 @@ CREATE SEQUENCE term_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.term_pk_seq OWNER TO dl;
+ALTER TABLE term_pk_seq OWNER TO dl;
 
 --
 -- Name: term; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1176,7 +1159,7 @@ CREATE TABLE term (
 );
 
 
-ALTER TABLE public.term OWNER TO dl;
+ALTER TABLE term OWNER TO dl;
 
 --
 -- Name: term_dbxref; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1189,7 +1172,7 @@ CREATE TABLE term_dbxref (
 );
 
 
-ALTER TABLE public.term_dbxref OWNER TO dl;
+ALTER TABLE term_dbxref OWNER TO dl;
 
 --
 -- Name: term_path_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1203,7 +1186,7 @@ CREATE SEQUENCE term_path_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.term_path_pk_seq OWNER TO dl;
+ALTER TABLE term_path_pk_seq OWNER TO dl;
 
 --
 -- Name: term_path; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1219,7 +1202,7 @@ CREATE TABLE term_path (
 );
 
 
-ALTER TABLE public.term_path OWNER TO dl;
+ALTER TABLE term_path OWNER TO dl;
 
 --
 -- Name: term_relationship_pk_seq; Type: SEQUENCE; Schema: public; Owner: dl
@@ -1233,7 +1216,7 @@ CREATE SEQUENCE term_relationship_pk_seq
     CACHE 1;
 
 
-ALTER TABLE public.term_relationship_pk_seq OWNER TO dl;
+ALTER TABLE term_relationship_pk_seq OWNER TO dl;
 
 --
 -- Name: term_relationship; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1248,7 +1231,7 @@ CREATE TABLE term_relationship (
 );
 
 
-ALTER TABLE public.term_relationship OWNER TO dl;
+ALTER TABLE term_relationship OWNER TO dl;
 
 --
 -- Name: term_relationship_term; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1260,7 +1243,7 @@ CREATE TABLE term_relationship_term (
 );
 
 
-ALTER TABLE public.term_relationship_term OWNER TO dl;
+ALTER TABLE term_relationship_term OWNER TO dl;
 
 --
 -- Name: term_synonym; Type: TABLE; Schema: public; Owner: dl; Tablespace: 
@@ -1272,7 +1255,7 @@ CREATE TABLE term_synonym (
 );
 
 
-ALTER TABLE public.term_synonym OWNER TO dl;
+ALTER TABLE term_synonym OWNER TO dl;
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: dl
