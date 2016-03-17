@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+#
+# Fetches protein sequences from NCBI and saves as GenBank and fasta.
+#
+# daniel.lundin@dbb.su.se
+#
 # -*- coding: utf-8 -*-
 
 from Bio        import Entrez
@@ -28,6 +33,7 @@ def _fetch(accnos, email, db, storedir):
       oh = open(of + '.gb', 'w')
       SeqIO.write(seq, oh, "gb")
       oh.close()
+
       # Fasta file
       oh = open(of + '.faa', 'w')
       SeqIO.write(seq, oh, "fasta")
