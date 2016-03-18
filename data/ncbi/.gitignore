@@ -1,3 +1,7 @@
 *.faa
 *.fna
 *.gb
+*.tsv
+*.fetched
+*.sql
+*.accnos
