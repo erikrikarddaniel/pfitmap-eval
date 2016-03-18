@@ -33,3 +33,8 @@ Ruby script (`src/ruby` in this repository):
 $ import_hmmer --verbose --profile Rhodopsin --ss NCBI:NR:20160205 dbname Rhodopsin.ncbi_nr.hmmout Rhodopsin.ncbi_nr.tblout Rhodopsin.ncbi_nr.domtblout
 
 ```
+
+## NCBI sequence data
+
+Data, in the form of fasta and GenBank files, can be fetched from NCBI using
+the `fetch_ncbi_store` in `src/python` and a list of accession numbers.

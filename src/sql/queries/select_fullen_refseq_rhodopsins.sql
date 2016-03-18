@@ -10,7 +10,7 @@ FROM
   hmm_results hr ON hp.id = hr.hmm_profile_id JOIN
   hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
   hmm_result_domains hrd ON hrr.id = hrd.hmm_result_row_id JOIN
-  hmm_result_row_sequences hrrs ON hr.id = hrrs.hmm_result_row_id JOIN
+  hmm_result_row_sequences hrrs ON hrr.id = hrrs.hmm_result_row_id JOIN
   sequences s ON hrrs.sequence_id = s.id
 WHERE
   hp.name = 'Rhodopsin' AND
