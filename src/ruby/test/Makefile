@@ -59,7 +59,7 @@ update_hmm_profile_hierarchies.setup:
 	@psql $(DB)-integration -f setup/100.copy_hmm_profiles.sql >/dev/null 2>&1
 	@psql $(DB)-integration -f setup/900.add_constraints.sql >/dev/null 2>&1
 
-update_hmm_profile_hierarchies.000:
+update_hmm_profile_hierarchies.000: update_hmm_profile_hierarchies.setup
 	@../update_hmm_profile_hierarchies $(DB)-integration
 	@psql $(DB)-integration --tuples-only -f select_hmm_profile_hierarchies.sql | sed 's/^ *//' > $@.out 2>&1
 	@$(CHECK)

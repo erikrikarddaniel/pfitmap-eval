@@ -99,7 +99,7 @@ con.transaction do |con|
     profiles.each_value do |profile|
       warn "Inserting #{profile}" if @options[:verbose]
       insert_row = [ profile['id'], nil, nil, nil, nil, nil, profile['version'] ]
-      insert_row[RANK_INDEX[profile['rank']]] = profile['name'] if profile['rank']
+      insert_row[RANK_INDEX[profile['rank']]] = profile['name'] if profile['rank'] and RANK_INDEX[profile['rank']]
       p = profile.clone
       while p['parent_id'] do
 	pp = profiles[p['parent_id']]
@@ -109,7 +109,7 @@ con.transaction do |con|
       end
 
       #warn "#{__LINE__}: insert_row: #{insert_row}"
-      con.exec_prepared 'insert', insert_row
+      con.exec_prepared 'insert', insert_row if insert_row[RANK_INDEX['superfamily']]
     end
   rescue
     warn "Failed to insert rows: #{$!}, backtrace:\n\t#{$!.backtrace.join("\n\t")}"

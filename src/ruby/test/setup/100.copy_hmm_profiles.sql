@@ -25,6 +25,7 @@ COPY hmm_profiles (id, name, version, rank, parent_id) FROM stdin;
 205	Flvd5	0.5	class	200
 206	FmnRed	0.5	class	200
 207	NrdI	0.5	class	200
+208	ATP cone	0.5	domain	\N
 \.
 
 
