@@ -31,7 +31,7 @@ suppressPackageStartupMessages(library(knitr))
 ```{r functions, echo=F}
 
 plot_class_distribution = function(d) {
-  ggplot(collect(d), aes(x=score)) + 
+  ggplot(collect(d) %>% filter(ntile(score, 4)>2), aes(x=score)) + 
     geom_histogram(binwidth=100) +
     facet_wrap(~name)
 }
@@ -98,7 +98,7 @@ kable(
 
 Distribution of NrdA, with subclasses, scores `r figr('nrda', T, type='Figure')`.
 
-```{r nrda, echo=F, fig.cap='Distribution of NrdA hmmer scores.'}
+```{r nrda, echo=F, fig.cap='Distribution of NrdA hmmer scores, ignoring scores below the median.'}
 
 nrda = profiles %>%
   filter(name=='NrdA' | parent=='NrdA') %>%
@@ -115,7 +115,7 @@ plot_class_distribution(nrda)
 
 Distribution of NrdB, with subclasses, scores `r figr('nrdb', T, type='Figure')`.
 
-```{r nrdb, echo=F, fig.cap='Distribution of NrdB hmmer scores.'}
+```{r nrdb, echo=F, fig.cap='Distribution of NrdB hmmer scores, ignoring scores below the median.'}
 
 nrdb = profiles %>%
   filter(name=='NrdB' | parent=='NrdB') %>%
@@ -132,7 +132,7 @@ plot_class_distribution(nrdb)
 
 Distribution of NrdJ, with subclasses, scores `r figr('nrdj', T, type='Figure')`.
 
-```{r nrdj, echo=F, fig.cap='Distribution of NrdJ hmmer scores.'}
+```{r nrdj, echo=F, fig.cap='Distribution of NrdJ hmmer scores, ignoring scores below the median.'}
 
 nrdj = profiles %>%
   filter(name=='NrdJ' | parent=='NrdJ') %>%
@@ -149,7 +149,7 @@ plot_class_distribution(nrdj)
 
 Distribution of NrdD, with subclasses, scores `r figr('nrdd', T, type='Figure')`.
 
-```{r nrdd, echo=F, fig.cap='Distribution of NrdD hmmer scores.'}
+```{r nrdd, echo=F, fig.cap='Distribution of NrdD hmmer scores, ignoring scores below the median.'}
 
 nrdd = profiles %>%
   filter(name=='NrdD' | parent=='NrdD') %>%
