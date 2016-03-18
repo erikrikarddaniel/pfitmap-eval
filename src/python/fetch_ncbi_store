@@ -8,7 +8,6 @@
 
 from Bio        import Entrez
 from Bio        import SeqIO
-from BioSQL     import BioSeqDatabase
 from argparse   import ArgumentParser
 from time       import sleep
 
@@ -18,7 +17,7 @@ import traceback
 BATCH_SIZE = 200
 TOOL = 'fetch_ncbi_store'
 
-def _fetch(accnos, email, db, storedir):
+def _fetch(accnos, email, storedir):
   # Fetch data from NCBI
   try:
     Entrez.email = email
@@ -48,7 +47,6 @@ def _fetch(accnos, email, db, storedir):
 if __name__=='__main__':
   parser = ArgumentParser(description='Script to fetch protein GenBank entries from NCBI and store in BioSQL database')
   parser.add_argument('email', help='Email for NCBI web service')
-  parser.add_argument('db', help='Local database to connect to, using credentials of UNIX user')
   parser.add_argument('accno_file', help='File with accession numbers, one per line, to fetch')
   parser.add_argument('storedir', help='Directory in which files will be stored')
   parser.add_argument('--verbose', dest='verbose', action='store_true')
@@ -64,8 +62,8 @@ for line in file:
   accnos.append(line.rstrip('\n'))
 
   if len(accnos) > 0 and len(accnos) % BATCH_SIZE == 0:
-    _fetch(accnos, vars(args)['email'], vars(args)['db'])
+    _fetch(accnos, vars(args)['email'], vars(args)['storedir'])
     accnos = []
 
 # Call for the last set of accession numbers
-_fetch(accnos, vars(args)['email'], vars(args)['db'], vars(args)['storedir'])
+_fetch(accnos, vars(args)['email'], vars(args)['storedir'])
