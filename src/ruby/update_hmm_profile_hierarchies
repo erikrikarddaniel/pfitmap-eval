@@ -97,7 +97,7 @@ con.transaction do |con|
     end
 
     profiles.each_value do |profile|
-      #warn "#{__LINE__}: profile: #{profile}"
+      warn "Inserting #{profile}" if @options[:verbose]
       insert_row = [ profile['id'], nil, nil, nil, nil, nil, profile['version'] ]
       insert_row[RANK_INDEX[profile['rank']]] = profile['name'] if profile['rank']
       p = profile.clone
