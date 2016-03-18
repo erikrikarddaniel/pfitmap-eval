@@ -62,7 +62,7 @@ for line in file:
   accnos.append(line.rstrip('\n'))
 
   if len(accnos) > 0 and len(accnos) % BATCH_SIZE == 0:
-    _fetch(accnos, vars(args)['email'])
+    _fetch(accnos, vars(args)['email'], vars(args)['storedir'])
     accnos = []
 
 # Call for the last set of accession numbers
