@@ -1,2 +1,4 @@
 *hmmer_results.d
 *.import
+*.accnos
+*.sql
