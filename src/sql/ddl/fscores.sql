@@ -31,8 +31,10 @@ CREATE OR REPLACE VIEW fscores AS
     seq_scores cssc ON
       lhr.sequence_source_id = cssc.sequence_source_id AND
       fssc.sequence_id = cssc.sequence_id AND
+      fssc.hmm_profile_id = cssc.parent_id AND
       cssc.hp_rank = 'class' LEFT JOIN
     seq_scores scssc ON
       lhr.sequence_source_id = scssc.sequence_source_id AND
       fssc.sequence_id = scssc.sequence_id AND
+      cssc.hmm_profile_id = scssc.parent_id AND
       scssc.hp_rank = 'subclass'
