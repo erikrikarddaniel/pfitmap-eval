@@ -28,12 +28,12 @@ CREATE OR REPLACE VIEW fscores AS
       lhr.sequence_source_id = fssc.sequence_source_id AND
       lhr.hmm_profile_id = fssc.hmm_profile_id AND
       fssc.hp_rank = 'family' LEFT JOIN
-    seq_scores cssc ON
+    best_seq_score_per_parent cssc ON
       lhr.sequence_source_id = cssc.sequence_source_id AND
       fssc.sequence_id = cssc.sequence_id AND
       fssc.hmm_profile_id = cssc.parent_id AND
       cssc.hp_rank = 'class' LEFT JOIN
-    seq_scores scssc ON
+    best_seq_score_per_parent scssc ON
       lhr.sequence_source_id = scssc.sequence_source_id AND
       fssc.sequence_id = scssc.sequence_id AND
       cssc.hmm_profile_id = scssc.parent_id AND

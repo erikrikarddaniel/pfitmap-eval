@@ -23,7 +23,7 @@ CREATE OR REPLACE VIEW cscores AS
       lhr.sequence_source_id = cssc.sequence_source_id AND
       lhr.hmm_profile_id = cssc.hmm_profile_id AND
       cssc.hp_rank = 'class' LEFT JOIN
-    seq_scores scssc ON
+    best_seq_score_per_parent scssc ON
       lhr.sequence_source_id = scssc.sequence_source_id AND
       cssc.sequence_id = scssc.sequence_id AND
       scssc.parent_id = cssc.hmm_profile_id AND
