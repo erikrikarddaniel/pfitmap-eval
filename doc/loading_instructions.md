@@ -34,6 +34,17 @@ $ import_hmmer --verbose --profile Rhodopsin --ss NCBI:NR:20160205 dbname Rhodop
 
 ```
 
+### 'best_seq_score_per_parent'
+
+Load the 'best_seq_score_per_parent' table:
+
+```
+
+$ cd src/sql/ddl
+$ psql dbname -f best_seq_score_per_parent.sql
+
+```
+
 ## NCBI sequence data
 
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
