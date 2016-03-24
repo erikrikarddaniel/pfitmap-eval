@@ -56,7 +56,6 @@ latest_ss = tbl(db, 'sequence_sources') %>%
   inner_join(tbl(db, 'sequence_sources') %>% summarise(id=max(id)), by=c('id')) %>% 
   transmute(ssid=id, ssname=name, ssource=source, ssversion=version)
 
-
 ```
 
 # HMM profiles with data

@@ -26,6 +26,8 @@ chdir $ROOT/src/python
 screen -t python
 chdir test
 screen -t tpython
+chdir $ROOT/src/R
+screen -t R
 chdir $ROOT/data
 screen -t data
 chdir $ROOT
