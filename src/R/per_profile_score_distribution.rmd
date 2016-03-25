@@ -20,7 +20,7 @@ suppressPackageStartupMessages(library(ggplot2));
 suppressPackageStartupMessages(library(kfigr));
 suppressPackageStartupMessages(library(knitr));
 #suppressPackageStartupMessages(library(readr));
-#suppressPackageStartupMessages(library(tidyr));
+suppressPackageStartupMessages(library(tidyr));
 
 ```
 
@@ -38,21 +38,76 @@ db = src_postgres('pfitmap-eval-prod')
 
 ```
 
-```{r read-data, echo=F}
+# Hierarchies with family results
+ 
+```{r fscores, echo=F}
 
-latest_ss = tbl(db, 'sequence_sources') %>% 
-  inner_join(tbl(db, 'sequence_sources') %>% summarise(id=max(id)), by=c('id')) %>% 
-  transmute(ssid=id, ssname=name, ssource=source, ssversion=version)
-
-profile_stats = tbl(db, 'hmm_profile_hierarchies') %>%
-  inner_join(
-    tbl(db, 'hmm_results'),
-    by='hmm_profile_id'
+fscores = tbl(db, sql("
+SELECT 
+  fname,
+  gi,
+  accno,
+  name,
+  sequence,
+  score_pattern,
+  fscore,
+  cscore,
+  scscore
+FROM
+  fscores
+WHERE 
+  db = 'gb'
+"
+    )
   ) %>%
-  inner_join(latest_ss, by=c('sequence_source_id'='id'))
+  transmute(
+    fname,
+    gi,
+    accno,
+    name,
+    sequence,
+    pattern=score_pattern, 
+    family=fscore, 
+    class=cscore, 
+    subclass=scscore
+  )
 
-kable(
-  profile_stats %>% select(superfamily, family, class)
-)
+fscoresl = gather(collect(fscores), key=rank, value=score, family, class, subclass)
+
+### fscores_summary = tbl(db, sql('select fname, score_pattern, count(*), avg(fscore), avg(cscore), avg(scscore) from fscores group by 1, 2 order by 1,2'))
+
+```
+
+```{r fscores-hist, echo=F}
+
+ggplot(fscoresl, aes(x=score, fill=pattern)) + 
+  geom_histogram(position='dodge', binwidth=30) + 
+  facet_wrap(~rank, ncol=1) + 
+  ylim(c(0,1000))
+
+```
+
+
+```{r fscores-sum, echo=F}
+
+### kable(
+###   fscores %>% 
+###     filter(!is.na(family_score)) %>%
+###     group_by(family) %>% 
+###     summarize(
+###       n=n(), 
+###       min_family=min(family),
+###       mean_family=mean(family),
+###       max_family=max(family),
+###       min_class=min(class),
+###       mean_class=mean(class),
+###       max_class=max(class),
+###       min_subclass=min(subclass),
+###       mean_subclass=mean(subclass),
+###       max_subclass=max(subclass)
+###     ) %>%
+###     arrange(family),
+###   col.names = c('Family', 'N.', 'Min', 'Fmean', 'Max', 'Min', 'Classmean', 'Max', 'Min', 'SBmean', 'Max')
+### )
 
 ```
