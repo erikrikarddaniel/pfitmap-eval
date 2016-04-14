@@ -12,3 +12,7 @@ CREATE INDEX hmm_profiles_parent_id ON hmm_profiles(parent_id);
 ALTER TABLE hmm_profiles
   ALTER COLUMN rank DROP NOT NULL
 ;
+
+ALTER TABLE hmm_profiles
+  ADD length	integer
+;
