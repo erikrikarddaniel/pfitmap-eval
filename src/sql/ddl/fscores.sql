@@ -5,9 +5,9 @@ CREATE OR REPLACE VIEW fscores AS
     fssc.sequence_source_id,
     fssc.ss_version,
     fssc.db, fssc.gi, fssc.accno, fssc.name, fssc.sequence,
-    fssc.hp_name fname, fssc.e_value fe_value, fssc.score fscore,
-    cssc.hp_name cname, cssc.e_value ce_value, cssc.score cscore,
-    scssc.hp_name scname, scssc.e_value sce_value, scssc.score scscore,
+    fssc.hp_name fname, fssc.e_value fe_value, fssc.score fscore, fssc.best_score fbest_score,
+    cssc.hp_name cname, cssc.e_value ce_value, cssc.score cscore, cssc.best_score cbest_score,
+    scssc.hp_name scname, scssc.e_value sce_value, scssc.score scscore, scssc.best_score scbest_score,
     CASE
       WHEN fssc.score < cssc.score AND cssc.score < scssc.score THEN 'family < class < subclass'
       WHEN fssc.score > cssc.score AND cssc.score > scssc.score THEN 'family > class > subclass'

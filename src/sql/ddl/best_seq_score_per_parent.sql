@@ -1,8 +1,10 @@
 -- Selects the best scoring child for each parent_id from the seq_scores view.
 
---DROP TABLE best_seq_score_per_parent;
+-- Drop only when you have changed the seq_scores
+--DROP TABLE best_seq_score_per_parent CASCADE;
 TRUNCATE TABLE best_seq_score_per_parent;
 
+-- Create when you've dropped
 --CREATE TABLE best_seq_score_per_parent AS
 INSERT INTO best_seq_score_per_parent 
   SELECT 

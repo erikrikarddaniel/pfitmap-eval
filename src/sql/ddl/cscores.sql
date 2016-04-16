@@ -5,9 +5,9 @@ CREATE OR REPLACE VIEW cscores AS
     cssc.sequence_source_id,
     cssc.ss_version,
     cssc.db, cssc.gi, cssc.accno, cssc.name, cssc.sequence,
-    cssc.hp_name cname, cssc.e_value ce_value, cssc.score cscore,
-    scssc.hp_name scname, scssc.e_value sce_value, scssc.score scscore,
-    gssc.hp_name gname, gssc.e_value ge_value, gssc.score gscore,
+    cssc.hp_name cname, cssc.e_value ce_value, cssc.score cscore, cssc.best_score cbest_score,
+    scssc.hp_name scname, scssc.e_value sce_value, scssc.score scscore, scssc.best_score scbest_score,
+    gssc.hp_name gname, gssc.e_value ge_value, gssc.score gscore, gssc.best_score gbest_score,
     CASE
       WHEN cssc.score < scssc.score AND scssc.score < gssc.score THEN 'class < subclass < group'
       WHEN cssc.score > scssc.score AND scssc.score > gssc.score THEN 'class > subclass > group'

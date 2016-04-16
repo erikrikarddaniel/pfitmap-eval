@@ -1,3 +1,5 @@
+-- Update the best scoring rows' best_score to true (if null).
+-- Takes a while... Haven't tried to optimize.
 UPDATE hmm_result_rows
   SET best_score = true
   WHERE id IN (
@@ -23,4 +25,10 @@ UPDATE hmm_result_rows
       )
     ) AND
     best_score IS NULL
+;
+
+-- Update the null rows to false
+UPDATE hmm_result_rows
+  SET best_score = false
+  WHERE best_score IS NULL
 ;

@@ -7,7 +7,8 @@ CREATE OR REPLACE VIEW seq_scores AS
     hp.name hp_name, hp.version hp_version, hp.rank hp_rank, hp.parent_id,
     hrrs.sequence_id, s.seq_src, s.db, s.gi, s.accno, s.name, s.sequence,
     hrr.tname, hrr.qname, 
-    hrr.e_value, hrr.score, hrr.bias
+    hrr.e_value, hrr.score, hrr.bias,
+    hrr.best_score
   FROM
     sequence_sources ss JOIN
     hmm_results hr ON ss.id = hr.sequence_source_id JOIN

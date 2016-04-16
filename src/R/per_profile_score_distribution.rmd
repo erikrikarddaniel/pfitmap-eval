@@ -1,6 +1,6 @@
 ---
 title: "Pfitmap-eval: Distribution of scores per sequence and profile"
-author: "daniel.lundin@lnu.se"
+author: "daniel.lundin@dbb.su.se"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
   pdf_document:
@@ -38,8 +38,6 @@ db = src_postgres('pfitmap-eval-prod')
 
 ```
 
-# Hierarchies with family results
- 
 ```{r fscores, echo=F}
 
 fscores = tbl(db, sql("
@@ -50,9 +48,9 @@ SELECT
   name,
   sequence,
   score_pattern,
-  fscore,
-  cscore,
-  scscore
+  fscore, fbest_score,
+  cscore, cbest_score,
+  scscore, scbest_score
 FROM
   fscores
 WHERE 
@@ -61,20 +59,50 @@ WHERE
     )
   ) %>%
   transmute(
-    fname,
-    gi,
-    accno,
-    name,
-    sequence,
+    fname, gi, accno, name, sequence,
     pattern=score_pattern, 
-    family=fscore, 
-    class=cscore, 
-    subclass=scscore
+    family=fscore, fbest_score,
+    class=cscore, cbest_score,
+    subclass=scscore, scbest_score
   )
 
 fscoresl = gather(collect(fscores), key=rank, value=score, family, class, subclass)
 
 ### fscores_summary = tbl(db, sql('select fname, score_pattern, count(*), avg(fscore), avg(cscore), avg(scscore) from fscores group by 1, 2 order by 1,2'))
+
+```
+
+```{r cscores, echo=F}
+
+cscores = tbl(db, sql("
+SELECT 
+  cname,
+  gi,
+  accno,
+  name,
+  sequence,
+  score_pattern,
+  cscore, cbest_score,
+  scscore, scbest_score,
+  gscore, gbest_score
+FROM
+  cscores
+WHERE 
+  db = 'gb'
+"
+    )
+  ) %>%
+  transmute(
+    cname, gi, accno, name, sequence,
+    pattern=score_pattern, 
+    class=cscore, cbest_score,
+    subclass=scscore, scbest_score,
+    group=gscore, gbest_score
+  )
+
+cscoresl = gather(collect(cscores), key=rank, value=score, class, subclass, group)
+
+### cscores_summary = tbl(db, sql('select fname, score_pattern, count(*), avg(fscore), avg(cscore), avg(scscore) from cscores group by 1, 2 order by 1,2'))
 
 ```
 
@@ -109,5 +137,36 @@ ggplot(fscoresl, aes(x=score, fill=pattern)) +
 ###     arrange(family),
 ###   col.names = c('Family', 'N.', 'Min', 'Fmean', 'Max', 'Min', 'Classmean', 'Max', 'Min', 'SBmean', 'Max')
 ### )
+
+```
+
+```{r class-to-family-scorediff, echo=F}
+
+c2fdiff = collect(fscores) %>%
+    transmute(
+      name=sprintf("Family: %s", fname), 
+      c2diff=class-family, 
+      c2diffrel=(class-family)/family,
+      best_score=cbest_score
+    ) %>%
+    union(
+      collect(cscores) %>% 
+        filter(!is.na(subclass)) %>%
+        transmute(
+	  name=sprintf("Class: %s", cname), 
+	  c2diff=subclass-class, 
+	  c2diffrel=(subclass-class)/class,
+	  best_score=scbest_score
+	)
+    )
+
+```
+
+```{r reldiff-plot, echo=F}
+
+ggplot(c2fdiff, aes(x=c2diffrel, fill=best_score)) +
+  geom_histogram(position = 'dodge') +
+  geom_vline(xintercept=0, colour='red') +
+  facet_wrap(~name, scales='free')
 
 ```

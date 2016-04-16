@@ -34,7 +34,16 @@ $ import_hmmer --verbose --profile Rhodopsin --ss NCBI:NR:20160205 dbname Rhodop
 
 ```
 
-### 'best_seq_score_per_parent'
+### Database updates
+
+Update the best_score column in hmm_result_rows:
+
+```
+
+$ cd src/sql/dml
+$ psql dbname -f update_best_score.sql
+
+```
 
 Load the 'best_seq_score_per_parent' table:
 
