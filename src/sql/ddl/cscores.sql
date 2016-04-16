@@ -1,4 +1,4 @@
--- Selects class and subclass scores from the latest sequence_source.
+-- Selects class, subclass and group scores from the latest sequence_source.
 
 CREATE OR REPLACE VIEW cscores AS
   SELECT
@@ -7,14 +7,19 @@ CREATE OR REPLACE VIEW cscores AS
     cssc.db, cssc.gi, cssc.accno, cssc.name, cssc.sequence,
     cssc.hp_name cname, cssc.e_value ce_value, cssc.score cscore,
     scssc.hp_name scname, scssc.e_value sce_value, scssc.score scscore,
+    gssc.hp_name gname, gssc.e_value ge_value, gssc.score gscore,
     CASE
-      WHEN cssc.score < scssc.score THEN 'class < subclass'
-      WHEN cssc.score > scssc.score THEN 'class > subclass'
+      WHEN cssc.score < scssc.score AND scssc.score < gssc.score THEN 'class < subclass < group'
+      WHEN cssc.score > scssc.score AND scssc.score > gssc.score THEN 'class > subclass > group'
+      WHEN cssc.score > scssc.score AND scssc.score < gssc.score THEN 'class > subclass < group'
+      WHEN cssc.score < scssc.score AND scssc.score > gssc.score THEN 'class < subclass > group'
       ELSE '--'
     END score_pattern,
     CASE
-      WHEN cssc.e_value < scssc.e_value THEN 'class < subclass'
-      WHEN cssc.e_value > scssc.e_value THEN 'class > subclass'
+      WHEN cssc.e_value < scssc.e_value AND scssc.e_value < gssc.e_value THEN 'class < subclass < group'
+      WHEN cssc.e_value > scssc.e_value AND scssc.e_value > gssc.e_value THEN 'class > subclass > group'
+      WHEN cssc.e_value > scssc.e_value AND scssc.e_value < gssc.e_value THEN 'class > subclass < group'
+      WHEN cssc.e_value < scssc.e_value AND scssc.e_value > gssc.e_value THEN 'class < subclass > group'
       ELSE '--'
     END e_value_pattern
   FROM
@@ -26,5 +31,10 @@ CREATE OR REPLACE VIEW cscores AS
     best_seq_score_per_parent scssc ON
       lhr.sequence_source_id = scssc.sequence_source_id AND
       cssc.sequence_id = scssc.sequence_id AND
-      scssc.parent_id = cssc.hmm_profile_id AND
-      scssc.hp_rank = 'subclass'
+      cssc.hmm_profile_id = scssc.parent_id AND
+      scssc.hp_rank = 'subclass' LEFT JOIN
+    best_seq_score_per_parent gssc ON
+      lhr.sequence_source_id = gssc.sequence_source_id AND
+      cssc.sequence_id = gssc.sequence_id AND
+      scssc.hmm_profile_id = gssc.parent_id AND
+      gssc.hp_rank = 'group'
