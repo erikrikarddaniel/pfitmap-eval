@@ -1,5 +1,13 @@
+CLUSTER_LEVELS = 1.00 0.99 0.98 0.97 0.95 0.93 0.90 0.85 0.80 0.70 0.60 0.50
+
 %.tsv: %.sql
 	psql $(DB) -f $< | grep -v '^--' | grep -v '^(' | sed 's/ *| */\t/g' | sed 's/^ *//' > $@
 
 %.accnos: %.tsv
 	cut -f 2 $< | grep -v accno > $@
+
+%.vclusters: %.faa
+	for n in $(CLUSTER_LEVELS); do \
+	  vsearch --cluster_fast $< --id $$n --centroids $(basename $@).uc$$n.faa --clusters $(basename $@).uc$$n.clusters; \
+	done
+	touch $@

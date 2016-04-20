@@ -5,3 +5,4 @@
 *.fetched
 *.sql
 *.accnos
+*.vclusters
