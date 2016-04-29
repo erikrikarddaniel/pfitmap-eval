@@ -12,12 +12,16 @@ from argparse   import ArgumentParser
 from time       import sleep
 
 import os
+import sys
 import traceback
 
 BATCH_SIZE = 200
 TOOL = 'fetch_ncbi_store'
 
 def _fetch(accnos, email, storedir):
+  if vars(args)['verbose']:
+    sys.stderr.write("*")
+
   # Fetch data from NCBI
   try:
     Entrez.email = email
@@ -58,6 +62,10 @@ if __name__=='__main__':
 # Read the accession number file
 accnos = []
 file = open(vars(args)['accno_file'])
+
+if vars(args)['verbose']:
+  sys.stderr.write("Fetching data for accessions in %s with %d batch size, progress: " % (vars(args)['accno_file'], BATCH_SIZE))
+
 for line in file:
   accnos.append(line.rstrip('\n'))
 
@@ -67,3 +75,6 @@ for line in file:
 
 # Call for the last set of accession numbers
 _fetch(accnos, vars(args)['email'], vars(args)['storedir'])
+
+if vars(args)['verbose']:
+  sys.stderr.write(" done\n")
