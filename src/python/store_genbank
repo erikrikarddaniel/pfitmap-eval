@@ -20,8 +20,8 @@ import traceback
 
 if __name__=='__main__':
   parser = ArgumentParser(description='Script to store GenBank files in BioSQL database')
-  parser.add_argument('dbserver', help='Database server name')
   parser.add_argument('db', help='Database name')
+  parser.add_argument('biodb', help='biodatabase entry (use e.g. "NCBI")')
   parser.add_argument('dir', help='Directory to scan for *.gb files')
   parser.add_argument('--verbose', dest='verbose', action='store_true')
   parser.add_argument('--no-verbose', dest='verbose', action='store_false')
@@ -29,21 +29,21 @@ if __name__=='__main__':
   args = parser.parse_args()
 
 if vars(args)['verbose']:
-  sys.stderr.write("Reading %s and storing entries in %s/%s\n" % (vars(args)['dir'], vars(args)['dbserver'], vars(args)['db']))
+  sys.stderr.write("Reading %s and storing entries in %s (%s)\n" % (vars(args)['dir'], vars(args)['biodb'], vars(args)['biodb']))
 
 # Connect to db server
-server = BioSeqDatabase.open_database(driver='psycopg2', db=vars(args)['dbserver'])
+server = BioSeqDatabase.open_database(driver='psycopg2', db=vars(args)['db'])
 
 try:
-  db = server[vars(args)['db']]
+  db = server[vars(args)['biodb']]
 
 except Exception as e:
   if vars(args)['verbose']:
-    sys.stderr.write("Database %s not found, creating\n" % vars(args)['db'])
+    sys.stderr.write("Database %s not found, creating\n" % vars(args)['biodb'])
 
-  db = server.new_database(vars(args)['db'])
+  db = server.new_database(vars(args)['biodb'])
   server.commit()
-  sys.stderr.write("Created db %s\n" % vars(args)['db'])
+  sys.stderr.write("Created db %s\n" % vars(args)['biodb'])
 
 # Loop over files
 accsplitre = re.compile('(.*)\.(.*)')
