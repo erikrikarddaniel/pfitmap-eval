@@ -1,5 +1,6 @@
+INSERT INTO ncbi_taxon_hierarchies AS
   SELECT
-    t.taxon_id,
+    t.ncbi_taxon_id,
     domain.name AS domain,
     kingdom.name AS kingdom,
     phylum.name AS phylum,
@@ -45,6 +46,4 @@
       species.node_rank = 'species' LEFT JOIN
     taxon_with_scientific_name strain ON
       species.taxon_id = strain.parent_taxon_id
-  WHERE
-    t.ncbi_taxon_id IN (7792, 7793, 452637, 9605, 741158)
 ;
