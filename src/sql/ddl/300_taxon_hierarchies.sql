@@ -10,3 +10,7 @@ CREATE TABLE ncbi_taxon_hierarchies (
   species		text		NULL,
   strain		text		NULL
 );
+
+ALTER TABLE ncbi_taxon_hierarchies
+  ADD taxon_id		integer		UNIQUE
+;
