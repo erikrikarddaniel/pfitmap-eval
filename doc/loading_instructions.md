@@ -83,3 +83,6 @@ two environment variables: DB and EMAIL.
 
 When you run this the first time it will take a *long* time. The script does it
 piece by piece, and can be interrupted.
+
+Error handling is poor, so running the script again is recommended. Any errors at
+the second run need to be investigated.
