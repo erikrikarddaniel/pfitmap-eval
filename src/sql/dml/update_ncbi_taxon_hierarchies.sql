@@ -1,5 +1,7 @@
-INSERT INTO ncbi_taxon_hierarchies AS
-  SELECT
+--TRUNCATE TABLE ncbi_taxon_hierarchies;
+
+INSERT INTO ncbi_taxon_hierarchies 
+  SELECT DISTINCT
     t.ncbi_taxon_id,
     domain.name AS domain,
     kingdom.name AS kingdom,
@@ -45,5 +47,20 @@ INSERT INTO ncbi_taxon_hierarchies AS
       species.right_value >= t.right_value AND
       species.node_rank = 'species' LEFT JOIN
     taxon_with_scientific_name strain ON
-      species.taxon_id = strain.parent_taxon_id
+      species.taxon_id = strain.parent_taxon_id AND
+      strain.taxon_id = t.taxon_id
+  WHERE
+    t.ncbi_taxon_id IN (
+      SELECT DISTINCT
+	be.taxon_id
+      FROM
+        bioentry be JOIN
+	sequences s ON be.accession || '.' || be.version = s.accno
+    ) AND
+    t.ncbi_taxon_id NOT IN (
+      SELECT DISTINCT
+        ncbi_taxon_id
+      FROM
+        ncbi_taxon_hierarchies
+    )
 ;
