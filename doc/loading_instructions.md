@@ -54,7 +54,32 @@ $ psql dbname -f best_seq_score_per_parent.sql
 
 ```
 
-## NCBI sequence data
+## NCBI data
 
+### NCBI taxonomy
+
+Start by updating the NCBI taxonomy using the BioSQL script `load_ncbi_taxonomy.pl` 
+Perl script. It fetches the data, inserts into the database and updates some internal
+columns. Call like this, assuming a PostgreSQL database:
+
+```
+
+$ cd biosql-path/
+$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
 the `fetch_ncbi_store` in `src/python` and a list of accession numbers.
+
+```
+
+### Sequence data
+
+Sequence data is stored in the BioSQL schema in the same database as everything 
+else. To make sure everything is there you must first generate a list of accession
+numbers that are *not* in the database, then fetch the corresponding entries from
+GenBank and last import them into the database.
+
+There's a shell script to do the above: `data/ncbi/fetch_and_store.sh`. It requires
+two environment variables: DB and EMAIL.
+
+When you run this the first time it will take a *long* time. The script does it
+piece by piece, and can be interrupted.
