@@ -86,3 +86,20 @@ piece by piece, and can be interrupted.
 
 Error handling is poor, so running the script again is recommended. Any errors at
 the second run need to be investigated.
+
+### Create new ncbi_taxon_hierarchies table
+
+The `ncbi_taxon_hierarchies` table is a flattened out version of the taxonomical
+hierarchy in the `taxon` BioSQL table. It has columns for `taxon_id` (key used in
+the `bioentry` table), `ncbi_taxon_id` and the most commonly used ranks from `domain`
+to `strain`. To make sure updated taxa are correct, the table is truncated and
+inserted to with the `src/sql/dml/update_ncbi_taxon_hierarchies.sql` sql script:
+
+```
+
+$ cd src/sql/dml
+$ psql *dbname* -f update_ncbi_taxon_hierarchies.sql
+
+```
+
+This, again, takes a *long* time.
