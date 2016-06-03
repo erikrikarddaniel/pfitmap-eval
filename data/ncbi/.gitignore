@@ -5,6 +5,8 @@
 *.fetched
 *.sql
 *.accnos
+*.acc_indexed_accnos
 *.vclusters
 accnos*
 inserted
+*.inserted
