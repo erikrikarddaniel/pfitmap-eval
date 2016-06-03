@@ -54,7 +54,53 @@ $ psql dbname -f best_seq_score_per_parent.sql
 
 ```
 
-## NCBI sequence data
+## NCBI data
 
+### NCBI taxonomy
+
+Start by updating the NCBI taxonomy using the BioSQL script `load_ncbi_taxonomy.pl` 
+Perl script. It fetches the data, inserts into the database and updates some internal
+columns. Call like this, assuming a PostgreSQL database:
+
+```
+
+$ cd biosql-path/
+$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
 the `fetch_ncbi_store` in `src/python` and a list of accession numbers.
+
+```
+
+### Sequence data
+
+Sequence data is stored in the BioSQL schema in the same database as everything 
+else. To make sure everything is there you must first generate a list of accession
+numbers that are *not* in the database, then fetch the corresponding entries from
+GenBank and last import them into the database.
+
+There's a shell script to do the above: `data/ncbi/fetch_and_store.sh`. It requires
+two environment variables: DB and EMAIL.
+
+When you run this the first time it will take a *long* time. The script does it
+piece by piece, and can be interrupted.
+
+Error handling is poor, so running the script again is recommended. Any errors at
+the second run need to be investigated. In particular, there are problems with
+GenBank entries with long DBLINK fields, see issues #1 and #2.
+
+### Create new ncbi_taxon_hierarchies table
+
+The `ncbi_taxon_hierarchies` table is a flattened out version of the taxonomical
+hierarchy in the `taxon` BioSQL table. It has columns for `taxon_id` (key used in
+the `bioentry` table), `ncbi_taxon_id` and the most commonly used ranks from `domain`
+to `strain`. To make sure updated taxa are correct, the table is truncated and
+inserted to with the `src/sql/dml/update_ncbi_taxon_hierarchies.sql` sql script:
+
+```
+
+$ cd src/sql/dml
+$ psql *dbname* -f update_ncbi_taxon_hierarchies.sql
+
+```
+
+This, again, takes a *long* time.
