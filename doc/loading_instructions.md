@@ -78,13 +78,19 @@ else. To make sure everything is there you must first generate a list of accessi
 numbers that are *not* in the database, then fetch the corresponding entries from
 GenBank and last import them into the database.
 
-There's a shell script to do the above: `data/ncbi/fetch_and_store.sh`. It requires
-two environment variables: DB and EMAIL.
+There's a Makefile target to do all the inserts required. It requires
+two environment variables: DB and EMAIL:
 
-When you run this the first time it will take a *long* time. The script does it
+```
+
+$ make -B only_in_sequences.inserted
+
+```
+
+When you run this the first time it will take a *long* time. It's done
 piece by piece, and can be interrupted.
 
-Error handling is poor, so running the script again is recommended. Any errors at
+Error handling is poor, so running make again is recommended. Any errors at
 the second run need to be investigated. In particular, there are problems with
 GenBank entries with long DBLINK fields, see issues #1 and #2.
 
