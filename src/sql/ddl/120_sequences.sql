@@ -9,3 +9,4 @@ CREATE TABLE sequences (
 );
 
 CREATE UNIQUE INDEX sequences_i00 ON sequences(seq_src, accno);
+CREATE INDEX sequences_i01 ON sequences(accno);
