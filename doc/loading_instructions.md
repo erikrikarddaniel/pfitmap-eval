@@ -85,7 +85,8 @@ When you run this the first time it will take a *long* time. The script does it
 piece by piece, and can be interrupted.
 
 Error handling is poor, so running the script again is recommended. Any errors at
-the second run need to be investigated.
+the second run need to be investigated. In particular, there are problems with
+GenBank entries with long DBLINK fields, see issues #1 and #2.
 
 ### Create new ncbi_taxon_hierarchies table
 
