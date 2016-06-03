@@ -52,31 +52,17 @@ for fname in glob.glob("%s/*.gb" % vars(args)['dir']):
 
   if vars(args)['verbose']:
     sys.stderr.write("\tHandling %s" % (fname))
-
-  present = False
+  if vars(args)['verbose']:
+    sys.stderr.write(" inserting")
 
   try:
-    present = db.lookup(accession=m.group(1))
+    c = db.load(SeqIO.parse(open(fname, 'rU'), 'genbank'))
+    server.commit()
 
   except Exception as e:
-    n=1
-
-  if ( present ):
-    if vars(args)['verbose']:
-      sys.stderr.write(" already present")
-
-  else:
-    if vars(args)['verbose']:
-      sys.stderr.write(" inserting")
-
-    try:
-      c = db.load(SeqIO.parse(open(fname, 'rU'), 'genbank'))
-      server.commit()
-
-    except Exception as e:
-      sys.stderr.write("\n%s\n" % e)
-      server = BioSeqDatabase.open_database(driver='psycopg2', db=vars(args)['db'])
-      db = server[vars(args)['biodb']]
+    sys.stderr.write("\n%s\n" % e)
+    server = BioSeqDatabase.open_database(driver='psycopg2', db=vars(args)['db'])
+    db = server[vars(args)['biodb']]
 
   if vars(args)['verbose']:
     sys.stderr.write(".\n")
