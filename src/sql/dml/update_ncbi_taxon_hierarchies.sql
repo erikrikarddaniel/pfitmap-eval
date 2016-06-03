@@ -1,8 +1,14 @@
---TRUNCATE TABLE ncbi_taxon_hierarchies;
+TRUNCATE TABLE ncbi_taxon_hierarchies;
 
-INSERT INTO ncbi_taxon_hierarchies 
+INSERT INTO ncbi_taxon_hierarchies (
+  taxon_id, ncbi_taxon_id,
+  domain, kingdom, phylum,
+  class, "order", family,
+  genus, species, strain
+)
   SELECT DISTINCT
-    t.ncbi_taxon_id,
+    t.taxon_id AS taxon_id,
+    t.ncbi_taxon_id AS ncbi_taxon_id,
     domain.name AS domain,
     kingdom.name AS kingdom,
     phylum.name AS phylum,
@@ -50,17 +56,20 @@ INSERT INTO ncbi_taxon_hierarchies
       species.taxon_id = strain.parent_taxon_id AND
       strain.taxon_id = t.taxon_id
   WHERE
-    t.ncbi_taxon_id IN (
+    t.taxon_id IN (
       SELECT DISTINCT
 	be.taxon_id
       FROM
         bioentry be JOIN
 	sequences s ON be.accession || '.' || be.version = s.accno
-    ) AND
-    t.ncbi_taxon_id NOT IN (
-      SELECT DISTINCT
-        ncbi_taxon_id
-      FROM
-        ncbi_taxon_hierarchies
+      WHERE
+        be.taxon_id NOT IN (
+	  SELECT DISTINCT
+	    taxon_id
+	  FROM
+	    ncbi_taxon_hierarchies
+	)
+      ORDER BY
+        be.taxon_id
     )
 ;
