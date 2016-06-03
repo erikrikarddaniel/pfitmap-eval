@@ -13,8 +13,13 @@ if [ "$EMAIL" = "" ]; then
 fi
 
 # Get the list and split into 10000 entries pieces
-psql $DB --tuples-only -f ../../src/sql/queries/select_accno_wo_ncbi_entry.sql|sed 's/^ *//' > accnos
-split -l 10000 accnos accnos.
+psql --tuples-only $DB -c "SELECT DISTINCT accession || '.' || version FROM bioentry" | sed 's/^ *//' | sed '/^ *$/d' | sed 's/$/ be/' | sort > bioentry.accnos
+psql --tuples-only $DB -c "SELECT DISTINCT accno FROM sequences WHERE db != 'pdb'" | sed 's/^ *//' | sed '/^ *$/d' | sed 's/$/ seq/' | sort > sequences.accnos
+join -a 1 -j 1 bioentry.accnos sequences.accnos | grep -v 'seq' | sed 's/ .*//' > only_in_bioentry.accnos
+join -a 2 -j 1 bioentry.accnos sequences.accnos | grep -v 'be' | sed 's/ .*//' > only_in_sequences.accnos
+
+# Handle the accessions not found in bioentry in batches of 10000
+split -l 10000 only_in_sequences.accnos accnos.
 
 for f in accnos.*; do
   echo "--> $f <--"
