@@ -71,11 +71,12 @@ for fname in glob.glob("%s/*.gb" % vars(args)['dir']):
 
     try:
       c = db.load(SeqIO.parse(open(fname, 'rU'), 'genbank'))
+      server.commit()
 
     except Exception as e:
       sys.stderr.write("\n%s\n" % e)
-      sys.stderr.write("\nError: %s\n" % traceback.format_exc())
-      exit(2)
+      server = BioSeqDatabase.open_database(driver='psycopg2', db=vars(args)['db'])
+      db = server[vars(args)['biodb']]
 
   if vars(args)['verbose']:
     sys.stderr.write(".\n")
