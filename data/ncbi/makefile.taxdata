@@ -1,2 +1,2 @@
 taxflat.tsv: nodes.dmp names.dmp
-	taxdata2taxflat --verbose $^ > $@
+	taxdata2taxflat --verbose $^ | grep -v '^ncbi_taxon_id' > $@

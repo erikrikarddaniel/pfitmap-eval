@@ -8,9 +8,6 @@ CREATE TABLE ncbi_taxon_hierarchies (
   family		text		NULL,
   genus			text		NULL,
   species		text		NULL,
-  strain		text		NULL
+  strain		text		NULL,
+  rank			text		NULL
 );
-
-ALTER TABLE ncbi_taxon_hierarchies
-  ADD taxon_id		integer		UNIQUE
-;
