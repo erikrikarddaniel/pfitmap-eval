@@ -99,4 +99,6 @@ the `data/ncbi/makefile.taxdata` to `Makefile` and call:
 $ make taxflat.tsv
 ```
 
-NNN
+The file can be imported with the `src/sh/import_ncbi_taxon_hierarchies.sh` which
+assumes the presence of a `taxdata.tsv` file in the same directory as it's called.
+Most convenient is to symlink also this to the BioSQL `taxdata` directory.
