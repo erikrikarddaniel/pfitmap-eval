@@ -1,0 +1,2 @@
+taxflat.tsv: nodes.dmp names.dmp
+	taxdata2taxflat --verbose $^ > $@
