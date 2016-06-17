@@ -84,14 +84,19 @@ GenBank entries with long DBLINK fields, see issues #1 and #2.
 ### Create new ncbi_taxon_hierarchies table
 
 The `ncbi_taxon_hierarchies` table is a flattened out version of the taxonomical
-hierarchy in the `taxon` BioSQL table. It has columns for `taxon_id` (key used in
-the `bioentry` table), `ncbi_taxon_id` and the most commonly used ranks from `domain`
-to `strain`. To make sure updated taxa are correct, the table is truncated and
-inserted to with the `src/sql/dml/update_ncbi_taxon_hierarchies.sql` sql script:
+hierarchy in the `taxon` BioSQL table. It has columns for `ncbi_taxon_id` (*not*
+used in the `bioentry` table, but the key used in the NCBI dump files) and the 
+most commonly used ranks from `domain` to `strain`.
+
+The table is populated by import of a tab separated file that is created from the
+dump files imported by the BioSQL taxonomy perl script (`taxdata` directory) with 
+the `taxdata2taxflat` from my GitHub repository by the same name. There's a makefile
+in this repository to facilitate this call. Provided you have `taxdata2taxflat`
+in your PATH, just create a symbolic link in the BioSQL `taxdata` subdirectory from
+the `data/ncbi/makefile.taxdata` to `Makefile` and call:
 
 ```
-$ cd src/sql/dml
-$ psql *dbname* -f update_ncbi_taxon_hierarchies.sql
+$ make taxflat.tsv
 ```
 
-This, again, takes a *long* time.
+NNN
