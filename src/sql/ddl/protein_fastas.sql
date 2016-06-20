@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW proteins_fasta AS
+CREATE OR REPLACE VIEW protein_fastas AS
   SELECT
     fasta(
       t.domain,
