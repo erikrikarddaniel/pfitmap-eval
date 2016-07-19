@@ -5,7 +5,7 @@ CREATE TABLE domain_presence AS
     s.seq_src,
     s.db,
     s.accno,
-    hp.name,
+    hp.name AS domain,
     hp.length AS profile_length,
     al.length AS align_length,
     al.min_hmm_from AS align_from,
