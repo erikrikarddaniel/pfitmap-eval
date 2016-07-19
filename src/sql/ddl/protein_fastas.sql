@@ -18,6 +18,7 @@ CREATE OR REPLACE VIEW protein_fastas AS
     t.family AS tfamily,
     t.genus AS tgenus,
     t.species AS tspecies,
+    t.strain AS tstrain,
     hp.superfamily AS psuperfamily,
     hp.family AS pfamily,
     hp."class" AS pclass,
@@ -25,7 +26,10 @@ CREATE OR REPLACE VIEW protein_fastas AS
     hp.group AS pgroup,
     bss.ss_source,
     bss.ss_name,
-    bss.ss_version
+    bss.ss_version,
+    s.accno,
+    bss.e_value,
+    bss.score
   FROM
     ncbi_taxon_hierarchies t JOIN
     taxon tt ON t.ncbi_taxon_id = tt.ncbi_taxon_id JOIN
