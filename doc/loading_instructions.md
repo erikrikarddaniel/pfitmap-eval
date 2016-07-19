@@ -102,3 +102,13 @@ $ make taxflat.tsv
 The file can be imported with the `src/sh/import_ncbi_taxon_hierarchies.sh` which
 assumes the presence of a `taxdata.tsv` file in the same directory as it's called.
 Most convenient is to symlink also this to the BioSQL `taxdata` directory.
+
+## Export
+
+Data will eventually be exported to the pfitmap-2 database. Until that work is 
+completed, a work table called 'classified_proteins' can be constructed:
+
+```
+ $ cd src/sql/ddl
+ $ psql dbname -f classified_proteins.sql
+ ```
