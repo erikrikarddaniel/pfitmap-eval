@@ -6,6 +6,7 @@ CREATE TABLE classified_proteins AS
     s.db,
     s.accno,
     bp.accession AS bioproject,
+    sfcg.comment_value AS gene,
     bs.seq,
     t.domain AS tdomain,
     t.kingdom AS tkingdom,
@@ -57,7 +58,8 @@ CREATE TABLE classified_proteins AS
       hr.sequence_source_id = bss.sequence_source_id AND
       hp.hmm_profile_id = bss.hmm_profile_id AND
       s.id = bss.sequence_id LEFT JOIN
-    bioprojects bp ON be.bioentry_id = bp.bioentry_id 
+    bioprojects bp ON be.bioentry_id = bp.bioentry_id LEFT JOIN
+    seqfeature_comments sfcg ON be.bioentry_id = sfcg.bioentry_id AND sfcg.seqfeature_name = 'CDS' and sfcg.comment_name = 'gene'
   WHERE
     t.species IS NOT NULL
   ORDER BY

@@ -1,5 +1,6 @@
 CREATE OR REPLACE VIEW seqfeature_comments AS
   SELECT 
+    be.bioentry_id,
     be.accession,
     t.name AS seqfeature_name,
     sfqt.name AS comment_name,
