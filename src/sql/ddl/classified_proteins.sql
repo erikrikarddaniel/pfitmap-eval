@@ -12,6 +12,7 @@ CREATE TABLE classified_proteins AS
     t.kingdom AS tkingdom,
     t.phylum AS tphylum,
     t."class" as tclass,
+    t."order" as torder,
     t.family AS tfamily,
     t.genus AS tgenus,
     t.species AS tspecies,
