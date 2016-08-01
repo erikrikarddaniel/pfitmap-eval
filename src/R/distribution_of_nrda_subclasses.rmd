@@ -1,0 +1,95 @@
+---
+title: "pfitmap-eval: Taxonomic distribution of NrdADJ subclasses"
+author: "daniel.lundin@dbb.su.se"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 9
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+```{r libraries, echo=F}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(kfigr))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(tidyr))
+
+```
+
+```{r constants, echo=F}
+
+```
+
+```{r functions, echo=F}
+
+```
+
+```{r db-connect, echo=F}
+
+db = src_postgres('pfitmap-eval-prod')
+
+```
+
+```{r uniq-sp, echo=F}
+
+# Creating a handle for NrdGRE proteins matching at least 0.9 of the profile,
+# counting each species/protein combination just once.
+uniq_sp_tbl = tbl(db, 'classified_proteins') %>%
+  filter(psuperfamily == 'NrdGRE', prop_matching >= 0.9) %>%
+  select(tdomain, tphylum, tclass, torder, tfamily, tgenus, tspecies, pclass, psubclass) %>%
+  distinct()
+
+```
+
+# Overall subclass distribution
+
+Counting proteins in the classified_proteins table matching at least 0.9 of the
+profile length.
+
+```{r overall-dist, echo=F}
+
+overall_dist = collect(uniq_sp_tbl) %>%
+  replace_na(list(tphylum='no phylum', psubclass='no subclass')) %>%
+  group_by(tdomain, tphylum, pclass, psubclass) %>%
+  summarise(n=n()) %>%
+  ungroup()
+
+major_phyla = overall_dist %>%
+  filter(tphylum != '') %>%
+  group_by(tdomain, tphylum, pclass, psubclass) %>%
+  summarise(sum=sum(n)) %>%
+  ungroup() %>%
+  group_by(tdomain, tphylum, pclass) %>%
+  summarise(max=max(sum)) %>%
+  ungroup() %>%
+  filter(max>=50) %>%
+  transmute(tdomain, tphylum, major_phylum=tphylum, pclass)
+
+overall_dist = overall_dist %>%
+  left_join(major_phyla, by=c('tdomain', 'tphylum', 'pclass')) %>%
+  replace_na(list(major_phylum='Other phyla'))
+
+```
+
+# NrdA
+
+(`r figr('overall-dist-nrda', T, type='Table')`).
+
+```{r overall-dist-nrda, echo=F}
+
+nrda_odist = overall_dist %>%
+  filter(pclass=='NrdA') %>%
+  group_by(tdomain, major_phylum, psubclass) %>%
+  summarise(n=sum(n)) %>%
+  ungroup() %>%
+  spread(psubclass, n, fill=0) %>%
+  arrange(tdomain, major_phylum)
+
+```
