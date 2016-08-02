@@ -100,34 +100,91 @@ kable(
 
 ```
 
+```{r subclass-patterns-per-species, echo=F}
+
+# Find the most abundant pattern of subclass presence in each species by
+# enumerating subclasses in all strains
+subclp_sp = collect(
+    tbl(db, 'classified_proteins') %>% 
+      filter(pclass=='NrdA', prop_matching>0.9) %>% 
+      select(tdomain:tstrain, psubclass) %>% 
+      distinct() %>%
+      mutate(n=1)
+  ) %>%
+  replace_na(list(psubclass='NrdANS')) %>%
+  union(
+    collect(
+      tbl(db, 'classified_proteins') %>% 
+    	filter(pclass=='NrdD', prop_matching>0.9) %>% 
+    	select(tdomain:tstrain, psubclass) %>% 
+    	distinct() %>%
+    	mutate(n=1)
+    ) %>%
+    replace_na(list(psubclass='NrdDNS'))
+  ) %>%
+  union(
+    collect(
+      tbl(db, 'classified_proteins') %>% 
+    	filter(pclass=='NrdJ', prop_matching>0.9) %>% 
+    	select(tdomain:tstrain, psubclass) %>% 
+    	distinct() %>%
+    	mutate(n=1)
+    ) %>%
+    replace_na(list(psubclass='NrdJNS'))
+  ) %>%
+  spread(psubclass, n, fill=0)
+
+colnames = names(subclp_sp)
+
+# Calculate the most abundant subclass combination for each species (there will be ties <=> multiple rows)
+#subclp_sp = subclp_sp %>% 
+subclp_sp = subclp_sp %>% 
+  group_by_(.dots=lapply(setdiff(colnames, c('tstrain')), as.symbol)) %>%
+  summarise(n=n()) %>%
+  ungroup() %>%
+  group_by_(.dots=lapply(colnames[1:8], as.symbol)) %>%
+  top_n(1, n) %>%
+  ungroup() %>%
+  select(-n) %>% 
+  gather_('subclass','n', colnames[10:length(colnames)]) %>% 
+  filter(n>0)
+
+```
+
 ```{r class-patterns, echo=F}
 
-# Calculate the patterns of classes by searching for the most common pattern(s)
-# in genera.
-sp_class_patterns = collect(uniq_sp_tbl) %>%
-  filter(tgenus!='') %>%
+# Calculate the patterns of classes in all strains, count each species as one occurrence.
+sp_class_patterns = collect(
+    tbl(db, 'classified_proteins') %>%
+      filter(psuperfamily == 'NrdGRE', prop_matching >= 0.9) %>%
+      select(tdomain, tphylum, tclass, torder, tfamily, tgenus, tspecies, tstrain, pclass, psubclass) %>%
+      distinct() %>%
+      filter(tgenus!='') 
+  ) %>%
   left_join(major_phyla, by=c('tdomain','tphylum','pclass')) %>%
   replace_na(list(major_phylum='Other phyla')) %>%
-  group_by(tdomain, tphylum, tclass, torder, tfamily, tgenus, tspecies, major_phylum, pclass) %>%
+  group_by(tdomain, tphylum, tclass, torder, tfamily, tgenus, tspecies, tstrain, major_phylum, pclass) %>%
   summarise(n=n()) %>%
   ungroup() %>%
   spread(pclass, n, fill=0) %>%
-  unite(class_pattern, NrdA:NrdJ, sep=':')
-
-dom_fam_class_patterns = sp_class_patterns %>%
-  group_by(tdomain, tphylum, tclass, torder, tfamily, major_phylum, class_pattern) %>%
-  summarise(n=n())
-
-maxfam = dom_fam_class_patterns %>%
-  top_n(1, n) %>%
-  ungroup() %>%
-  mutate(max=n) %>%
-  select(-class_pattern, -n, -major_phylum) %>%
+  unite(class_pattern, NrdA:NrdJ, sep=':') %>%
+  select(-tstrain) %>%
   distinct()
 
-dom_fam_class_patterns = dom_fam_class_patterns %>%
-  ungroup() %>%
-  inner_join(maxfam, by=c('tdomain','tphylum','tclass','torder','tfamily')) %>%
-  filter(n/max>0.1)
+### dom_fam_class_patterns = sp_class_patterns %>%
+###   group_by(tdomain, tphylum, tclass, torder, tfamily, major_phylum, class_pattern) %>%
+###   summarise(n=n())
+### 
+### maxfam = dom_fam_class_patterns %>%
+###   top_n(1, n) %>%
+###   ungroup() %>%
+###   mutate(max=n) %>%
+###   select(-class_pattern, -n, -major_phylum) %>%
+###   distinct()
+### 
+### dom_fam_class_patterns = dom_fam_class_patterns %>%
+###   ungroup() %>%
+###   inner_join(maxfam, by=c('tdomain','tphylum','tclass','torder','tfamily')) %>%
+###   filter(n/max>0.1)
 
 ```
