@@ -104,7 +104,7 @@ kable(
 
 # Find the most abundant pattern of subclass presence in each species by
 # enumerating subclasses in all strains
-subclp_sp = collect(
+subclp_sp_w = collect(
     tbl(db, 'classified_proteins') %>% 
       filter(pclass=='NrdA', prop_matching>0.9) %>% 
       select(tdomain:tstrain, psubclass) %>% 
@@ -134,17 +134,21 @@ subclp_sp = collect(
   ) %>%
   spread(psubclass, n, fill=0)
 
-colnames = names(subclp_sp)
+colnames = names(subclp_sp_w)
 
 # Calculate the most abundant subclass combination for each species (there will be ties <=> multiple rows)
-#subclp_sp = subclp_sp %>% 
-subclp_sp = subclp_sp %>% 
+subclp_sp_w = subclp_sp_w %>% 
   group_by_(.dots=lapply(setdiff(colnames, c('tstrain')), as.symbol)) %>%
   summarise(n=n()) %>%
   ungroup() %>%
   group_by_(.dots=lapply(colnames[1:8], as.symbol)) %>%
   top_n(1, n) %>%
-  ungroup() %>%
+  ungroup()
+
+# Write wide table to file for reference
+write_tsv(subclp_sp_w, 'tables/NrdADJ_subclass_patterns.tsv')
+
+subclp_sp_l = subclp_sp_w %>%
   select(-n) %>% 
   gather_('subclass','n', colnames[10:length(colnames)]) %>% 
   filter(n>0)
