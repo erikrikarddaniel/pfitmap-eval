@@ -19,6 +19,7 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(kfigr))
 suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(tidyr))
 
 ```
@@ -152,6 +153,31 @@ subclp_sp_l = subclp_sp_w %>%
   select(-n) %>% 
   gather_('subclass','n', colnames[10:length(colnames)]) %>% 
   filter(n>0)
+
+```
+
+## What other RNRs do NrdE bearing organisms have?
+
+```{r nrde-repertoire-patterns, echo=F}
+
+# Subset the subclass pattern table to contain only NrdE species
+nrde.subclp_sp_w = subclp_sp_w %>%
+  filter(NrdE >= 1)
+
+# Create a table with patterns occuring at least 10 times, grouped by
+# organism class and patterns
+d = nrde.subclp_sp_w %>% 
+  group_by_(.dots=lapply(c(c('tdomain', 'tphylum','tclass'), sbnames), as.symbol)) %>% 
+  summarise(np=n()) %>% 
+  ungroup() %>% 
+  filter(np>=10) %>% 
+  gather_('psubclass', 'n', sbnames) %>% # This line, and the following two, deletes subclasses not found in any pattern that's of interest
+  filter(n>0) %>% 
+  spread(psubclass, n, fill=0)
+
+kable(d)
+
+write_tsv(d, 'tables/nrde.subclass_patterns.tsv')
 
 ```
 
