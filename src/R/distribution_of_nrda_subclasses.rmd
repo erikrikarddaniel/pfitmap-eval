@@ -72,11 +72,12 @@ major_phyla = overall_dist %>%
   summarise(max=max(sum)) %>%
   ungroup() %>%
   filter(max>=50) %>%
-  transmute(tdomain, tphylum, major_phylum=tphylum, pclass)
+  transmute(tdomain, tphylum, major_phylum=tphylum, pclass) %>%
+  right_join(overall_dist %>% select(tdomain, tphylum) %>% distinct(), by=c('tdomain', 'tphylum')) %>%
+  replace_na(list(major_phylum='No or minor phylum'))
 
 overall_dist = overall_dist %>%
-  left_join(major_phyla, by=c('tdomain', 'tphylum', 'pclass')) %>%
-  replace_na(list(major_phylum='Other phyla'))
+  left_join(major_phyla, by=c('tdomain', 'tphylum', 'pclass'))
 
 ```
 
@@ -157,8 +158,7 @@ d = d %>%
   mutate(pattern=sub('^:', '', pattern)) %>%
   mutate(pattern=sub(':$', '', pattern)) %>%
   select(tdomain, tphylum, pattern, np) %>%
-  left_join(major_phyla %>% select(-pclass) %>% distinct(), by=c('tdomain', 'tphylum')) %>%
-  replace_na(list(major_phylum='No or minor phylum'))
+  inner_join(major_phyla %>% select(-pclass) %>% distinct(), by=c('tdomain', 'tphylum'))
 
 d$pattern = factor(
   d$pattern,
@@ -196,7 +196,7 @@ Based on presence in species, the distribution of NrdA subclasses is basically
 one of distribution among bacterial phyla
 (`r figr('overall-dist-nrda', T, type='Table')`).
 
- ```{r overall-dist-nrda, echo=F}
+```{r overall-dist-nrda, echo=F}
 
 nrda_odist = overall_dist %>%
   filter(pclass=='NrdA') %>%
@@ -204,6 +204,12 @@ nrda_odist = overall_dist %>%
   summarise(n=sum(n)) %>%
   ungroup() %>%
   spread(psubclass, n, fill=0) %>%
+###   inner_join(
+###     collect(uniq_sp_tbl) %>%
+###       select(tdomain:tspecies) %>%
+###       distinct() %>%
+###       group_by(tdomain, tphylum) %>%
+###   )
   arrange(tdomain, major_phylum)
 
 kable(
@@ -338,8 +344,7 @@ sp_class_patterns = collect(
       distinct() %>%
       filter(tgenus!='') 
   ) %>%
-  left_join(major_phyla, by=c('tdomain','tphylum','pclass')) %>%
-  replace_na(list(major_phylum='Other phyla')) %>%
+  inner_join(major_phyla, by=c('tdomain','tphylum','pclass')) %>%
   group_by(tdomain, tphylum, tclass, torder, tfamily, tgenus, tspecies, tstrain, major_phylum, pclass) %>%
   summarise(n=n()) %>%
   ungroup() %>%
