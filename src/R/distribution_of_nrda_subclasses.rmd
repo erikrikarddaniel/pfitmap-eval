@@ -24,6 +24,12 @@ suppressPackageStartupMessages(library(tidyr))
 
 ```
 
+```{r setup, echo=F}
+
+knitr::opts_chunk$set(fig.path='figures/')
+
+```
+
 ```{r constants, echo=F}
 
 ```
@@ -48,11 +54,6 @@ uniq_sp_tbl = tbl(db, 'classified_proteins') %>%
   distinct()
 
 ```
-
-# Overall subclass distribution
-
-Counting proteins in the classified_proteins table matching at least 0.9 of the
-profile length.
 
 ```{r overall-dist, echo=F}
 
@@ -79,6 +80,116 @@ overall_dist = overall_dist %>%
 
 ```
 
+# Patterns of RNR class occurrence
+
+```{r class-patterns-per-species, echo=F}
+
+# Find the most abundant pattern of class presence in each species by
+# enumerating classes in all strains
+clp_sp_w = collect(
+    tbl(db, 'classified_proteins') %>% 
+      filter(pclass=='NrdA', prop_matching>0.9) %>% 
+      select(tdomain:tstrain, pclass) %>% 
+      distinct() %>%
+      mutate(n=1)
+  ) %>%
+  replace_na(list(pclass='NrdANS')) %>%
+  union(
+    collect(
+      tbl(db, 'classified_proteins') %>% 
+    	filter(pclass=='NrdD', prop_matching>0.9) %>% 
+    	select(tdomain:tstrain, pclass) %>% 
+    	distinct() %>%
+    	mutate(n=1)
+    ) %>%
+    replace_na(list(pclass='NrdDNS'))
+  ) %>%
+  union(
+    collect(
+      tbl(db, 'classified_proteins') %>% 
+    	filter(pclass=='NrdJ', prop_matching>0.9) %>% 
+    	select(tdomain:tstrain, pclass) %>% 
+    	distinct() %>%
+    	mutate(n=1)
+    ) %>%
+    replace_na(list(pclass='NrdJNS'))
+  ) %>%
+  spread(pclass, n, fill=0)
+
+clp_sp_w.colnames = names(clp_sp_w)
+clp_sp_w.sbnames = clp_sp_w.colnames[10:length(clp_sp_w.colnames)]
+
+# Calculate the most abundant class combination for each species (there will be ties <=> multiple rows)
+clp_sp_w = clp_sp_w %>% 
+  group_by_(.dots=lapply(setdiff(clp_sp_w.colnames, c('tstrain')), as.symbol)) %>%
+  summarise(n=n()) %>%
+  ungroup() %>%
+  group_by_(.dots=lapply(clp_sp_w.colnames[1:8], as.symbol)) %>%
+  top_n(1, n) %>%
+  ungroup()
+
+# Write wide table to file for reference
+write_tsv(clp_sp_w, 'tables/NrdADJ_class_patterns.tsv')
+
+```
+
+RNR classes are found by themselves or in all possible combinations
+(`r figr('class-pattern-summary', T, type='Figure')`).
+
+```{r class-pattern-summary, echo=F, fig.height=6, fig.cap='Distribution of RNR class combinations among taxonomic domains'}
+
+d = clp_sp_w %>%
+  group_by_(.dots=lapply(c(c('tdomain', 'tphylum'), clp_sp_w.sbnames), as.symbol)) %>% 
+  summarise(np=n()) %>% 
+  ungroup() %>% 
+  filter(np>=10) %>% 
+  gather_('pclass', 'n', clp_sp_w.sbnames) %>% # This line, and the following two, deletes classes not found in any pattern that's of interest
+  filter(n>0) %>% 
+  distinct() %>%
+  mutate(n=pclass) %>%
+  spread(pclass, n, fill='')
+
+c = names(d)
+
+d = d %>%
+  unite_('pattern', c[4:length(c)], sep=':') %>%
+  mutate(pattern=gsub('::*', ':', pattern)) %>%
+  mutate(pattern=sub('^:', '', pattern)) %>%
+  mutate(pattern=sub(':$', '', pattern)) %>%
+  select(tdomain, tphylum, pattern, np) %>%
+  left_join(major_phyla %>% select(-pclass) %>% distinct(), by=c('tdomain', 'tphylum')) %>%
+  replace_na(list(major_phylum='No or minor phylum'))
+
+d$pattern = factor(
+  d$pattern,
+  levels=(d %>% 
+    select(pattern) %>% distinct() %>% 
+    mutate(s=nchar(pattern)) %>% arrange(s, pattern)
+  )$pattern,
+  ordered=T
+)
+
+ggplot(d %>%
+      group_by(tdomain, pattern) %>%
+      summarise(np=sum(np)) %>%
+      ungroup(), 
+    aes(x=pattern,y=np,colour=tdomain)
+  ) + 
+  geom_jitter(width=0.25) +
+  xlab('') +
+  ylab('N. occurrences') +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.title=element_blank()
+  ) 
+
+```
+
+# Overall subclass distribution
+
+Counting proteins in the classified_proteins table matching at least 0.9 of the
+profile length.
+
 # NrdA
 
 Based on presence in species, the distribution of NrdA subclasses is basically
@@ -96,7 +207,8 @@ nrda_odist = overall_dist %>%
   arrange(tdomain, major_phylum)
 
 kable(
-  nrda_odist
+  nrda_odist,
+  caption='Presence of NrdA subclasses in phyla.'
 )
 
 ```
@@ -188,7 +300,8 @@ d = d %>%
 
 kable(
   d,
-  col.names=c('Domain', 'Phylum', 'Class', 'Subclass pattern', 'Count')
+  col.names=c('Domain', 'Phylum', 'Class', 'Subclass pattern', 'Count'),
+  caption='Patterns of subclass presences'
 )
 
 write_tsv(d, 'tables/nrde.subclass_patterns.tsv')
