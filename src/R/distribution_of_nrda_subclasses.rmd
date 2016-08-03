@@ -197,11 +197,11 @@ profile length.
 
 Based on presence in species, the distribution of NrdA subclasses is basically
 one of distribution among bacterial phyla
-(`r figr('overall-dist-nrda', T, type='Table')`).
+(`r figr('nrda-subclass-dist', T, type='Table')`).
 
-```{r overall-dist-nrda, echo=F}
+```{r nrda-subclass-dist, echo=F}
 
-nrda_odist = overall_dist %>%
+nrda_subcl = overall_dist %>%
   filter(pclass=='NrdA') %>%
   group_by(tdomain, major_phylum, psubclass) %>%
   summarise(n=sum(n)) %>%
@@ -223,10 +223,12 @@ nrda_odist = overall_dist %>%
   select(tdomain, major_phylum, nsp, NrdAe:NrdE, NS) %>%
   arrange(tdomain, major_phylum)
 
-nm = names(nrda_odist)
+write_tsv(nrda_subcl, 'tables/NrdA.subclass_dist.tsv')
+
+nm = names(nrda_subcl)
 
 kable(
-  nrda_odist,
+  nrda_subcl,
   col.names=c(
     'Domain', 'Phylum', 'N sp', nm[4:(length(nm)-1)], 'No subcl.'
   ),
@@ -236,11 +238,11 @@ kable(
 ```
 
 A detail of the proteobacterial classes can be found in 
-(`r figr('proteo-class-subclass-dist', T, type='Table')`).
+(`r figr('nrda-proteo-class-subclass-dist', T, type='Table')`).
 
-```{r proteo-class-subclass-dist, echo=F}
+```{r nrda-proteo-class-subclass-dist, echo=F}
 
-nrda_proteo_odist = overall_dist %>%
+nrda_proteo_subcl = overall_dist %>%
   filter(pclass=='NrdA', tphylum=='Proteobacteria') %>%
   group_by(tclass, psubclass) %>%
   summarise(n=sum(n)) %>%
@@ -261,10 +263,12 @@ nrda_proteo_odist = overall_dist %>%
   select(tclass, nsp, NrdAe:NrdE) %>%
   arrange(tclass)
 
-nm = names(nrda_proteo_odist)
+write_tsv(nrda_proteo_subcl, 'tables/NrdA.proteoclasses.subclass_dist.tsv')
+
+nm = names(nrda_proteo_subcl)
 
 kable(
-  nrda_proteo_odist,
+  nrda_proteo_subcl,
   col.names=c(
     'Domain', 'Phylum', 'N sp', nm[4:length(nm)]
   ),
