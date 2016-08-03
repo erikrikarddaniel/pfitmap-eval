@@ -59,7 +59,7 @@ uniq_sp_tbl = tbl(db, 'classified_proteins') %>%
 
 overall_dist = collect(uniq_sp_tbl) %>%
   replace_na(list(tphylum='no phylum', psubclass='no subclass')) %>%
-  group_by(tdomain, tphylum, pclass, psubclass) %>%
+  group_by(tdomain, tphylum, tclass, pclass, psubclass) %>%
   summarise(n=n()) %>%
   ungroup()
 
@@ -196,7 +196,7 @@ Based on presence in species, the distribution of NrdA subclasses is basically
 one of distribution among bacterial phyla
 (`r figr('overall-dist-nrda', T, type='Table')`).
 
-```{r overall-dist-nrda, echo=F}
+ ```{r overall-dist-nrda, echo=F}
 
 nrda_odist = overall_dist %>%
   filter(pclass=='NrdA') %>%
@@ -209,6 +209,26 @@ nrda_odist = overall_dist %>%
 kable(
   nrda_odist,
   caption='Presence of NrdA subclasses in phyla.'
+)
+
+```
+
+A detail of the proteobacterial classes can be found in 
+(`r figr('proteo-class-subclass-dist', T, type='Table')`).
+
+```{r proteo-class-subclass-dist, echo=F}
+
+nrda_proteo_odist = overall_dist %>%
+  filter(pclass=='NrdA', tphylum=='Proteobacteria') %>%
+  group_by(tclass, psubclass) %>%
+  summarise(n=sum(n)) %>%
+  ungroup() %>%
+  spread(psubclass, n, fill=0) %>%
+  arrange(tclass)
+
+kable(
+  nrda_proteo_odist,
+  caption='Presence of NrdA subclasses in proteobacterial classes.'
 )
 
 ```
