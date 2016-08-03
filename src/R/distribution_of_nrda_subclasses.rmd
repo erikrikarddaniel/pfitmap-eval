@@ -58,7 +58,7 @@ uniq_sp_tbl = tbl(db, 'classified_proteins') %>%
 ```{r overall-dist, echo=F}
 
 overall_dist = collect(uniq_sp_tbl) %>%
-  replace_na(list(tphylum='no phylum', psubclass='no subclass')) %>%
+  replace_na(list(tphylum='no phylum', psubclass='NS')) %>%
   group_by(tdomain, tphylum, tclass, pclass, psubclass) %>%
   summarise(n=n()) %>%
   ungroup()
@@ -73,7 +73,10 @@ major_phyla = overall_dist %>%
   ungroup() %>%
   filter(max>=50) %>%
   transmute(tdomain, tphylum, major_phylum=tphylum, pclass) %>%
-  right_join(overall_dist %>% select(tdomain, tphylum) %>% distinct(), by=c('tdomain', 'tphylum')) %>%
+  right_join(overall_dist %>% 
+    select(tdomain, tphylum, pclass) %>% distinct(), 
+    by=c('tdomain', 'tphylum', 'pclass')
+  ) %>%
   replace_na(list(major_phylum='No or minor phylum'))
 
 overall_dist = overall_dist %>%
@@ -118,7 +121,7 @@ clp_sp_w = collect(
   spread(pclass, n, fill=0)
 
 clp_sp_w.colnames = names(clp_sp_w)
-clp_sp_w.sbnames = clp_sp_w.colnames[10:length(clp_sp_w.colnames)]
+clp_sp_w.sbnames = grep('Nrd', clp_sp_w.colnames, value=T)
 
 # Calculate the most abundant class combination for each species (there will be ties <=> multiple rows)
 clp_sp_w = clp_sp_w %>% 
@@ -204,16 +207,29 @@ nrda_odist = overall_dist %>%
   summarise(n=sum(n)) %>%
   ungroup() %>%
   spread(psubclass, n, fill=0) %>%
-###   inner_join(
-###     collect(uniq_sp_tbl) %>%
-###       select(tdomain:tspecies) %>%
-###       distinct() %>%
-###       group_by(tdomain, tphylum) %>%
-###   )
+  inner_join(
+    collect(uniq_sp_tbl) %>%
+      select(tdomain:tspecies) %>%
+      distinct() %>%
+      inner_join(
+        major_phyla %>% select(tdomain, tphylum, major_phylum) %>% distinct(), 
+        by=c('tdomain', 'tphylum')
+      ) %>%
+      group_by(tdomain, major_phylum) %>%
+      summarise(nsp=n()) %>%
+      ungroup(),
+    by=c('tdomain', 'major_phylum')
+  ) %>%
+  select(tdomain, major_phylum, nsp, NrdAe:NrdE, NS) %>%
   arrange(tdomain, major_phylum)
+
+nm = names(nrda_odist)
 
 kable(
   nrda_odist,
+  col.names=c(
+    'Domain', 'Phylum', 'N sp', nm[4:(length(nm)-1)], 'No subcl.'
+  ),
   caption='Presence of NrdA subclasses in phyla.'
 )
 
