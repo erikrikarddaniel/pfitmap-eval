@@ -246,10 +246,28 @@ nrda_proteo_odist = overall_dist %>%
   summarise(n=sum(n)) %>%
   ungroup() %>%
   spread(psubclass, n, fill=0) %>%
+  inner_join(
+    collect(
+    	uniq_sp_tbl %>%
+    	  filter(tphylum=='Proteobacteria') %>%
+    	  select(tdomain:tspecies) %>%
+    	  distinct()
+      ) %>%
+      group_by(tclass) %>%
+      summarise(nsp=n()) %>%
+      ungroup(),
+    by=c('tclass')
+  ) %>%
+  select(tclass, nsp, NrdAe:NrdE) %>%
   arrange(tclass)
+
+nm = names(nrda_proteo_odist)
 
 kable(
   nrda_proteo_odist,
+  col.names=c(
+    'Domain', 'Phylum', 'N sp', nm[4:length(nm)]
+  ),
   caption='Presence of NrdA subclasses in proteobacterial classes.'
 )
 
