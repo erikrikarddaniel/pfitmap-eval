@@ -135,14 +135,15 @@ subclp_sp_w = collect(
   ) %>%
   spread(psubclass, n, fill=0)
 
-colnames = names(subclp_sp_w)
+subclp_sp_w.colnames = names(subclp_sp_w)
+subclp_sp_w.sbnames = subclp_sp_w.colnames[10:length(subclp_sp_w.colnames)]
 
 # Calculate the most abundant subclass combination for each species (there will be ties <=> multiple rows)
 subclp_sp_w = subclp_sp_w %>% 
-  group_by_(.dots=lapply(setdiff(colnames, c('tstrain')), as.symbol)) %>%
+  group_by_(.dots=lapply(setdiff(subclp_sp_w.colnames, c('tstrain')), as.symbol)) %>%
   summarise(n=n()) %>%
   ungroup() %>%
-  group_by_(.dots=lapply(colnames[1:8], as.symbol)) %>%
+  group_by_(.dots=lapply(subclp_sp_w.colnames[1:8], as.symbol)) %>%
   top_n(1, n) %>%
   ungroup()
 
@@ -151,31 +152,44 @@ write_tsv(subclp_sp_w, 'tables/NrdADJ_subclass_patterns.tsv')
 
 subclp_sp_l = subclp_sp_w %>%
   select(-n) %>% 
-  gather_('subclass','n', colnames[10:length(colnames)]) %>% 
+  gather_('subclass','n', subclp_sp_w.colnames[10:length(subclp_sp_w.colnames)]) %>% 
   filter(n>0)
 
 ```
 
-## What other RNRs do NrdE bearing organisms have?
+## What other RNRs do NrdE, NrdAi and NrdAz-bearing organisms have?
 
 ```{r nrde-repertoire-patterns, echo=F}
 
-# Subset the subclass pattern table to contain only NrdE species
-nrde.subclp_sp_w = subclp_sp_w %>%
-  filter(NrdE >= 1)
-
-# Create a table with patterns occuring at least 10 times, grouped by
-# organism class and patterns
-d = nrde.subclp_sp_w %>% 
-  group_by_(.dots=lapply(c(c('tdomain', 'tphylum','tclass'), sbnames), as.symbol)) %>% 
+# Subset the subclass pattern table to contain only NrdE, NrdAi and NrdAz
+# species, make sure it contains patterns occuring at least 10 times, grouped
+# by organism class and patterns.
+d = subclp_sp_w %>%
+  filter(NrdE >= 1 | NrdAi >= 1 | NrdAz >= 1) %>%
+  group_by_(.dots=lapply(c(c('tdomain', 'tphylum','tclass'), subclp_sp_w.sbnames), as.symbol)) %>% 
   summarise(np=n()) %>% 
   ungroup() %>% 
   filter(np>=10) %>% 
-  gather_('psubclass', 'n', sbnames) %>% # This line, and the following two, deletes subclasses not found in any pattern that's of interest
+  gather_('psubclass', 'n', subclp_sp_w.sbnames) %>% # This line, and the following two, deletes subclasses not found in any pattern that's of interest
   filter(n>0) %>% 
-  spread(psubclass, n, fill=0)
+  distinct() %>%
+  mutate(n=psubclass) %>%
+  spread(psubclass, n, fill='')
 
-kable(d)
+c = names(d)
+
+d = d %>%
+  unite_('pattern', c[5:length(c)], sep=':') %>%
+  mutate(pattern=gsub('::*', ':', pattern)) %>%
+  mutate(pattern=sub('^:', '', pattern)) %>%
+  mutate(pattern=sub(':$', '', pattern)) %>%
+  select(tdomain, tphylum, tclass, pattern, np) %>%
+  arrange(tdomain, tphylum, tclass, desc(np))
+
+kable(
+  d,
+  col.names=c('Domain', 'Phylum', 'Class', 'Subclass pattern', 'Count')
+)
 
 write_tsv(d, 'tables/nrde.subclass_patterns.tsv')
 
