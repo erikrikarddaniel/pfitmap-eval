@@ -1,5 +1,5 @@
 ---
-title: "pfitmap-eval: Taxonomic distribution of NrdADJ subclasses"
+title: "pfitmap-eval: Taxonomic distribution of RNR classes and subclasses"
 author: "daniel.lundin@dbb.su.se"
 date: "`r format(Sys.time(), '%Y-%m-%d')`"
 output:
@@ -136,7 +136,7 @@ write_tsv(clp_sp_w, 'tables/NrdADJ_class_patterns.tsv')
 RNR classes are found by themselves or in all possible combinations
 (`r figr('class-pattern-summary', T, type='Figure')`).
 
-```{r class-pattern-summary, echo=F, fig.height=6, fig.cap='Distribution of RNR class combinations among taxonomic domains'}
+```{r class-pattern-summary, echo=F, fig.height=4, fig.cap='Distribution of RNR class combinations among taxonomic domains'}
 
 d = clp_sp_w %>%
   group_by_(.dots=lapply(c(c('tdomain', 'tphylum'), clp_sp_w.sbnames), as.symbol)) %>% 
