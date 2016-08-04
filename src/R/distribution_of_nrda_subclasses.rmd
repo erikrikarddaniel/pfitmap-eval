@@ -335,13 +335,15 @@ subclp_sp_l = subclp_sp_w %>%
 
 ## What other RNRs do NrdE, NrdAi and NrdAz-bearing organisms have?
 
-```{r nrde-repertoire-patterns, echo=F}
+```{r combination-patterns, echo=F}
 
 # Subset the subclass pattern table to contain only NrdE, NrdAi and NrdAz
 # species, make sure it contains patterns occuring at least 10 times, grouped
 # by organism class and patterns.
-d = subclp_sp_w %>%
-  filter(NrdE >= 1 | NrdAi >= 1 | NrdAz >= 1) %>%
+nrda_combs = subclp_sp_w %>%
+  filter_(
+   paste(paste(grep('Nrd[AE]', subclp_sp_w.sbnames, value=T), collapse=' + '), ' > 0')
+  ) %>%
   group_by_(.dots=lapply(c(c('tdomain', 'tphylum','tclass'), subclp_sp_w.sbnames), as.symbol)) %>% 
   summarise(np=n()) %>% 
   ungroup() %>% 
@@ -352,9 +354,9 @@ d = subclp_sp_w %>%
   mutate(n=psubclass) %>%
   spread(psubclass, n, fill='')
 
-c = names(d)
+c = names(nrda_combs)
 
-d = d %>%
+nrda_combs = nrda_combs %>%
   unite_('pattern', c[5:length(c)], sep=':') %>%
   mutate(pattern=gsub('::*', ':', pattern)) %>%
   mutate(pattern=sub('^:', '', pattern)) %>%
@@ -363,12 +365,34 @@ d = d %>%
   arrange(tdomain, tphylum, tclass, desc(np))
 
 kable(
-  d,
+  nrda_combs,
   col.names=c('Domain', 'Phylum', 'Class', 'Subclass pattern', 'Count'),
   caption='Patterns of subclass presences'
 )
 
-write_tsv(d, 'tables/nrde.subclass_patterns.tsv')
+write_tsv(nrda_combs, 'tables/NrdA.subclass_patterns.tsv')
+
+```
+
+Without the subclasses of NrdD and NrdJ
+(`r figr('combinations-no_nrddj_sb', T, type='Table')`).
+
+```{r combinations-no_nrddj_sb, echo=F}
+
+nrda_combs_no_nrddj_sb = nrda_combs %>%
+  mutate(pattern=gsub('NrdD[a-z]', 'NrdD', pattern)) %>%
+  mutate(pattern=gsub('NrdJ[a-z]', 'NrdJ', pattern)) %>%
+  group_by(tdomain, tphylum, tclass, pattern) %>%
+  summarise(np=sum(np)) %>%
+  ungroup()
+
+kable(
+  nrda_combs_no_nrddj_sb,
+  col.names=c('Domain', 'Phylum', 'Class', 'Subclass pattern', 'Count'),
+  caption='Patterns of subclass presences'
+)
+
+write_tsv(nrda_combs_no_nrddj_sb, 'tables/NrdA.subclass_patterns.no_NrdDJ_subclasses.tsv')
 
 ```
 
