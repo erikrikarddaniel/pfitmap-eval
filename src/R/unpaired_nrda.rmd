@@ -1,0 +1,101 @@
+---
+title: "Unpaired NrdAs"
+author: "daniel.lundin@dbb.su.se"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+knit: (function(fname, encoding) { rmarkdown::render(fname, encoding = encoding, output_file = sprintf('%s/%s.%s.pdf', dirname(fname), sub('.rmd', '', basename(fname)), read.csv(pipe('git tag --sort version:refname', 'r'), header=F)$V1)) })
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 9
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+# Introduction
+
+This document is the result of a search for genomes with NrdAs that are not matched
+by an NrdB of the same subclass.
+
+```{r setup, echo=F}
+
+knitr::opts_chunk$set(fig.path='figures/')
+
+```
+
+```{r libraries, echo=F}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(kfigr))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(tidyr))
+
+```
+
+```{r constants, echo=F}
+
+```
+
+```{r functions, echo=F}
+
+```
+
+```{r db-connect, echo=F}
+
+db = src_postgres('pfitmap-eval-prod')
+
+```
+
+```{r read-data, echo=F}
+
+```
+
+# Database source and date
+
+The most current data in the pfitmap database at the time when this script was
+(`r figr('db-version', T, type='Table')`).
+
+```{r db-version, echo=F}
+
+kable(
+  collect(tbl(db, 'latest_hmm_results')) %>% select(source, name, version) %>% distinct()
+)
+
+```
+
+# NrdA profiles
+
+The following NrdA profiles were imported (`r figr('nrda-profiles', T, type='Table')`).
+
+```{r nrda-profiles, echo=F}
+
+nrda_summary = collect(
+  tbl(db, 'classified_proteins') %>%
+    filter(pclass == 'NrdA') %>%
+    filter(db %in% c('gb', 'ref')) %>%
+    filter(prop_matching >= 0.9) %>%
+    group_by(db, pclass, psubclass) %>%
+    summarise(n=n()) %>%
+    ungroup()
+  ) %>%
+  transmute(
+    db,
+    nrdac=pclass,
+    nrdasc=psubclass,
+    n_nrda=n,
+    nrdbc=sub('NrdE', 'NrdF', sub('NrdA', 'NrdB', pclass)),
+    nrdbsc=sub('NrdE', 'NrdF', sub('NrdA', 'NrdB', psubclass))
+  ) %>%
+  arrange(db, nrdasc)
+
+kable(
+  nrda_summary %>% select(db, nrdasc, nrdbsc, n_nrda),
+  col.names=c('NCBI db', 'NrdA subclass', 'Corr. NrdB subclass', 'Count'),
+  caption='Number of NrdA matches, counting only those matching at least 0.9 of the length of the profile, with names of the corresponding NrdB subclasses.'
+)
+
+```
