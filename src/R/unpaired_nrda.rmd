@@ -58,6 +58,11 @@ fullen_nrda = tbl(db, 'classified_proteins') %>%
   filter(db %in% c('gb', 'ref')) %>%
   filter(prop_matching >= 0.9)
 
+fullen_nrdb = tbl(db, 'classified_proteins') %>%
+  filter(pclass == 'NrdB') %>%
+  filter(db %in% c('gb', 'ref')) %>%
+  filter(prop_matching >= 0.9)
+
 ```
 
 # Database source and date
@@ -82,23 +87,83 @@ The following NrdA profiles were imported (`r figr('nrda-profiles', T, type='Tab
 nrda_summary = collect(
     fullen_nrda %>%
       group_by(db, pclass, psubclass) %>%
-      summarise(n=n()) %>%
+      summarise(n_nrda_hits=n()) %>%
       ungroup()
   ) %>%
-  transmute(
-    db,
-    nrdac=pclass,
-    nrdasc=psubclass,
-    n_nrda=n,
+  mutate(
     nrdbc=sub('NrdE', 'NrdF', sub('NrdA', 'NrdB', pclass)),
     nrdbsc=sub('NrdE', 'NrdF', sub('NrdA', 'NrdB', psubclass))
   ) %>%
-  arrange(db, nrdasc)
+  arrange(db, psubclass)
 
 kable(
-  nrda_summary %>% select(db, nrdasc, nrdbsc, n_nrda),
+  nrda_summary %>% select(db, psubclass, nrdbsc, n_nrda_hits),
   col.names=c('NCBI db', 'NrdA subclass', 'Corr. NrdB subclass', 'Count'),
   caption='Number of NrdA matches, counting only those matching at least 0.9 of the length of the profile, with names of the corresponding NrdB subclasses.'
+)
+
+```
+
+# NrdB matches
+
+In (`r figr('nrdb-missing', T, type='Table')`) missing NrdB subclasses
+are summarized per NrdA subclass.
+
+```{r nrdb-matches, echo=F}
+
+nrdb_matches = nrda_summary %>%
+  inner_join(
+    collect(
+      fullen_nrda %>%
+	select(
+	  -seq_src, -accno, -gene, -seq, -fasta,
+	  -psuperfamily, -pfamily, -pgroup, 
+	  -profile_length, -align_length, -align_start, -align_end,
+	  nrda_pmatch=prop_matching, nrda_e_value=e_value, nrda_score=score
+	)
+    ),
+    by=c('db', 'pclass', 'psubclass')
+  ) %>%
+  left_join(
+    collect(
+      fullen_nrdb %>%
+	select(
+	  -seq_src, -accno, -gene, -seq, -fasta,
+	  -psuperfamily, -pfamily, -pgroup, 
+	  -profile_length, -align_length, -align_start, -align_end,
+	  nrdb_pmatch=prop_matching, nrdb_e_value=e_value, nrdb_score=score
+	)
+    ),
+    by=c(
+      'db', 'ss_source', 'ss_name', 'ss_version', 'bioproject',
+      'nrdbc'='pclass', 'nrdbsc'='psubclass', 
+      'tdomain', 'tkingdom', 'tphylum', 'tclass', 'torder', 'tfamily', 'tgenus', 'tspecies', 'tstrain'
+    )
+  )
+
+```
+
+```{r nrdb-missing, echo=F}
+
+nrdb_missing_summary = nrda_summary %>%
+  select(-pclass, nrdbc) %>%
+  left_join(
+    nrdb_matches %>% 
+      filter(is.na(nrdb_score)) %>% 
+      select(db, tspecies, psubclass, nrdbsc) %>% 
+      distinct() %>%
+      group_by(db, psubclass, nrdbsc) %>%
+      summarise(n_missing_nrdb=n()) %>%
+      ungroup(),
+    by=c('db', 'psubclass', 'nrdbsc')
+  ) %>%
+  mutate(prop_missing_nrdb=n_missing_nrdb/n_nrda_hits) %>%
+  arrange(db, desc(prop_missing_nrdb))
+
+kable(
+  nrdb_missing_summary %>% select(-nrdbc, -nrdbsc),
+  col.names=c('NCBI DB', 'NrdA subclass', 'N. NrdA hits', 'N. species missing NrdB', 'Prop. missing NrdB'),
+  caption='Number of NrdA hits from *species* missing the corresponding NrdB subclass.'
 )
 
 ```
