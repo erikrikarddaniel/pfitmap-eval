@@ -106,7 +106,7 @@ kable(
 
 # NrdB matches
 
-In (`r figr('nrdb-missing', T, type='Table')`) missing NrdB subclasses
+In `r figr('nrdb-missing', T, type='Table')` missing NrdB subclasses
 are summarized per NrdA subclass.
 
 ```{r nrdb-matches, echo=F}
