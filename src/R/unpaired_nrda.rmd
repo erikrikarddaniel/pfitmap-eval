@@ -106,7 +106,7 @@ kable(
 
 # NrdB matches
 
-In `r figr('nrdb-missing', T, type='Table')` missing NrdB subclasses
+In `r figr('nrdb-missing-summary', T, type='Table')` missing NrdB subclasses
 are summarized per NrdA subclass.
 
 ```{r nrdb-matches, echo=F}
@@ -115,24 +115,24 @@ nrdb_matches = nrda_summary %>%
   inner_join(
     collect(
       fullen_nrda %>%
-	select(
-	  -seq_src, -accno, -gene, -seq, -fasta,
-	  -psuperfamily, -pfamily, -pgroup, 
-	  -profile_length, -align_length, -align_start, -align_end,
-	  nrda_pmatch=prop_matching, nrda_e_value=e_value, nrda_score=score
-	)
+      	select(
+      	  -seq_src, -accno, -gene, -seq, -fasta,
+      	  -psuperfamily, -pfamily, -pgroup, 
+      	  -profile_length, -align_length, -align_start, -align_end,
+      	  nrda_pmatch=prop_matching, nrda_e_value=e_value, nrda_score=score
+      	)
     ),
     by=c('db', 'pclass', 'psubclass')
   ) %>%
   left_join(
     collect(
       fullen_nrdb %>%
-	select(
-	  -seq_src, -accno, -gene, -seq, -fasta,
-	  -psuperfamily, -pfamily, -pgroup, 
-	  -profile_length, -align_length, -align_start, -align_end,
-	  nrdb_pmatch=prop_matching, nrdb_e_value=e_value, nrdb_score=score
-	)
+      	select(
+      	  -seq_src, -accno, -gene, -seq, -fasta,
+      	  -psuperfamily, -pfamily, -pgroup, 
+      	  -profile_length, -align_length, -align_start, -align_end,
+      	  nrdb_pmatch=prop_matching, nrdb_e_value=e_value, nrdb_score=score
+      	)
     ),
     by=c(
       'db', 'ss_source', 'ss_name', 'ss_version', 'bioproject',
@@ -143,7 +143,7 @@ nrdb_matches = nrda_summary %>%
 
 ```
 
-```{r nrdb-missing, echo=F}
+```{r nrdb-missing-summary, echo=F}
 
 nrdb_missing_summary = nrda_summary %>%
   select(-pclass, nrdbc) %>%
@@ -165,5 +165,81 @@ kable(
   col.names=c('NCBI DB', 'NrdA subclass', 'N. NrdA hits', 'N. species missing NrdB', 'Prop. missing NrdB'),
   caption='Number of NrdA hits from *species* missing the corresponding NrdB subclass.'
 )
+
+```
+
+## Other, unmatched NrdBs in genomes lacking a matching NrdB
+
+Genomes with misclassified NrdBs will have mismatches between NrdA and NrdB.
+`r figr('nrdb-misclassifications', T, type='Table')` lists the subclasses of
+possible misclassified NrdBs in species with unmatched NrdAs. (Only *RefSeq*.)
+
+```{r nrdb-misclassifactions, echo=F}
+
+# Find all NrdA accessions in ref missing a matching NrdB
+ref_nrdb_missing = nrdb_matches %>%
+  filter(is.na(nrdb_score), db=='ref') %>%
+  inner_join(
+    collect(fullen_nrda),
+    by = c(
+      'db', 'bioproject', 'ss_source', 'ss_name', 'ss_version',
+      'pclass', 'psubclass', 
+      'tdomain', 'tkingdom', 'tphylum', 'tclass', 'torder', 'tfamily', 'tgenus', 'tspecies', 'tstrain'
+    )
+  )
+
+# Get a list of NrdBs that are unmatched to NrdAs
+ref_unmatched_nrdb = collect(fullen_nrdb %>% filter(db=='ref')) %>%
+  left_join(
+    nrdb_matches %>%
+      filter(!is.na(nrdb_score)),
+    by = c(
+      'db', 'bioproject', 'ss_source', 'ss_name', 'ss_version',
+      'tdomain', 'tkingdom', 'tphylum', 'tclass', 'torder', 'tfamily', 'tgenus', 'tspecies', 'tstrain', 
+      'pclass'='nrdbc', 'psubclass'='nrdbsc'
+    )
+  ) %>%
+  filter(is.na(pclass.y)) %>%
+  select(
+    -pclass.y, -psubclass.y, -n_nrda_hits, -nrda_pmatch, -nrda_e_value, -nrda_score,
+    -nrdb_pmatch, -nrdb_e_value, -nrdb_score
+  )
+
+# Combine the two, at species level, to get a list of possible NrdBs to match the unmatched NrdAs
+ref_species_possible_other_nrdb = ref_nrdb_missing %>%
+  select(tdomain:tspecies, nrdac=pclass, nrdasc=psubclass) %>%
+  distinct() %>%
+  left_join(
+    ref_unmatched_nrdb %>%
+      select(tdomain:tspecies, nrdbc=pclass, nrdbsc=psubclass) %>%
+      distinct(),
+    by = c('tdomain', 'tkingdom', 'tphylum', 'tclass', 'torder', 'tfamily', 'tgenus', 'tspecies')
+  )
+
+# Make it wide, and combine the NrdB subclasses
+ref_species_possible_nrdbs = ref_species_possible_other_nrdb %>%
+  replace_na(replace=list('nrdbsc'='NSC')) %>%
+  select(-nrdbc) %>%
+  mutate(v=nrdbsc) %>%
+  spread(nrdbsc, v, fill='') %>%
+  unite(nrdb_comb, NrdBe:NSC, sep=',') %>%
+  mutate(nrdb_comb=gsub(',,*', ',', sub('^,*', '', sub(',*$', '', nrdb_comb))))
+
+nrdb_combinations = ref_species_possible_nrdbs %>%
+  group_by(nrdasc, nrdb_comb) %>% 
+  summarise(n=n())
+
+kable(
+  nrdb_combinations %>% arrange(nrdasc, desc(n)),
+  col.names=c('NrdA subclass', 'NrdB subclass comb.', 'N. species'),
+  caption='Combinations of unclaimed NrdBs found in species lacking an NrdB of the same subclass as the NrdA. Only RefSeq searched.'
+)
+
+```
+
+```{r ref-nrdb-missing, echo=F}
+
+### 
+### ref_another_nrdb
 
 ```
