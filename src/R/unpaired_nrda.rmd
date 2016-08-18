@@ -237,9 +237,22 @@ kable(
 
 ```
 
-```{r ref-nrdb-missing, echo=F}
+Some of the NrdB subclasses in (`r figr('nrdb-misclassifications', T, type='Table')`)
+are orphans, i.e. do not have a corresponding NrdA subclass
+(`r figr('nrdb-orphans', T, type='Table')`).
 
-### 
-### ref_another_nrdb
+```{r nrdb-orphans, echo=F}
+
+nrdb_orphans = ref_species_possible_other_nrdb %>%
+  select(nrdbsc) %>% distinct() %>%
+  left_join(nrda_summary, by=c('nrdbsc')) %>%
+  filter(is.na(psubclass), !is.na(nrdbsc)) %>%
+  select(nrdbsc)
+
+kable(
+  nrdb_orphans,
+  col.names=c('NrdB orphan'),
+  caption='NrdB subclasses found in species with an unmatched NrdA that do not correspond to any NrdA subclass.'
+)
 
 ```
