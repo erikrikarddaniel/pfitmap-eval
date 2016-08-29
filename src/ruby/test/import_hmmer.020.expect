@@ -1,69 +1,253 @@
 NCBI	NR	20141101	NrdA	NrdAz	subclass
-NrdAz	gi|149634836|ref|XP_001505371.1|	NrdA	1e-185	629.7	0.2	4.1	2	2	2	4	4	4	4
-NrdAz	gi|4506749|ref|NP_001024.1|	NrdA	1e-185	629.7	1.4	4.1	2	2	1	4	4	4	4
-NrdAz	gi|499249960|ref|WP_010947500.1|	NrdA	1.1e-185	629.6	1.4	4.1	2	1	2	4	4	4	4
-NrdAz	gi|499527617|ref|WP_011214037.1|	NrdA	1e-185	629.7	1.2	4.1	1	1	2	4	4	4	4
-NrdAz	gi|5006420|gb|AAD37491.1|	NrdA	1e-185	629.7	1.4	4.1	2	2	1	4	4	4	4
-NrdAz	gi|652968157|ref|WP_027221072.1|	NrdA	1e-185	629.7	1.2	4.1	1	1	2	4	4	4	4
-NrdAz	gi|653015206|ref|WP_027267236.1|	NrdA	1.1e-185	629.6	1.4	4.1	2	1	2	4	4	4	4
-NrdAz	gi|652968157|ref|WP_027221072.1|	942	467	1	4	2.9e-75	9.4e-72	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
-NrdAz	gi|652968157|ref|WP_027221072.1|	942	467	2	4	2.8e-67	9e-64	227.6	0.1	170	340	532	708	518	727	0.95	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
-NrdAz	gi|652968157|ref|WP_027221072.1|	942	467	3	4	5.1e-16	1.6e-12	58.6	0.2	339	392	750	803	727	821	0.88	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL	4789*********************************************98765
-NrdAz	gi|652968157|ref|WP_027221072.1|	942	467	4	4	4e-24	1.3e-20	85.3	0	385	463	831	909	816	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	57899*******************************************************************9988776
-NrdAz	gi|499527617|ref|WP_011214037.1|	942	467	1	4	2.9e-75	9.4e-72	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
-NrdAz	gi|499527617|ref|WP_011214037.1|	942	467	2	4	2.8e-67	9e-64	227.6	0.1	170	340	532	708	518	727	0.95	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
-NrdAz	gi|499527617|ref|WP_011214037.1|	942	467	3	4	5.1e-16	1.6e-12	58.6	0.2	339	392	750	803	727	821	0.88	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL	4789*********************************************98765
-NrdAz	gi|499527617|ref|WP_011214037.1|	942	467	4	4	4e-24	1.3e-20	85.3	0	385	463	831	909	816	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	57899*******************************************************************9988776
-NrdAz	gi|5006420|gb|AAD37491.1|	792	467	1	4	2.8e-76	8.9e-73	257.3	0	2	175	185	360	184	373	0.98	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD	689*************************************************************************************************************************************************************************9976
-NrdAz	gi|5006420|gb|AAD37491.1|	792	467	2	4	2.8e-65	8.8e-62	221	0.3	172	341	382	558	375	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG	5689*************************************************9872589**************999************************7478*********************************************************************975
-NrdAz	gi|5006420|gb|AAD37491.1|	792	467	3	4	3.9e-16	1.2e-12	59	0.1	337	393	586	642	582	662	0.93	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
-NrdAz	gi|5006420|gb|AAD37491.1|	792	467	4	4	6.3e-25	2e-21	88	0	381	460	665	745	651	748	0.91	ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	+ ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	556778899************************************************************999*****9986
-NrdAz	gi|4506749|ref|NP_001024.1|	792	467	1	4	2.8e-76	8.9e-73	257.3	0	2	175	185	360	184	373	0.98	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD	689*************************************************************************************************************************************************************************9976
-NrdAz	gi|4506749|ref|NP_001024.1|	792	467	2	4	2.8e-65	8.8e-62	221	0.3	172	341	382	558	375	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG	5689*************************************************9872589**************999************************7478*********************************************************************975
-NrdAz	gi|4506749|ref|NP_001024.1|	792	467	3	4	3.9e-16	1.2e-12	59	0.1	337	393	586	642	582	662	0.93	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
-NrdAz	gi|4506749|ref|NP_001024.1|	792	467	4	4	6.3e-25	2e-21	88	0	381	460	665	745	651	748	0.91	ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	+ ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	556778899************************************************************999*****9986
-NrdAz	gi|149634836|ref|XP_001505371.1|	792	467	1	4	4.4e-76	1.4e-72	256.6	0	2	175	185	360	184	380	0.96	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNRDWSLMCPNECPGLD	689**************************************************************************************************************************************************************************986
-NrdAz	gi|149634836|ref|XP_001505371.1|	792	467	2	4	4e-65	1.3e-61	220.5	0.1	172	341	382	558	369	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +yp++ea++snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y al aS++lAk +g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDTCNRKSNQQNLGTIKCSNLCTEIVEYTSrDEVAVCNLASLALNMFVTlehtyDFKKLAEVTKVIVRNLNKIIDInYYPIPEASTSNKRHRPIGIGVQGLADAFILMRYPFESPEAQLLNQQIFETIYYGALDASCDLAKDHGPYETYQG	5689**************************************************973689**************999************************7478*********************************************************************976
-NrdAz	gi|149634836|ref|XP_001505371.1|	792	467	3	4	2.6e-16	8.2e-13	59.6	0	337	393	586	642	580	662	0.92	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnslllA++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGVRNSLLLAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
-NrdAz	gi|149634836|ref|XP_001505371.1|	792	467	4	4	6.9e-25	2.2e-21	87.9	0.1	382	460	666	745	652	748	0.91	sgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	++++ ++e+lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	IQSIPEIPEDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	56778899************************************************************999*****9986
-NrdAz	gi|653015206|ref|WP_027267236.1|	942	467	1	4	2.9e-75	9.4e-72	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
-NrdAz	gi|653015206|ref|WP_027267236.1|	942	467	2	4	1.9e-67	6.1e-64	228.2	0.1	170	340	532	708	511	728	0.94	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
-NrdAz	gi|653015206|ref|WP_027267236.1|	942	467	3	4	7.3e-16	2.3e-12	58.1	0.2	339	390	750	801	724	810	0.9	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP	4789*********************************************986
-NrdAz	gi|653015206|ref|WP_027267236.1|	942	467	4	4	3.9e-24	1.2e-20	85.4	0	385	463	831	909	817	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	56899*******************************************************************9988776
-NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	1	4	2.9e-75	9.4e-72	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
-NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	2	4	1.9e-67	6.1e-64	228.2	0.1	170	340	532	708	511	728	0.94	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
-NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	3	4	7.3e-16	2.3e-12	58.1	0.2	339	390	750	801	724	810	0.9	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP	4789*********************************************986
-NrdAz	gi|499249960|ref|WP_010947500.1|	942	467	4	4	3.9e-24	1.2e-20	85.4	0	385	463	831	909	817	913	0.93	|	| 
-NCBI	dbj	762001067	GAN27051.1	ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
-NCBI	emb	36065	CAA42118.1	M1 subunit of ribonucleotide reductase [Homo sapiens]
-NCBI	emb	36153	CAA42180.1	large subunit ribonucleotide reductase [Homo sapiens]
-NCBI	emb	53751472	CAH12890.1	hypothetical protein lpp1738 [Legionella pneumophila str. Paris]
-NCBI	gb	5006420	AAD37491.1	ribonucleotide reductase M1 subunit [Homo sapiens]
-NCBI	gb	13676332	AAH06498.1	Ribonucleotide reductase M1 [Homo sapiens]
-NCBI	gb	52629112	AAU27853.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]
-NCBI	gb	123991808	ABM83954.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
-NCBI	gb	123999422	ABM87271.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
-NCBI	gb	295649266	ADG25113.1	ribonucleoside-diphosphate reductase alpha chain [Legionella pneumophila 2300/99 Alcoy]
-NCBI	gb	364508450	AEW51974.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila ATCC 43290]
-NCBI	gb	469491661	AGH53506.1	Ribonucleotide reductase of class Ia (aerobic), alpha subunit [Legionella pneumophila subsp. pneumophila LPE509]
-NCBI	gb	509082411	AGN14659.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Thunder Bay]
-NCBI	gb	649121060	AIC55076.1	RRM1, partial [synthetic construct]
-NCBI	gb	119622988	EAX02583.1	ribonucleotide reductase M1 polypeptide [Homo sapiens]
-NCBI	pdb	323714413	3HNC:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714414	3HNC:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
-NCBI	pdb	323714415	3HND:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714416	3HND:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
-NCBI	pdb	323714417	3HNE:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714418	3HNE:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
-NCBI	pdb	323714419	3HNF:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	323714420	3HNF:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
-NCBI	pdb	951272644	4X3V:A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
-NCBI	pdb	951272645	4X3V:B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
-NCBI	ref	4506749	NP_001024.1	ribonucleoside-diphosphate reductase large subunit [Homo sapiens]
-NCBI	ref	499249960	WP_010947500.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	ref	499527617	WP_011214037.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	ref	652968157	WP_027221072.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	ref	653015206	WP_027267236.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
-NCBI	ref	149634836	XP_001505371.1	PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anatinus]
-NCBI	ref	52842001	YP_095800.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]
-NCBI	sp	132608	P23921.1	RecName: Full=Ribonucleoside-diphosphate reductase large subunit; AltName: Full=Ribonucleoside-diphosphate reductase subunit M1; AltName: Full=Ribonucleotide reductase large subunit
+NrdAz	AAD37491.1	NrdA	1.3e-185	629.7	1.4	4.1	2	2	1	4	4	4	4
+NrdAz	NP_001024.1	NrdA	1.3e-185	629.7	1.4	4.1	2	2	1	4	4	4	4
+NrdAz	WP_010947500.1	NrdA	1.3e-185	629.6	1.4	4.1	2	1	2	4	4	4	4
+NrdAz	WP_011214037.1	NrdA	1.2e-185	629.7	1.2	4.1	1	1	2	4	4	4	4
+NrdAz	WP_027221072.1	NrdA	1.2e-185	629.7	1.2	4.1	1	1	2	4	4	4	4
+NrdAz	WP_027267236.1	NrdA	1.3e-185	629.6	1.4	4.1	2	1	2	4	4	4	4
+NrdAz	XP_001505371.1	NrdA	1.3e-185	629.7	0.2	4.1	2	2	2	4	4	4	4
+NrdAz	AAD37491.1	792	467	1	4	3.4e-76	1.1e-72	257.3	0	2	175	185	360	184	373	0.98	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD	689*************************************************************************************************************************************************************************9976
+NrdAz	AAD37491.1	792	467	2	4	3.3e-65	1.1e-61	221	0.3	172	341	382	558	375	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG	5689*************************************************9872589**************999************************7478*********************************************************************975
+NrdAz	AAD37491.1	792	467	3	4	4.7e-16	1.5e-12	59	0.1	337	393	586	642	582	662	0.93	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
+NrdAz	AAD37491.1	792	467	4	4	7.6e-25	2.5e-21	88	0	381	460	665	745	651	748	0.91	ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	+ ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	556778899************************************************************999*****9986
+NrdAz	NP_001024.1	792	467	1	4	3.4e-76	1.1e-72	257.3	0	2	175	185	360	184	373	0.98	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD	689*************************************************************************************************************************************************************************9976
+NrdAz	NP_001024.1	792	467	2	4	3.3e-65	1.1e-61	221	0.3	172	341	382	558	375	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG	5689*************************************************9872589**************999************************7478*********************************************************************975
+NrdAz	NP_001024.1	792	467	3	4	4.7e-16	1.5e-12	59	0.1	337	393	586	642	582	662	0.93	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
+NrdAz	NP_001024.1	792	467	4	4	7.6e-25	2.5e-21	88	0	381	460	665	745	651	748	0.91	ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	+ ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	556778899************************************************************999*****9986
+NrdAz	WP_010947500.1	942	467	1	4	3.5e-75	1.1e-71	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
+NrdAz	WP_010947500.1	942	467	2	4	2.3e-67	7.5e-64	228.2	0.1	170	340	532	708	511	728	0.94	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
+NrdAz	WP_010947500.1	942	467	3	4	8.8e-16	2.8e-12	58.1	0.2	339	390	750	801	724	810	0.9	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP	4789*********************************************986
+NrdAz	WP_010947500.1	942	467	4	4	4.7e-24	1.5e-20	85.4	0	385	463	831	909	817	913	0.93	|	| 
+NrdAz	WP_011214037.1	942	467	1	4	3.5e-75	1.1e-71	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
+NrdAz	WP_011214037.1	942	467	2	4	3.4e-67	1.1e-63	227.6	0.1	170	340	532	708	518	727	0.95	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
+NrdAz	WP_011214037.1	942	467	3	4	6.1e-16	2e-12	58.6	0.2	339	392	750	803	727	821	0.88	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL	4789*********************************************98765
+NrdAz	WP_011214037.1	942	467	4	4	4.9e-24	1.6e-20	85.3	0	385	463	831	909	816	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	57899*******************************************************************9988776
+NrdAz	WP_027221072.1	942	467	1	4	3.5e-75	1.1e-71	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
+NrdAz	WP_027221072.1	942	467	2	4	3.4e-67	1.1e-63	227.6	0.1	170	340	532	708	518	727	0.95	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
+NrdAz	WP_027221072.1	942	467	3	4	6.1e-16	2e-12	58.6	0.2	339	392	750	803	727	821	0.88	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL	4789*********************************************98765
+NrdAz	WP_027221072.1	942	467	4	4	4.9e-24	1.6e-20	85.3	0	385	463	831	909	816	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	57899*******************************************************************9988776
+NrdAz	WP_027267236.1	942	467	1	4	3.5e-75	1.1e-71	253.9	0	1	175	333	507	333	517	0.98	ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++	EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH	5799************************************************************************************************************************************************************************976
+NrdAz	WP_027267236.1	942	467	2	4	2.3e-67	7.5e-64	228.2	0.1	170	340	532	708	511	728	0.94	evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk	++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++	NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE	6789***************************************************98752799*************99************************73689*******************************************************************985
+NrdAz	WP_027267236.1	942	467	3	4	8.8e-16	2.8e-12	58.1	0.2	339	390	750	801	724	810	0.9	fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse	++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+	VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP	4789*********************************************986
+NrdAz	WP_027267236.1	942	467	4	4	4.7e-24	1.5e-20	85.4	0	385	463	831	909	817	913	0.93	ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe	+ ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e	ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE	56899*******************************************************************9988776
+NrdAz	XP_001505371.1	792	467	1	4	5.4e-76	1.7e-72	256.6	0	2	175	185	360	184	380	0.96	kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik	+a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n dw+l++p+e+p+++	AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNRDWSLMCPNECPGLD	689**************************************************************************************************************************************************************************986
+NrdAz	XP_001505371.1	792	467	2	4	4.8e-65	1.5e-61	220.5	0.1	172	341	382	558	369	567	0.95	pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk	+ +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++id+ +yp++ea++snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y al aS++lAk +g+ye+++	KVVKAQQLWYAIIESQTETGTPYMLYKDTCNRKSNQQNLGTIKCSNLCTEIVEYTSrDEVAVCNLASLALNMFVTlehtyDFKKLAEVTKVIVRNLNKIIDInYYPIPEASTSNKRHRPIGIGVQGLADAFILMRYPFESPEAQLLNQQIFETIYYGALDASCDLAKDHGPYETYQG	5689**************************************************973689**************999************************7478*********************************************************************976
+NrdAz	XP_001505371.1	792	467	3	4	3.1e-16	1e-12	59.6	0	337	393	586	642	580	662	0.92	esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk	e+++k+g+rnslllA++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l	EKIAKYGVRNSLLLAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL	6789************************************************98865
+NrdAz	XP_001505371.1	792	467	4	4	8.3e-25	2.7e-21	87.9	0.1	382	460	666	745	652	748	0.91	sgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae	++++ ++e+lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+	IQSIPEIPEDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA	56778899************************************************************999*****9986
+NCBI	|	AAD37491.1	ribonucleotide reductase M1 subunit [Homo sapiens]
+NCBI	|	AAH06498.1	Ribonucleotide reductase M1 [Homo sapiens]
+NCBI	|	AAU27853.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]
+NCBI	|	ABM83954.1	ribonucleotide reductase M1 polypeptide [synthetic construct]
+NCBI	|	ABM87271.1	ribonucleotide reductase M1 polypeptide, partial [synthetic construct]
+NCBI	|	ADG25113.1	ribonucleoside-diphosphate reductase alpha chain [Legionella pneumophila 2300/99 Alcoy]
+NCBI	|	AEW51974.1	ribonucleoside-diphosphate reductase, alpha subunit [Legionella pneumophila subsp. pneumophila ATCC 43290]
+NCBI	|	AGH53506.1	Ribonucleotide reductase of class Ia (aerobic), alpha subunit [Legionella pneumophila subsp. pneumophila LPE509]
+NCBI	|	AGN14659.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Thunder Bay]
+NCBI	|	AIC55076.1	RRM1, partial [synthetic construct]
+NCBI	|	ANN95787.1	ribonucleoside-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	CAA42118.1	M1 subunit of ribonucleotide reductase [Homo sapiens]
+NCBI	|	CAA42180.1	large subunit ribonucleotide reductase [Homo sapiens]
+NCBI	|	CAH12890.1	hypothetical protein lpp1738 [Legionella pneumophila str. Paris]
+NCBI	|	CZG03212.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG08624.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG08685.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG09753.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG09859.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG12520.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG12622.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG13301.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG13343.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG17273.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG19438.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG21665.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG28187.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG35516.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG39075.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG40498.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG41741.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG43463.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG44933.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG45968.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG47275.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG50330.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG50960.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG52927.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG53675.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG54382.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG56634.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG57015.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG58964.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG59019.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG61986.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG63430.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG74102.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG77280.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG77941.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG79505.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG82487.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZG89879.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH44224.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH48442.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH53523.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH57070.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH58833.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH61365.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH63483.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH66820.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH70601.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH71973.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH76254.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH79287.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH85830.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH87661.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH90547.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZH97074.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI00240.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI01059.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI02181.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI08836.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI13690.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI14252.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI17120.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI20315.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI22518.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI26213.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI29204.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI29851.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI34829.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI38151.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI41049.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI46809.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI57925.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI79927.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI83727.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI90974.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI91099.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZI95500.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ00464.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ08270.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ13215.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ13985.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ22941.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ25904.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ31743.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ36417.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ42642.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ51992.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ52732.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ53513.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ53747.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ57044.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ58666.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ64660.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ65648.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ68209.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ69077.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ70857.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ72038.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ73738.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ73867.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ75826.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ75983.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ77099.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ77153.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ78443.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ78994.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ80498.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ80553.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ82844.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ88306.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ90359.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ94373.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ94539.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ96449.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZJ97522.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK03220.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK03283.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK06509.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK10567.1	ribonucleoside-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	CZK19804.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK20402.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK25877.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK31366.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK32490.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK38465.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK40670.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK41870.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK44414.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK45228.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK45712.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK51823.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK52000.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK52946.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK55306.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK55801.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK58691.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK67382.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK69002.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK73532.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK75400.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK76417.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK79641.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK83855.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK84082.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK89931.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK90944.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZK96240.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL01061.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL03364.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL06601.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL07020.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL07820.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL08518.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL08839.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL19923.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL22771.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL23736.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL24227.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL30215.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL31149.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL36968.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL37319.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL38783.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL40533.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL42813.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL43229.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL44798.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL55897.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL57176.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL63860.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL66038.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL68993.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL75010.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL90958.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZL97230.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZM03097.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZQ77843.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZQ85440.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZQ86138.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZQ86738.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZQ90709.1	Ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	CZR22045.1	ribonucleoside-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	CZR22881.1	ribonucleoside-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	CZR22955.1	ribonucleoside-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	EAX02583.1	ribonucleotide reductase M1 polypeptide [Homo sapiens]
+NCBI	|	GAN27051.1	ribonucleoside-diphosphate reductase 1 subunit alpha [Legionella pneumophila]
+NCBI	|	NP_001024.1	ribonucleoside-diphosphate reductase large subunit isoform 1 [Homo sapiens]
+NCBI	|	P23921.1	RecName: Full=Ribonucleoside-diphosphate reductase large subunit; AltName: Full=Ribonucleoside-diphosphate reductase subunit M1; AltName: Full=Ribonucleotide reductase large subunit
+NCBI	|	pdb|3HNC|A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	|	pdb|3HNC|B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp
+NCBI	|	pdb|3HND|A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	|	pdb|3HND|B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effector Ttp And Substrate Gdp
+NCBI	|	pdb|3HNE|A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	|	pdb|3HNE|B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Atp
+NCBI	|	pdb|3HNF|A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	|	pdb|3HNF|B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To The Effectors Ttp And Datp
+NCBI	|	pdb|4X3V|A	Chain A, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	|	pdb|4X3V|B	Chain B, Crystal Structure Of Human Ribonucleotide Reductase 1 Bound To Inhibitor
+NCBI	|	WP_010947500.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	WP_011214037.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	WP_027221072.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	WP_027267236.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+NCBI	|	XP_001505371.1	PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anatinus]
+NCBI	|	YP_095800.1	ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila subsp. pneumophila str. Philadelphia 1]

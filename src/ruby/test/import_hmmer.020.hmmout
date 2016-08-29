@@ -14,410 +14,315 @@
 Query:       NrdA  [M=467]
 Scores for complete sequences (score includes all domains):
    --- full sequence ---   --- best 1 domain ---    -#dom-
-    E-value  score  bias    E-value  score  bias    exp  N  Sequence                                Description
-    ------- ------ -----    ------- ------ -----   ---- --  --------                                -----------
-     1e-185  629.7   1.2    9.4e-72  253.9   0.0    4.1  4  gi|652968157|ref|WP_027221072.1|         ribonucleotide-diphosphate reduc
-     1e-185  629.7   1.2    9.4e-72  253.9   0.0    4.1  4  gi|499527617|ref|WP_011214037.1|         ribonucleotide-diphosphate reduc
-     1e-185  629.7   1.4    8.9e-73  257.3   0.0    4.1  4  gi|5006420|gb|AAD37491.1|                ribonucleotide reductase M1 subu
-     1e-185  629.7   1.4    8.9e-73  257.3   0.0    4.1  4  gi|4506749|ref|NP_001024.1|              ribonucleoside-diphosphate reduc
-     1e-185  629.7   0.2    1.4e-72  256.6   0.0    4.1  4  gi|149634836|ref|XP_001505371.1|         PREDICTED: ribonucleoside-diphos
-   1.1e-185  629.6   1.4    9.4e-72  253.9   0.0    4.1  4  gi|653015206|ref|WP_027267236.1|         ribonucleotide-diphosphate reduc
-   1.1e-185  629.6   1.4    9.4e-72  253.9   0.0    4.1  4  gi|499249960|ref|WP_010947500.1|         ribonucleotide-diphosphate reduc
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence        Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------        -----------
+   1.2e-185  629.7   1.2    1.1e-71  253.9   0.0    4.1  4  WP_027221072.1  ribonucleotide-diphosphate reductase subunit 
+   1.2e-185  629.7   1.2    1.1e-71  253.9   0.0    4.1  4  WP_011214037.1  ribonucleotide-diphosphate reductase subunit 
+   1.3e-185  629.7   1.4    1.1e-72  257.3   0.0    4.1  4  AAD37491.1      ribonucleotide reductase M1 subunit [Homo sap
+   1.3e-185  629.7   1.4    1.1e-72  257.3   0.0    4.1  4  NP_001024.1     ribonucleoside-diphosphate reductase large su
+   1.3e-185  629.7   0.2    1.7e-72  256.6   0.0    4.1  4  XP_001505371.1  PREDICTED: ribonucleoside-diphosphate reducta
+   1.3e-185  629.6   1.4    1.1e-71  253.9   0.0    4.1  4  WP_027267236.1  ribonucleotide-diphosphate reductase subunit 
+   1.3e-185  629.6   1.4    1.1e-71  253.9   0.0    4.1  4  WP_010947500.1  ribonucleotide-diphosphate reductase subunit 
 
 Domain annotation for each sequence (and alignments):
->> gi|652968157|ref|WP_027221072.1|  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+>> WP_027221072.1  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]CZJ78994.1 Ribonucleoside
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  253.9   0.0   2.9e-75   9.4e-72       1     175 [.     333     507 ..     333     517 .. 0.98
-   2 !  227.6   0.1   2.8e-67     9e-64     170     340 ..     532     708 ..     518     727 .. 0.95
-   3 !   58.6   0.2   5.1e-16   1.6e-12     339     392 ..     750     803 ..     727     821 .. 0.88
-   4 !   85.3   0.0     4e-24   1.3e-20     385     463 ..     831     909 ..     816     913 .. 0.93
+   1 !  253.9   0.0   3.5e-75   1.1e-71       1     175 [.     333     507 ..     333     517 .. 0.98
+   2 !  227.6   0.1   3.4e-67   1.1e-63     170     340 ..     532     708 ..     518     727 .. 0.95
+   3 !   58.6   0.2   6.1e-16     2e-12     339     392 ..     750     803 ..     727     821 .. 0.88
+   4 !   85.3   0.0   4.9e-24   1.6e-20     385     463 ..     831     909 ..     816     913 .. 0.93
 
   Alignments for each domain:
-  == domain 1  score: 253.9 bits;  conditional E-value: 2.9e-75
-                              NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargsk 77 
-                                       eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++
-  gi|652968157|ref|WP_027221072.1| 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAH 409
-                                       5799************************************************************************* PP
+  == domain 1  score: 253.9 bits;  conditional E-value: 3.5e-75
+            NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkll 95 
+                     eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l+++
+  WP_027221072.1 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVA 427
+                     5799******************************************************************************************* PP
 
-                              NrdA  78 IkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfm 154
-                                       Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm
-  gi|652968157|ref|WP_027221072.1| 410 IKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFM 486
-                                       ***************************************************************************** PP
+            NrdA  96 ndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                     + ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++
+  WP_027221072.1 428 DATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH 507
+                     *****************************************************************************976 PP
 
-                              NrdA 155 erveenedwtlfspkevpkik 175
-                                       +rv+e+++wtlfsp+evp+++
-  gi|652968157|ref|WP_027221072.1| 487 KRVREDGNWTLFSPDEVPDLH 507
-                                       ******************976 PP
+  == domain 2  score: 227.6 bits;  conditional E-value: 3.4e-67
+            NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavr 259
+                     ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr
+  WP_027221072.1 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVR 626
+                     6789***************************************************98752799*************99***************** PP
 
-  == domain 2  score: 227.6 bits;  conditional E-value: 2.8e-67
-                              NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde 245
-                                       ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++
-  gi|652968157|ref|WP_027221072.1| 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIK 608
-                                       6789***************************************************98752799*************9 PP
+            NrdA 260 aLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk 340
+                     +Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++
+  WP_027221072.1 627 MLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE 708
+                     *******73689*******************************************************************985 PP
 
-                              NrdA 246 ....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifet 317
-                                           de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e 
-  gi|652968157|ref|WP_027221072.1| 609 ngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMEL 685
-                                       9************************73689*********************************************** PP
+  == domain 3  score: 58.6 bits;  conditional E-value: 6.1e-16
+            NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel 392
+                     ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l
+  WP_027221072.1 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL 803
+                     4789*********************************************98765 PP
 
-                              NrdA 318 inyaaleaSselAkekgeyesfk 340
-                                       i+y+a+eaS++lAke+g+y++++
-  gi|652968157|ref|WP_027221072.1| 686 ISYYAIEASCDLAKERGSYSTYE 708
-                                       ********************985 PP
+  == domain 4  score: 85.3 bits;  conditional E-value: 4.9e-24
+            NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe 463
+                     + +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e
+  WP_027221072.1 831 ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE 909
+                     57899*******************************************************************9988776 PP
 
-  == domain 3  score: 58.6 bits;  conditional E-value: 5.1e-16
-                              NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel 392
-                                       ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l
-  gi|652968157|ref|WP_027221072.1| 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL 803
-                                       4789*********************************************98765 PP
-
-  == domain 4  score: 85.3 bits;  conditional E-value: 4e-24
-                              NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaee 461
-                                       + +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++
-  gi|652968157|ref|WP_027221072.1| 831 ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASN 907
-                                       57899*******************************************************************99887 PP
-
-                              NrdA 462 Ce 463
-                                        e
-  gi|652968157|ref|WP_027221072.1| 908 AE 909
-                                       76 PP
-
->> gi|499527617|ref|WP_011214037.1|  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]gi|5375
+>> WP_011214037.1  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]CAH12890.1 hypothetical p
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  253.9   0.0   2.9e-75   9.4e-72       1     175 [.     333     507 ..     333     517 .. 0.98
-   2 !  227.6   0.1   2.8e-67     9e-64     170     340 ..     532     708 ..     518     727 .. 0.95
-   3 !   58.6   0.2   5.1e-16   1.6e-12     339     392 ..     750     803 ..     727     821 .. 0.88
-   4 !   85.3   0.0     4e-24   1.3e-20     385     463 ..     831     909 ..     816     913 .. 0.93
+   1 !  253.9   0.0   3.5e-75   1.1e-71       1     175 [.     333     507 ..     333     517 .. 0.98
+   2 !  227.6   0.1   3.4e-67   1.1e-63     170     340 ..     532     708 ..     518     727 .. 0.95
+   3 !   58.6   0.2   6.1e-16     2e-12     339     392 ..     750     803 ..     727     821 .. 0.88
+   4 !   85.3   0.0   4.9e-24   1.6e-20     385     463 ..     831     909 ..     816     913 .. 0.93
 
   Alignments for each domain:
-  == domain 1  score: 253.9 bits;  conditional E-value: 2.9e-75
-                              NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargsk 77 
-                                       eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++
-  gi|499527617|ref|WP_011214037.1| 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAH 409
-                                       5799************************************************************************* PP
+  == domain 1  score: 253.9 bits;  conditional E-value: 3.5e-75
+            NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkll 95 
+                     eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l+++
+  WP_011214037.1 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVA 427
+                     5799******************************************************************************************* PP
 
-                              NrdA  78 IkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfm 154
-                                       Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm
-  gi|499527617|ref|WP_011214037.1| 410 IKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFM 486
-                                       ***************************************************************************** PP
+            NrdA  96 ndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                     + ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++
+  WP_011214037.1 428 DATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH 507
+                     *****************************************************************************976 PP
 
-                              NrdA 155 erveenedwtlfspkevpkik 175
-                                       +rv+e+++wtlfsp+evp+++
-  gi|499527617|ref|WP_011214037.1| 487 KRVREDGNWTLFSPDEVPDLH 507
-                                       ******************976 PP
+  == domain 2  score: 227.6 bits;  conditional E-value: 3.4e-67
+            NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavr 259
+                     ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr
+  WP_011214037.1 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIKngklDEQKLKRTISTAVR 626
+                     6789***************************************************98752799*************99***************** PP
 
-  == domain 2  score: 227.6 bits;  conditional E-value: 2.8e-67
-                              NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde 245
-                                       ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++
-  gi|499527617|ref|WP_011214037.1| 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSVNLPAHIK 608
-                                       6789***************************************************98752799*************9 PP
+            NrdA 260 aLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk 340
+                     +Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++
+  WP_011214037.1 627 MLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE 708
+                     *******73689*******************************************************************985 PP
 
-                              NrdA 246 ....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifet 317
-                                           de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e 
-  gi|499527617|ref|WP_011214037.1| 609 ngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMEL 685
-                                       9************************73689*********************************************** PP
+  == domain 3  score: 58.6 bits;  conditional E-value: 6.1e-16
+            NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel 392
+                     ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l
+  WP_011214037.1 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL 803
+                     4789*********************************************98765 PP
 
-                              NrdA 318 inyaaleaSselAkekgeyesfk 340
-                                       i+y+a+eaS++lAke+g+y++++
-  gi|499527617|ref|WP_011214037.1| 686 ISYYAIEASCDLAKERGSYSTYE 708
-                                       ********************985 PP
+  == domain 4  score: 85.3 bits;  conditional E-value: 4.9e-24
+            NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe 463
+                     + +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e
+  WP_011214037.1 831 ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE 909
+                     57899*******************************************************************9988776 PP
 
-  == domain 3  score: 58.6 bits;  conditional E-value: 5.1e-16
-                              NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseel 392
-                                       ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+  l
-  gi|499527617|ref|WP_011214037.1| 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNPYL 803
-                                       4789*********************************************98765 PP
-
-  == domain 4  score: 85.3 bits;  conditional E-value: 4e-24
-                              NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaee 461
-                                       + +++eelk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++
-  gi|499527617|ref|WP_011214037.1| 831 ISRIPEELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASN 907
-                                       57899*******************************************************************99887 PP
-
-                              NrdA 462 Ce 463
-                                        e
-  gi|499527617|ref|WP_011214037.1| 908 AE 909
-                                       76 PP
-
->> gi|5006420|gb|AAD37491.1|  ribonucleotide reductase M1 subunit [Homo sapiens]
+>> AAD37491.1  ribonucleotide reductase M1 subunit [Homo sapiens]
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  257.3   0.0   2.8e-76   8.9e-73       2     175 ..     185     360 ..     184     373 .. 0.98
-   2 !  221.0   0.3   2.8e-65   8.8e-62     172     341 ..     382     558 ..     375     567 .. 0.95
-   3 !   59.0   0.1   3.9e-16   1.2e-12     337     393 ..     586     642 ..     582     662 .. 0.93
-   4 !   88.0   0.0   6.3e-25     2e-21     381     460 ..     665     745 ..     651     748 .. 0.91
+   1 !  257.3   0.0   3.4e-76   1.1e-72       2     175 ..     185     360 ..     184     373 .. 0.98
+   2 !  221.0   0.3   3.3e-65   1.1e-61     172     341 ..     382     558 ..     375     567 .. 0.95
+   3 !   59.0   0.1   4.7e-16   1.5e-12     337     393 ..     586     642 ..     582     662 .. 0.93
+   4 !   88.0   0.0   7.6e-25   2.5e-21     381     460 ..     665     745 ..     651     748 .. 0.91
 
   Alignments for each domain:
-  == domain 1  score: 257.3 bits;  conditional E-value: 2.8e-76
-                       NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegk 84 
-                                +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+
-  gi|5006420|gb|AAD37491.1| 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGN 268
-                                689********************************************************************************* PP
+  == domain 1  score: 257.3 bits;  conditional E-value: 3.4e-76
+        NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndta 99 
+                 +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+ta
+  AAD37491.1 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNTA 283
+                 689************************************************************************************************ PP
 
-                       NrdA  85 ssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfs 167
-                                s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++
-  gi|5006420|gb|AAD37491.1| 269 SNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMC 352
-                                ************************************************************************************ PP
+        NrdA 100 kavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                 ++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++
+  AAD37491.1 284 RYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD 360
+                 *************************************************************************9976 PP
 
-                       NrdA 168 pkevpkik 175
-                                p+e+p+++
-  gi|5006420|gb|AAD37491.1| 353 PNECPGLD 360
-                                ****9976 PP
+  == domain 2  score: 221.0 bits;  conditional E-value: 3.3e-65
+        NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdnv 264
+                 + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L+++
+  AAD37491.1 382 KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNKI 480
+                 5689*************************************************9872589**************999********************** PP
 
-  == domain 2  score: 221.0 bits;  conditional E-value: 2.8e-65
-                       NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deek 249
-                                + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++k
-  gi|5006420|gb|AAD37491.1| 382 KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKK 465
-                                5689*************************************************9872589**************999******* PP
+        NrdA 265 idl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk 341
+                 id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++ 
+  AAD37491.1 481 IDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG 558
+                 **7478*********************************************************************975 PP
 
-                       NrdA 250 leevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAke 332
-                                l+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke
-  gi|5006420|gb|AAD37491.1| 466 LAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKE 549
-                                *****************7478*************************************************************** PP
+  == domain 3  score: 59.0 bits;  conditional E-value: 4.7e-16
+        NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
+                 e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
+  AAD37491.1 586 EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
+                 6789************************************************98865 PP
 
-                       NrdA 333 kgeyesfkk 341
-                                +g+ye+++ 
-  gi|5006420|gb|AAD37491.1| 550 QGPYETYEG 558
-                                ******975 PP
+  == domain 4  score: 88.0 bits;  conditional E-value: 7.6e-25
+        NrdA 381 ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae 460
+                 + ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+
+  AAD37491.1 665 SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA 745
+                 556778899************************************************************999*****9986 PP
 
-  == domain 3  score: 59.0 bits;  conditional E-value: 3.9e-16
-                       NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
-                                e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
-  gi|5006420|gb|AAD37491.1| 586 EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
-                                6789************************************************98865 PP
-
-  == domain 4  score: 88.0 bits;  conditional E-value: 6.3e-25
-                       NrdA 381 ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae 460
-                                + ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+
-  gi|5006420|gb|AAD37491.1| 665 SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA 745
-                                556778899************************************************************999*****9986 PP
-
->> gi|4506749|ref|NP_001024.1|  ribonucleoside-diphosphate reductase large subunit [Homo sapiens]gi|132608|sp|P23921.1|
+>> NP_001024.1  ribonucleoside-diphosphate reductase large subunit isoform 1 [Homo sapiens]P23921.1 RecName: Full=Ribon
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  257.3   0.0   2.8e-76   8.9e-73       2     175 ..     185     360 ..     184     373 .. 0.98
-   2 !  221.0   0.3   2.8e-65   8.8e-62     172     341 ..     382     558 ..     375     567 .. 0.95
-   3 !   59.0   0.1   3.9e-16   1.2e-12     337     393 ..     586     642 ..     582     662 .. 0.93
-   4 !   88.0   0.0   6.3e-25     2e-21     381     460 ..     665     745 ..     651     748 .. 0.91
+   1 !  257.3   0.0   3.4e-76   1.1e-72       2     175 ..     185     360 ..     184     373 .. 0.98
+   2 !  221.0   0.3   3.3e-65   1.1e-61     172     341 ..     382     558 ..     375     567 .. 0.95
+   3 !   59.0   0.1   4.7e-16   1.5e-12     337     393 ..     586     642 ..     582     662 .. 0.93
+   4 !   88.0   0.0   7.6e-25   2.5e-21     381     460 ..     665     745 ..     651     748 .. 0.91
 
   Alignments for each domain:
-  == domain 1  score: 257.3 bits;  conditional E-value: 2.8e-76
-                         NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgte 82 
-                                  +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+
-  gi|4506749|ref|NP_001024.1| 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTN 266
-                                  689******************************************************************************* PP
+  == domain 1  score: 257.3 bits;  conditional E-value: 3.4e-76
+         NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkllndt 98 
+                  +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++n+t
+  NP_001024.1 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVYNNT 282
+                  689*********************************************************************************************** PP
 
-                         NrdA  83 gkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedw 163
-                                  g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw
-  gi|4506749|ref|NP_001024.1| 267 GNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDW 348
-                                  ********************************************************************************** PP
+         NrdA  99 akavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                  a++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n+dw+l++p+e+p+++
+  NP_001024.1 283 ARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNQDWSLMCPNECPGLD 360
+                  **************************************************************************9976 PP
 
-                         NrdA 164 tlfspkevpkik 175
-                                  +l++p+e+p+++
-  gi|4506749|ref|NP_001024.1| 349 SLMCPNECPGLD 360
-                                  ********9976 PP
+  == domain 2  score: 221.0 bits;  conditional E-value: 3.3e-65
+         NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavraLdn 263
+                  + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+L++
+  NP_001024.1 382 KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDFKKLAEVTKVVVRNLNK 479
+                  5689*************************************************9872589**************999********************* PP
 
-  == domain 2  score: 221.0 bits;  conditional E-value: 2.8e-65
-                         NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....de 247
-                                  + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d+
-  gi|4506749|ref|NP_001024.1| 382 KVVKAQQLWYAIIESQTETGTPYMLYKDSCNRKSNQQNLGTIKCSNLCTEIVEYTSkDEVAVCNLASLALNMYVTsehtyDF 463
-                                  5689*************************************************9872589**************999***** PP
+         NrdA 264 vidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk 341
+                  +id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++lAke+g+ye+++ 
+  NP_001024.1 480 IIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCDLAKEQGPYETYEG 558
+                  ***7478*********************************************************************975 PP
 
-                         NrdA 248 ekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSse 328
-                                  +kl+ev++++vr+L+++id+ +ypv+ea  snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y aleaS++
-  gi|4506749|ref|NP_001024.1| 464 KKLAEVTKVVVRNLNKIIDInYYPVPEACLSNKRHRPIGIGVQGLADAFILMRYPFESAEAQLLNKQIFETIYYGALEASCD 545
-                                  *******************7478*********************************************************** PP
+  == domain 3  score: 59.0 bits;  conditional E-value: 4.7e-16
+         NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
+                  e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
+  NP_001024.1 586 EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
+                  6789************************************************98865 PP
 
-                         NrdA 329 lAkekgeyesfkk 341
-                                  lAke+g+ye+++ 
-  gi|4506749|ref|NP_001024.1| 546 LAKEQGPYETYEG 558
-                                  **********975 PP
+  == domain 4  score: 88.0 bits;  conditional E-value: 7.6e-25
+         NrdA 381 ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae 460
+                  + ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+
+  NP_001024.1 665 SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA 745
+                  556778899************************************************************999*****9986 PP
 
-  == domain 3  score: 59.0 bits;  conditional E-value: 3.9e-16
-                         NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
-                                  e+++k+g+rnsll+A++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
-  gi|4506749|ref|NP_001024.1| 586 EKIAKYGIRNSLLIAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
-                                  6789************************************************98865 PP
-
-  == domain 4  score: 88.0 bits;  conditional E-value: 6.3e-25
-                         NrdA 381 ksgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae 460
-                                  + ++++ ++++lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+
-  gi|4506749|ref|NP_001024.1| 665 SIQSIPEIPDDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA 745
-                                  556778899************************************************************999*****9986 PP
-
->> gi|149634836|ref|XP_001505371.1|  PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anat
+>> XP_001505371.1  PREDICTED: ribonucleoside-diphosphate reductase large subunit [Ornithorhynchus anatinus]
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  256.6   0.0   4.4e-76   1.4e-72       2     175 ..     185     360 ..     184     380 .. 0.96
-   2 !  220.5   0.1     4e-65   1.3e-61     172     341 ..     382     558 ..     369     567 .. 0.95
-   3 !   59.6   0.0   2.6e-16   8.2e-13     337     393 ..     586     642 ..     580     662 .. 0.92
-   4 !   87.9   0.1   6.9e-25   2.2e-21     382     460 ..     666     745 ..     652     748 .. 0.91
+   1 !  256.6   0.0   5.4e-76   1.7e-72       2     175 ..     185     360 ..     184     380 .. 0.96
+   2 !  220.5   0.1   4.8e-65   1.5e-61     172     341 ..     382     558 ..     369     567 .. 0.95
+   3 !   59.6   0.0   3.1e-16     1e-12     337     393 ..     586     642 ..     580     662 .. 0.92
+   4 !   87.9   0.1   8.3e-25   2.7e-21     382     460 ..     666     745 ..     652     748 .. 0.91
 
   Alignments for each domain:
-  == domain 1  score: 256.6 bits;  conditional E-value: 4.4e-76
-                              NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargsk 77 
-                                       +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+
-  gi|149634836|ref|XP_001505371.1| 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSY 261
-                                       689************************************************************************** PP
+  == domain 1  score: 256.6 bits;  conditional E-value: 5.4e-76
+            NrdA   2 kakefydllskkkftlatPtllnagtkrgqlsSCfllev.eDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkll 95 
+                     +a+e+y+lls+++ft+a+Ptl+nagt+r+qlsSCfll++ +Ds+egIy+++k++a +sk++gGig+ ++ +Ra+gs+I+gt+g+s+G+vp+l+++
+  XP_001505371.1 185 AAIETYNLLSERWFTHASPTLFNAGTNRPQLSSCFLLSMkDDSIEGIYDTLKQCALISKSAGGIGVAVSCIRATGSYIAGTNGNSNGLVPMLRVY 279
+                     689******************************************************************************************** PP
 
-                              NrdA  78 IkgtegkssGvvpvlkllndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlf 153
-                                       I+gt+g+s+G+vp+l+++n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlf
-  gi|149634836|ref|XP_001505371.1| 262 IAGTNGNSNGLVPMLRVYNNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLF 338
-                                       ***************************************************************************** PP
+            NrdA  96 ndtakavnqgg.kRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                     n+ta++v+qgg kR+Ga+a+yle+wh di+efldlkkn+g+ee+rardl++++++pdlfm+rve+n dw+l++p+e+p+++
+  XP_001505371.1 280 NNTARYVDQGGnKRPGAFAIYLEPWHLDIFEFLDLKKNTGKEEQRARDLFFALWIPDLFMKRVETNRDWSLMCPNECPGLD 360
+                     ******************************************************************************986 PP
 
-                              NrdA 154 merveenedwtlfspkevpkik 175
-                                       m+rve+n dw+l++p+e+p+++
-  gi|149634836|ref|XP_001505371.1| 339 MKRVETNRDWSLMCPNECPGLD 360
-                                       *******************986 PP
+  == domain 2  score: 220.5 bits;  conditional E-value: 4.8e-65
+            NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.....deekleevvetavra 260
+                     + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++     d++kl+ev++++vr+
+  XP_001505371.1 382 KVVKAQQLWYAIIESQTETGTPYMLYKDTCNRKSNQQNLGTIKCSNLCTEIVEYTSrDEVAVCNLASLALNMFVTlehtyDFKKLAEVTKVIVRN 476
+                     5689**************************************************973689**************999****************** PP
 
-  == domain 2  score: 220.5 bits;  conditional E-value: 4e-65
-                              NrdA 172 pkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllpts.eeiavCnLaSlnlakvde.. 245
-                                       + +ka++lw +i++sq+etGtpY+l+kd++Nrks+q+nlgtik+SNLCtEI+++ts +e+avCnLaSl+l+ +++  
-  gi|149634836|ref|XP_001505371.1| 382 KVVKAQQLWYAIIESQTETGTPYMLYKDTCNRKSNQQNLGTIKCSNLCTEIVEYTSrDEVAVCNLASLALNMFVTle 458
-                                       5689**************************************************973689**************999 PP
+            NrdA 261 Ldnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfkk 341
+                     L+++id+ +yp++ea++snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti+y al aS++lAk +g+ye+++ 
+  XP_001505371.1 477 LNKIIDInYYPIPEASTSNKRHRPIGIGVQGLADAFILMRYPFESPEAQLLNQQIFETIYYGALDASCDLAKDHGPYETYQG 558
+                     ******7478*********************************************************************976 PP
 
-                              NrdA 246 ...deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifeti 318
-                                          d++kl+ev++++vr+L+++id+ +yp++ea++snkrhr+iG+Gv+gl+da++ +++p+es+ea+ ln++ifeti
-  gi|149634836|ref|XP_001505371.1| 459 htyDFKKLAEVTKVIVRNLNKIIDInYYPIPEASTSNKRHRPIGIGVQGLADAFILMRYPFESPEAQLLNQQIFETI 535
-                                       ************************7478************************************************* PP
+  == domain 3  score: 59.6 bits;  conditional E-value: 3.1e-16
+            NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
+                     e+++k+g+rnslllA++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
+  XP_001505371.1 586 EKIAKYGVRNSLLLAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
+                     6789************************************************98865 PP
 
-                              NrdA 319 nyaaleaSselAkekgeyesfkk 341
-                                       +y al aS++lAk +g+ye+++ 
-  gi|149634836|ref|XP_001505371.1| 536 YYGALDASCDLAKDHGPYETYQG 558
-                                       ********************976 PP
+  == domain 4  score: 87.9 bits;  conditional E-value: 8.3e-25
+            NrdA 382 sgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtksae 460
+                      ++++ ++e+lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt++a+
+  XP_001505371.1 666 IQSIPEIPEDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTRPAA 745
+                     56778899************************************************************999*****9986 PP
 
-  == domain 3  score: 59.6 bits;  conditional E-value: 2.6e-16
-                              NrdA 337 esfkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvseelk 393
-                                       e+++k+g+rnslllA++PtaS++qilg++esieP++sniy+r+++sgef++v+ +l 
-  gi|149634836|ref|XP_001505371.1| 586 EKIAKYGVRNSLLLAPMPTASTAQILGNNESIEPYTSNIYTRRVLSGEFQIVNPHLL 642
-                                       6789************************************************98865 PP
-
-  == domain 4  score: 87.9 bits;  conditional E-value: 6.9e-25
-                              NrdA 382 sgeftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKt.lYYlrtk 457
-                                        ++++ ++e+lk+lYkt+wei+qk+++++aa+r++fidQsqSln++i+e ++ kl+++++y wk+glKt +YYlrt+
-  gi|149634836|ref|XP_001505371.1| 666 IQSIPEIPEDLKQLYKTVWEISQKTVLKMAAERGAFIDQSQSLNIHIAEPNYGKLTSMHFYGWKQGLKTgMYYLRTR 742
-                                       56778899************************************************************999*****9 PP
-
-                              NrdA 458 sae 460
-                                       +a+
-  gi|149634836|ref|XP_001505371.1| 743 PAA 745
-                                       986 PP
-
->> gi|653015206|ref|WP_027267236.1|  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
+>> WP_027267236.1  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  253.9   0.0   2.9e-75   9.4e-72       1     175 [.     333     507 ..     333     517 .. 0.98
-   2 !  228.2   0.1   1.9e-67   6.1e-64     170     340 ..     532     708 ..     511     728 .. 0.94
-   3 !   58.1   0.2   7.3e-16   2.3e-12     339     390 ..     750     801 ..     724     810 .. 0.90
-   4 !   85.4   0.0   3.9e-24   1.2e-20     385     463 ..     831     909 ..     817     913 .. 0.93
+   1 !  253.9   0.0   3.5e-75   1.1e-71       1     175 [.     333     507 ..     333     517 .. 0.98
+   2 !  228.2   0.1   2.3e-67   7.5e-64     170     340 ..     532     708 ..     511     728 .. 0.94
+   3 !   58.1   0.2   8.8e-16   2.8e-12     339     390 ..     750     801 ..     724     810 .. 0.90
+   4 !   85.4   0.0   4.7e-24   1.5e-20     385     463 ..     831     909 ..     817     913 .. 0.93
 
   Alignments for each domain:
-  == domain 1  score: 253.9 bits;  conditional E-value: 2.9e-75
-                              NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargsk 77 
-                                       eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++
-  gi|653015206|ref|WP_027267236.1| 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAH 409
-                                       5799************************************************************************* PP
+  == domain 1  score: 253.9 bits;  conditional E-value: 3.5e-75
+            NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkll 95 
+                     eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l+++
+  WP_027267236.1 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVA 427
+                     5799******************************************************************************************* PP
 
-                              NrdA  78 IkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfm 154
-                                       Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm
-  gi|653015206|ref|WP_027267236.1| 410 IKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFM 486
-                                       ***************************************************************************** PP
+            NrdA  96 ndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                     + ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++
+  WP_027267236.1 428 DATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH 507
+                     *****************************************************************************976 PP
 
-                              NrdA 155 erveenedwtlfspkevpkik 175
-                                       +rv+e+++wtlfsp+evp+++
-  gi|653015206|ref|WP_027267236.1| 487 KRVREDGNWTLFSPDEVPDLH 507
-                                       ******************976 PP
+  == domain 2  score: 228.2 bits;  conditional E-value: 2.3e-67
+            NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavr 259
+                     ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr
+  WP_027267236.1 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVR 626
+                     6789***************************************************98752799*************99***************** PP
 
-  == domain 2  score: 228.2 bits;  conditional E-value: 1.9e-67
-                              NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde 245
-                                       ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++
-  gi|653015206|ref|WP_027267236.1| 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIK 608
-                                       6789***************************************************98752799*************9 PP
+            NrdA 260 aLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk 340
+                     +Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++
+  WP_027267236.1 627 MLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE 708
+                     *******73689*******************************************************************985 PP
 
-                              NrdA 246 ....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifet 317
-                                           de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e 
-  gi|653015206|ref|WP_027267236.1| 609 ngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMEL 685
-                                       9************************73689*********************************************** PP
+  == domain 3  score: 58.1 bits;  conditional E-value: 8.8e-16
+            NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse 390
+                     ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+ 
+  WP_027267236.1 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP 801
+                     4789*********************************************986 PP
 
-                              NrdA 318 inyaaleaSselAkekgeyesfk 340
-                                       i+y+a+eaS++lAke+g+y++++
-  gi|653015206|ref|WP_027267236.1| 686 ISYYAIEASCDLAKERGSYSTYE 708
-                                       ********************985 PP
+  == domain 4  score: 85.4 bits;  conditional E-value: 4.7e-24
+            NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe 463
+                     + ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e
+  WP_027267236.1 831 ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE 909
+                     56899*******************************************************************9988776 PP
 
-  == domain 3  score: 58.1 bits;  conditional E-value: 7.3e-16
-                              NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse 390
-                                       ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+ 
-  gi|653015206|ref|WP_027267236.1| 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP 801
-                                       4789*********************************************986 PP
-
-  == domain 4  score: 85.4 bits;  conditional E-value: 3.9e-24
-                              NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaee 461
-                                       + ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++
-  gi|653015206|ref|WP_027267236.1| 831 ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASN 907
-                                       56899*******************************************************************99887 PP
-
-                              NrdA 462 Ce 463
-                                        e
-  gi|653015206|ref|WP_027267236.1| 908 AE 909
-                                       76 PP
-
->> gi|499249960|ref|WP_010947500.1|  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]gi|5284
+>> WP_010947500.1  ribonucleotide-diphosphate reductase subunit alpha [Legionella pneumophila]YP_095800.1 ribonucleotid
    #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
  ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
-   1 !  253.9   0.0   2.9e-75   9.4e-72       1     175 [.     333     507 ..     333     517 .. 0.98
-   2 !  228.2   0.1   1.9e-67   6.1e-64     170     340 ..     532     708 ..     511     728 .. 0.94
-   3 !   58.1   0.2   7.3e-16   2.3e-12     339     390 ..     750     801 ..     724     810 .. 0.90
-   4 !   85.4   0.0   3.9e-24   1.2e-20     385     463 ..     831     909 ..     817     913 .. 0.93
+   1 !  253.9   0.0   3.5e-75   1.1e-71       1     175 [.     333     507 ..     333     517 .. 0.98
+   2 !  228.2   0.1   2.3e-67   7.5e-64     170     340 ..     532     708 ..     511     728 .. 0.94
+   3 !   58.1   0.2   8.8e-16   2.8e-12     339     390 ..     750     801 ..     724     810 .. 0.90
+   4 !   85.4   0.0   4.7e-24   1.5e-20     385     463 ..     831     909 ..     817     913 .. 0.93
 
   Alignments for each domain:
-  == domain 1  score: 253.9 bits;  conditional E-value: 2.9e-75
-                              NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargsk 77 
-                                       eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++
-  gi|499249960|ref|WP_010947500.1| 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAH 409
-                                       5799************************************************************************* PP
+  == domain 1  score: 253.9 bits;  conditional E-value: 3.5e-75
+            NrdA   1 ekakefydllskkkftlatPtllnagtkrgqlsSCflleveDslegIyeaikeaaqlskkggGiglnlgkvRargskIkgtegkssGvvpvlkll 95 
+                     eka+efy+lls+++++++tPtl+n+gt r+qlsSC+l++v+D l+gIy+aik++a lsk++gG+g++++ vRa+g++Ikgt+gks+Gvvp+l+++
+  WP_010947500.1 333 EKAIEFYQLLSSFDYMSSTPTLFNSGTVRPQLSSCYLTTVPDHLDGIYSAIKDNALLSKYAGGLGNDWTPVRAMGAHIKGTNGKSQGVVPFLNVA 427
+                     5799******************************************************************************************* PP
 
-                              NrdA  78 IkgtegkssGvvpvlkllndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfm 154
-                                       Ikgt+gks+Gvvp+l++++ ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm
-  gi|499249960|ref|WP_010947500.1| 410 IKGTNGKSQGVVPFLNVADATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFM 486
-                                       ***************************************************************************** PP
+            NrdA  96 ndtakavnqggkRkGavavyleiwhadieefldlkknngdeerrardlslgvvvpdlfmerveenedwtlfspkevpkik 175
+                     + ta+avnqggkRkGav++yle+wh+d+eefl+l+kn+gd++rr++d++++++vpdlfm+rv+e+++wtlfsp+evp+++
+  WP_010947500.1 428 DATAVAVNQGGKRKGAVCAYLECWHRDVEEFLELRKNTGDDRRRTHDMNTALWVPDLFMKRVREDGNWTLFSPDEVPDLH 507
+                     *****************************************************************************976 PP
 
-                              NrdA 155 erveenedwtlfspkevpkik 175
-                                       +rv+e+++wtlfsp+evp+++
-  gi|499249960|ref|WP_010947500.1| 487 KRVREDGNWTLFSPDEVPDLH 507
-                                       ******************976 PP
+  == domain 2  score: 228.2 bits;  conditional E-value: 2.3e-67
+            NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde....deekleevvetavr 259
+                     ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++    de+kl+++++tavr
+  WP_010947500.1 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIKngklDEQKLKRTISTAVR 626
+                     6789***************************************************98752799*************99***************** PP
 
-  == domain 2  score: 228.2 bits;  conditional E-value: 1.9e-67
-                              NrdA 170 evpkikarelwrkilksqvetGtpYilfkdnvNrkspqknlgtiksSNLCtEIllptse.eiavCnLaSlnlakvde 245
-                                       ++++i+a +lwr++l++ +etG+p+++fkd +N +spq+++g+i+sSNLCtEI+l+tse eiavCnL+S+nl+++++
-  gi|499249960|ref|WP_010947500.1| 532 NTKTISAVKLWRRMLSMLFETGHPWLTFKDPCNLRSPQQHAGVIHSSNLCTEITLNTSEeEIAVCNLGSINLPAHIK 608
-                                       6789***************************************************98752799*************9 PP
+            NrdA 260 aLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifetinyaaleaSselAkekgeyesfk 340
+                     +Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e i+y+a+eaS++lAke+g+y++++
+  WP_010947500.1 627 MLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMELISYYAIEASCDLAKERGSYSTYE 708
+                     *******73689*******************************************************************985 PP
 
-                              NrdA 246 ....deekleevvetavraLdnvidl.iypveeakksnkrhrsiGlGvmglhdaLaknkipyeseeakelndeifet 317
-                                           de+kl+++++tavr+Ldnvid+ +y+v++a++sn +hr+iGlG+mg++daL++ k++y+s+ea e++d  +e 
-  gi|499249960|ref|WP_010947500.1| 609 ngklDEQKLKRTISTAVRMLDNVIDInYYSVPQARNSNLQHRPIGLGIMGFQDALYELKMDYASKEAIEFADSSMEL 685
-                                       9************************73689*********************************************** PP
+  == domain 3  score: 58.1 bits;  conditional E-value: 8.8e-16
+            NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse 390
+                     ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+ 
+  WP_010947500.1 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP 801
+                     4789*********************************************986 PP
 
-                              NrdA 318 inyaaleaSselAkekgeyesfk 340
-                                       i+y+a+eaS++lAke+g+y++++
-  gi|499249960|ref|WP_010947500.1| 686 ISYYAIEASCDLAKERGSYSTYE 708
-                                       ********************985 PP
-
-  == domain 3  score: 58.1 bits;  conditional E-value: 7.3e-16
-                              NrdA 339 fkkhglrnslllAiaPtaSiSqilgvtesiePivsniyvrksksgeftvvse 390
-                                       ++++g+rns+++AiaPta+iS+i+gv++sieP+++n+yv++++sgeftvv+ 
-  gi|499249960|ref|WP_010947500.1| 750 VRTQGMRNSNVMAIAPTATISNICGVSQSIEPTYQNLYVKSNLSGEFTVVNP 801
-                                       4789*********************************************986 PP
-
-  == domain 4  score: 85.4 bits;  conditional E-value: 3.9e-24
-                              NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaee 461
-                                       + ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++
-  gi|499249960|ref|WP_010947500.1| 831 ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASN 907
-                                       56899*******************************************************************99887 PP
-
-                              NrdA 462 Ce 463
-                                        e
-  gi|499249960|ref|WP_010947500.1| 908 AE 909
-                                       76 PP
+  == domain 4  score: 85.4 bits;  conditional E-value: 4.7e-24
+            NrdA 385 ftvvseelkelYktaweidqkklidlaadrqkfidQsqSlnlfikevttrkllklylyawkkglKtlYYlrtksaeeCe 463
+                     + ++++elk  Y+t +eid+++l+++a++rqk+idQ+qSln+++++ + +kl++ly++aw +glKt+YYlr+  a++ e
+  WP_010947500.1 831 ISRIPDELKRRYATSFEIDPMWLVEAASRRQKWIDQAQSLNIYMAQPSGKKLDQLYMHAWIRGLKTTYYLRSLGASNAE 909
+                     56899*******************************************************************9988776 PP
 

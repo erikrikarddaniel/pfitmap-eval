@@ -42,7 +42,7 @@ FROM
   hmm_result_rows hrr ON hr.id = hrr.hmm_result_id JOIN
   hmm_result_domains hrd ON hrr.id = hrd.hmm_result_row_id
 ORDER BY
-  hrr.id, hrd.i
+  1, 2, 3, 4, 5
 ;
 
 -- Sequences

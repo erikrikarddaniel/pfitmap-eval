@@ -170,7 +170,6 @@ con.transaction do |con|
 ###	  end
 ###	end
 
-# hmm_result_row_id, seq_src, accno, name
 	rs = con.exec_prepared 'ins_name', [
 	    tnameindex[tname][:id], @options[:ss][0], accno, name
 	  ]
