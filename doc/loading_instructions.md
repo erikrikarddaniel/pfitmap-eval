@@ -57,10 +57,10 @@ $ cd biosql-path/
 $ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download --nodelete
 ```
 
+### Sequence data
+
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
 the `fetch_ncbi_store` in `src/python` and a list of accession numbers.
-
-### Sequence data
 
 Sequence data is stored in the BioSQL schema in the same database as everything 
 else. To make sure everything is there you must first generate a list of accession
