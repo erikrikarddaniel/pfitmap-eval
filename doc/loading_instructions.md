@@ -106,9 +106,10 @@ Most convenient is to symlink also this to the BioSQL `taxdata` directory.
 ## Export
 
 Data will eventually be exported to the pfitmap-2 database. Until that work is 
-completed, a work table called 'classified_proteins' can be constructed:
+completed, a couple of work tables called 'best_seq_score_per_parent' and 'classified_proteins' can be constructed:
 
 ```
  $ cd src/sql/ddl
+ $ psql dbname -f best_seq_score_per_parent.sql
  $ psql dbname -f classified_proteins.sql
  ```
