@@ -54,13 +54,13 @@ columns. Call like this, assuming a PostgreSQL database:
 
 ```
 $ cd biosql-path/
-$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download
+$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download --nodelete
 ```
+
+### Sequence data
 
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
 the `fetch_ncbi_store` in `src/python` and a list of accession numbers.
-
-### Sequence data
 
 Sequence data is stored in the BioSQL schema in the same database as everything 
 else. To make sure everything is there you must first generate a list of accession
@@ -106,9 +106,10 @@ Most convenient is to symlink also this to the BioSQL `taxdata` directory.
 ## Export
 
 Data will eventually be exported to the pfitmap-2 database. Until that work is 
-completed, a work table called 'classified_proteins' can be constructed:
+completed, a couple of work tables called 'best_seq_score_per_parent' and 'classified_proteins' can be constructed:
 
 ```
  $ cd src/sql/ddl
+ $ psql dbname -f best_seq_score_per_parent.sql
  $ psql dbname -f classified_proteins.sql
  ```
