@@ -54,7 +54,7 @@ columns. Call like this, assuming a PostgreSQL database:
 
 ```
 $ cd biosql-path/
-$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download
+$ scripts/load_ncbi_taxonomy.pl --dbname dbname --driver Pg --download --nodelete
 ```
 
 Data, in the form of fasta and GenBank files, can be fetched from NCBI using
