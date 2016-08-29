@@ -803,352 +803,224 @@ CREATE INDEX trmrel_predicateid ON term_relationship USING btree (predicate_term
 -- Name: rule_biodatabase_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_biodatabase_i AS
-    ON INSERT TO biodatabase
-   WHERE (( SELECT biodatabase.biodatabase_id
-           FROM biodatabase
-          WHERE ((biodatabase.name)::text = (new.name)::text)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_biodatabase_i AS ON INSERT TO biodatabase WHERE ((SELECT biodatabase.biodatabase_id FROM biodatabase WHERE ((biodatabase.name)::text = (new.name)::text)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_dbxref_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_dbxref_i AS
-    ON INSERT TO bioentry_dbxref
-   WHERE (( SELECT bioentry_dbxref.dbxref_id
-           FROM bioentry_dbxref
-          WHERE ((bioentry_dbxref.bioentry_id = new.bioentry_id) AND (bioentry_dbxref.dbxref_id = new.dbxref_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_dbxref_i AS ON INSERT TO bioentry_dbxref WHERE ((SELECT bioentry_dbxref.dbxref_id FROM bioentry_dbxref WHERE ((bioentry_dbxref.bioentry_id = new.bioentry_id) AND (bioentry_dbxref.dbxref_id = new.dbxref_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_i1; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_i1 AS
-    ON INSERT TO bioentry
-   WHERE (( SELECT bioentry.bioentry_id
-           FROM bioentry
-          WHERE (((bioentry.identifier)::text = (new.identifier)::text) AND (bioentry.biodatabase_id = new.biodatabase_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_i1 AS ON INSERT TO bioentry WHERE ((SELECT bioentry.bioentry_id FROM bioentry WHERE (((bioentry.identifier)::text = (new.identifier)::text) AND (bioentry.biodatabase_id = new.biodatabase_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_i2; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_i2 AS
-    ON INSERT TO bioentry
-   WHERE (( SELECT bioentry.bioentry_id
-           FROM bioentry
-          WHERE ((((bioentry.accession)::text = (new.accession)::text) AND (bioentry.biodatabase_id = new.biodatabase_id)) AND (bioentry.version = new.version))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_i2 AS ON INSERT TO bioentry WHERE ((SELECT bioentry.bioentry_id FROM bioentry WHERE ((((bioentry.accession)::text = (new.accession)::text) AND (bioentry.biodatabase_id = new.biodatabase_id)) AND (bioentry.version = new.version))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_path_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_path_i AS
-    ON INSERT TO bioentry_path
-   WHERE (( SELECT bioentry_relationship.bioentry_relationship_id
-           FROM bioentry_relationship
-          WHERE (((bioentry_relationship.object_bioentry_id = new.object_bioentry_id) AND (bioentry_relationship.subject_bioentry_id = new.subject_bioentry_id)) AND (bioentry_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_path_i AS ON INSERT TO bioentry_path WHERE ((SELECT bioentry_relationship.bioentry_relationship_id FROM bioentry_relationship WHERE (((bioentry_relationship.object_bioentry_id = new.object_bioentry_id) AND (bioentry_relationship.subject_bioentry_id = new.subject_bioentry_id)) AND (bioentry_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_qualifier_value_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_qualifier_value_i AS
-    ON INSERT TO bioentry_qualifier_value
-   WHERE (( SELECT bioentry_qualifier_value.bioentry_id
-           FROM bioentry_qualifier_value
-          WHERE (((bioentry_qualifier_value.bioentry_id = new.bioentry_id) AND (bioentry_qualifier_value.term_id = new.term_id)) AND (bioentry_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_qualifier_value_i AS ON INSERT TO bioentry_qualifier_value WHERE ((SELECT bioentry_qualifier_value.bioentry_id FROM bioentry_qualifier_value WHERE (((bioentry_qualifier_value.bioentry_id = new.bioentry_id) AND (bioentry_qualifier_value.term_id = new.term_id)) AND (bioentry_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_reference_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_reference_i AS
-    ON INSERT TO bioentry_reference
-   WHERE (( SELECT bioentry_reference.bioentry_id
-           FROM bioentry_reference
-          WHERE (((bioentry_reference.bioentry_id = new.bioentry_id) AND (bioentry_reference.reference_id = new.reference_id)) AND (bioentry_reference.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_reference_i AS ON INSERT TO bioentry_reference WHERE ((SELECT bioentry_reference.bioentry_id FROM bioentry_reference WHERE (((bioentry_reference.bioentry_id = new.bioentry_id) AND (bioentry_reference.reference_id = new.reference_id)) AND (bioentry_reference.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_bioentry_relationship_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_bioentry_relationship_i AS
-    ON INSERT TO bioentry_relationship
-   WHERE (( SELECT bioentry_relationship.bioentry_relationship_id
-           FROM bioentry_relationship
-          WHERE (((bioentry_relationship.object_bioentry_id = new.object_bioentry_id) AND (bioentry_relationship.subject_bioentry_id = new.subject_bioentry_id)) AND (bioentry_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_bioentry_relationship_i AS ON INSERT TO bioentry_relationship WHERE ((SELECT bioentry_relationship.bioentry_relationship_id FROM bioentry_relationship WHERE (((bioentry_relationship.object_bioentry_id = new.object_bioentry_id) AND (bioentry_relationship.subject_bioentry_id = new.subject_bioentry_id)) AND (bioentry_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_biosequence_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_biosequence_i AS
-    ON INSERT TO biosequence
-   WHERE (( SELECT biosequence.bioentry_id
-           FROM biosequence
-          WHERE (biosequence.bioentry_id = new.bioentry_id)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_biosequence_i AS ON INSERT TO biosequence WHERE ((SELECT biosequence.bioentry_id FROM biosequence WHERE (biosequence.bioentry_id = new.bioentry_id)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_comment_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_comment_i AS
-    ON INSERT TO comment
-   WHERE (( SELECT comment.comment_id
-           FROM comment
-          WHERE ((comment.bioentry_id = new.bioentry_id) AND (comment.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_comment_i AS ON INSERT TO comment WHERE ((SELECT comment.comment_id FROM comment WHERE ((comment.bioentry_id = new.bioentry_id) AND (comment.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_dbxref_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_dbxref_i AS
-    ON INSERT TO dbxref
-   WHERE (( SELECT dbxref.dbxref_id
-           FROM dbxref
-          WHERE ((((dbxref.accession)::text = (new.accession)::text) AND ((dbxref.dbname)::text = (new.dbname)::text)) AND (dbxref.version = new.version))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_dbxref_i AS ON INSERT TO dbxref WHERE ((SELECT dbxref.dbxref_id FROM dbxref WHERE ((((dbxref.accession)::text = (new.accession)::text) AND ((dbxref.dbname)::text = (new.dbname)::text)) AND (dbxref.version = new.version))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_dbxref_qualifier_value_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_dbxref_qualifier_value_i AS
-    ON INSERT TO dbxref_qualifier_value
-   WHERE (( SELECT dbxref_qualifier_value.dbxref_id
-           FROM dbxref_qualifier_value
-          WHERE (((dbxref_qualifier_value.dbxref_id = new.dbxref_id) AND (dbxref_qualifier_value.term_id = new.term_id)) AND (dbxref_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_dbxref_qualifier_value_i AS ON INSERT TO dbxref_qualifier_value WHERE ((SELECT dbxref_qualifier_value.dbxref_id FROM dbxref_qualifier_value WHERE (((dbxref_qualifier_value.dbxref_id = new.dbxref_id) AND (dbxref_qualifier_value.term_id = new.term_id)) AND (dbxref_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_location_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_location_i AS
-    ON INSERT TO location
-   WHERE (( SELECT location.location_id
-           FROM location
-          WHERE ((location.seqfeature_id = new.seqfeature_id) AND (location.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_location_i AS ON INSERT TO location WHERE ((SELECT location.location_id FROM location WHERE ((location.seqfeature_id = new.seqfeature_id) AND (location.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_location_qualifier_value_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_location_qualifier_value_i AS
-    ON INSERT TO location_qualifier_value
-   WHERE (( SELECT location_qualifier_value.location_id
-           FROM location_qualifier_value
-          WHERE ((location_qualifier_value.location_id = new.location_id) AND (location_qualifier_value.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_location_qualifier_value_i AS ON INSERT TO location_qualifier_value WHERE ((SELECT location_qualifier_value.location_id FROM location_qualifier_value WHERE ((location_qualifier_value.location_id = new.location_id) AND (location_qualifier_value.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_ontology_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_ontology_i AS
-    ON INSERT TO ontology
-   WHERE (( SELECT ontology.ontology_id
-           FROM ontology
-          WHERE ((ontology.name)::text = (new.name)::text)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_ontology_i AS ON INSERT TO ontology WHERE ((SELECT ontology.ontology_id FROM ontology WHERE ((ontology.name)::text = (new.name)::text)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_reference_i1; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_reference_i1 AS
-    ON INSERT TO reference
-   WHERE (( SELECT reference.reference_id
-           FROM reference
-          WHERE ((reference.crc)::text = (new.crc)::text)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_reference_i1 AS ON INSERT TO reference WHERE ((SELECT reference.reference_id FROM reference WHERE ((reference.crc)::text = (new.crc)::text)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_reference_i2; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_reference_i2 AS
-    ON INSERT TO reference
-   WHERE (( SELECT reference.reference_id
-           FROM reference
-          WHERE (reference.dbxref_id = new.dbxref_id)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_reference_i2 AS ON INSERT TO reference WHERE ((SELECT reference.reference_id FROM reference WHERE (reference.dbxref_id = new.dbxref_id)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_seqfeature_dbxref_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_seqfeature_dbxref_i AS
-    ON INSERT TO seqfeature_dbxref
-   WHERE (( SELECT seqfeature_dbxref.seqfeature_id
-           FROM seqfeature_dbxref
-          WHERE ((seqfeature_dbxref.seqfeature_id = new.seqfeature_id) AND (seqfeature_dbxref.dbxref_id = new.dbxref_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_seqfeature_dbxref_i AS ON INSERT TO seqfeature_dbxref WHERE ((SELECT seqfeature_dbxref.seqfeature_id FROM seqfeature_dbxref WHERE ((seqfeature_dbxref.seqfeature_id = new.seqfeature_id) AND (seqfeature_dbxref.dbxref_id = new.dbxref_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_seqfeature_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_seqfeature_i AS
-    ON INSERT TO seqfeature
-   WHERE (( SELECT seqfeature.seqfeature_id
-           FROM seqfeature
-          WHERE ((((seqfeature.bioentry_id = new.bioentry_id) AND (seqfeature.type_term_id = new.type_term_id)) AND (seqfeature.source_term_id = new.source_term_id)) AND (seqfeature.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_seqfeature_i AS ON INSERT TO seqfeature WHERE ((SELECT seqfeature.seqfeature_id FROM seqfeature WHERE ((((seqfeature.bioentry_id = new.bioentry_id) AND (seqfeature.type_term_id = new.type_term_id)) AND (seqfeature.source_term_id = new.source_term_id)) AND (seqfeature.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_seqfeature_path_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_seqfeature_path_i AS
-    ON INSERT TO seqfeature_path
-   WHERE (( SELECT seqfeature_path.subject_seqfeature_id
-           FROM seqfeature_path
-          WHERE (((seqfeature_path.object_seqfeature_id = new.object_seqfeature_id) AND (seqfeature_path.subject_seqfeature_id = new.subject_seqfeature_id)) AND (seqfeature_path.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_seqfeature_path_i AS ON INSERT TO seqfeature_path WHERE ((SELECT seqfeature_path.subject_seqfeature_id FROM seqfeature_path WHERE (((seqfeature_path.object_seqfeature_id = new.object_seqfeature_id) AND (seqfeature_path.subject_seqfeature_id = new.subject_seqfeature_id)) AND (seqfeature_path.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_seqfeature_qualifier_value_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_seqfeature_qualifier_value_i AS
-    ON INSERT TO seqfeature_qualifier_value
-   WHERE (( SELECT seqfeature_qualifier_value.seqfeature_id
-           FROM seqfeature_qualifier_value
-          WHERE (((seqfeature_qualifier_value.seqfeature_id = new.seqfeature_id) AND (seqfeature_qualifier_value.term_id = new.term_id)) AND (seqfeature_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_seqfeature_qualifier_value_i AS ON INSERT TO seqfeature_qualifier_value WHERE ((SELECT seqfeature_qualifier_value.seqfeature_id FROM seqfeature_qualifier_value WHERE (((seqfeature_qualifier_value.seqfeature_id = new.seqfeature_id) AND (seqfeature_qualifier_value.term_id = new.term_id)) AND (seqfeature_qualifier_value.rank = new.rank))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_seqfeature_relationship_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_seqfeature_relationship_i AS
-    ON INSERT TO seqfeature_relationship
-   WHERE (( SELECT seqfeature_relationship.subject_seqfeature_id
-           FROM seqfeature_relationship
-          WHERE (((seqfeature_relationship.object_seqfeature_id = new.object_seqfeature_id) AND (seqfeature_relationship.subject_seqfeature_id = new.subject_seqfeature_id)) AND (seqfeature_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_seqfeature_relationship_i AS ON INSERT TO seqfeature_relationship WHERE ((SELECT seqfeature_relationship.subject_seqfeature_id FROM seqfeature_relationship WHERE (((seqfeature_relationship.object_seqfeature_id = new.object_seqfeature_id) AND (seqfeature_relationship.subject_seqfeature_id = new.subject_seqfeature_id)) AND (seqfeature_relationship.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_taxon_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_taxon_i AS
-    ON INSERT TO taxon
-   WHERE (( SELECT taxon.taxon_id
-           FROM taxon
-          WHERE (taxon.ncbi_taxon_id = new.ncbi_taxon_id)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_taxon_i AS ON INSERT TO taxon WHERE ((SELECT taxon.taxon_id FROM taxon WHERE (taxon.ncbi_taxon_id = new.ncbi_taxon_id)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_taxon_name_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_taxon_name_i AS
-    ON INSERT TO taxon_name
-   WHERE (( SELECT taxon_name.taxon_id
-           FROM taxon_name
-          WHERE (((taxon_name.taxon_id = new.taxon_id) AND ((taxon_name.name)::text = (new.name)::text)) AND ((taxon_name.name_class)::text = (new.name_class)::text))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_taxon_name_i AS ON INSERT TO taxon_name WHERE ((SELECT taxon_name.taxon_id FROM taxon_name WHERE (((taxon_name.taxon_id = new.taxon_id) AND ((taxon_name.name)::text = (new.name)::text)) AND ((taxon_name.name_class)::text = (new.name_class)::text))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_dbxref_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_dbxref_i AS
-    ON INSERT TO term_dbxref
-   WHERE (( SELECT term_dbxref.dbxref_id
-           FROM term_dbxref
-          WHERE ((term_dbxref.dbxref_id = new.dbxref_id) AND (term_dbxref.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_dbxref_i AS ON INSERT TO term_dbxref WHERE ((SELECT term_dbxref.dbxref_id FROM term_dbxref WHERE ((term_dbxref.dbxref_id = new.dbxref_id) AND (term_dbxref.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_i1; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_i1 AS
-    ON INSERT TO term
-   WHERE (( SELECT term.term_id
-           FROM term
-          WHERE ((term.identifier)::text = (new.identifier)::text)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_i1 AS ON INSERT TO term WHERE ((SELECT term.term_id FROM term WHERE ((term.identifier)::text = (new.identifier)::text)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_i2; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_i2 AS
-    ON INSERT TO term
-   WHERE (( SELECT term.term_id
-           FROM term
-          WHERE ((((term.name)::text = (new.name)::text) AND (term.ontology_id = new.ontology_id)) AND (term.is_obsolete = new.is_obsolete))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_i2 AS ON INSERT TO term WHERE ((SELECT term.term_id FROM term WHERE ((((term.name)::text = (new.name)::text) AND (term.ontology_id = new.ontology_id)) AND (term.is_obsolete = new.is_obsolete))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_path_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_path_i AS
-    ON INSERT TO term_path
-   WHERE (( SELECT term_path.subject_term_id
-           FROM term_path
-          WHERE (((((term_path.subject_term_id = new.subject_term_id) AND (term_path.predicate_term_id = new.predicate_term_id)) AND (term_path.object_term_id = new.object_term_id)) AND (term_path.ontology_id = new.ontology_id)) AND (term_path.distance = new.distance))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_path_i AS ON INSERT TO term_path WHERE ((SELECT term_path.subject_term_id FROM term_path WHERE (((((term_path.subject_term_id = new.subject_term_id) AND (term_path.predicate_term_id = new.predicate_term_id)) AND (term_path.object_term_id = new.object_term_id)) AND (term_path.ontology_id = new.ontology_id)) AND (term_path.distance = new.distance))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_relationship_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_relationship_i AS
-    ON INSERT TO term_relationship
-   WHERE (( SELECT term_relationship.term_relationship_id
-           FROM term_relationship
-          WHERE ((((term_relationship.subject_term_id = new.subject_term_id) AND (term_relationship.predicate_term_id = new.predicate_term_id)) AND (term_relationship.object_term_id = new.object_term_id)) AND (term_relationship.ontology_id = new.ontology_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_relationship_i AS ON INSERT TO term_relationship WHERE ((SELECT term_relationship.term_relationship_id FROM term_relationship WHERE ((((term_relationship.subject_term_id = new.subject_term_id) AND (term_relationship.predicate_term_id = new.predicate_term_id)) AND (term_relationship.object_term_id = new.object_term_id)) AND (term_relationship.ontology_id = new.ontology_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_relationship_term_i1; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_relationship_term_i1 AS
-    ON INSERT TO term_relationship_term
-   WHERE (( SELECT term_relationship_term.term_relationship_id
-           FROM term_relationship_term
-          WHERE (term_relationship_term.term_relationship_id = new.term_relationship_id)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_relationship_term_i1 AS ON INSERT TO term_relationship_term WHERE ((SELECT term_relationship_term.term_relationship_id FROM term_relationship_term WHERE (term_relationship_term.term_relationship_id = new.term_relationship_id)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_relationship_term_i2; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_relationship_term_i2 AS
-    ON INSERT TO term_relationship_term
-   WHERE (( SELECT term_relationship_term.term_id
-           FROM term_relationship_term
-          WHERE (term_relationship_term.term_id = new.term_id)) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_relationship_term_i2 AS ON INSERT TO term_relationship_term WHERE ((SELECT term_relationship_term.term_id FROM term_relationship_term WHERE (term_relationship_term.term_id = new.term_id)) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --
 -- Name: rule_term_synonym_i; Type: RULE; Schema: public; Owner: dl
 --
 
-CREATE RULE rule_term_synonym_i AS
-    ON INSERT TO term_synonym
-   WHERE (( SELECT term_synonym.term_id
-           FROM term_synonym
-          WHERE (((term_synonym.synonym)::text = (new.synonym)::text) AND (term_synonym.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
+CREATE RULE rule_term_synonym_i AS ON INSERT TO term_synonym WHERE ((SELECT term_synonym.term_id FROM term_synonym WHERE (((term_synonym.synonym)::text = (new.synonym)::text) AND (term_synonym.term_id = new.term_id))) IS NOT NULL) DO INSTEAD NOTHING;
 
 
 --

@@ -54,3 +54,23 @@ CREATE OR REPLACE FUNCTION
   $$
   LANGUAGE plpgsql
 ;
+
+-- Current version after NCBI's format change in late August 2016,
+-- when the db field disappeared (together with gi).
+CREATE OR REPLACE FUNCTION 
+  insert_sequence(
+    v_seq_src text, v_accno text, v_name text
+  ) RETURNS integer
+  AS $$
+    DECLARE
+      v_return int
+    ;
+
+    BEGIN
+      v_return := insert_sequence(v_seq_src, NULL, NULL, v_accno, v_name);
+
+      RETURN v_return;
+    END;
+  $$
+  LANGUAGE plpgsql
+;

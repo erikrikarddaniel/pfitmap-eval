@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -231,6 +230,33 @@ CREATE FUNCTION insert_hmm_result_row(v_hmm_result_id integer, v_tname text, v_q
 ALTER FUNCTION public.insert_hmm_result_row(v_hmm_result_id integer, v_tname text, v_qname text, v_e_value double precision, v_score double precision, v_bias double precision, v_dom_n_exp double precision, v_dom_n_reg integer, v_dom_n_clu integer, v_dom_n_ov integer, v_dom_n_env integer, v_dom_n_dom integer, v_dom_n_rep integer, v_dom_n_inc integer) OWNER TO dl;
 
 --
+-- Name: insert_hmm_result_row_sequence(integer, text, text, text); Type: FUNCTION; Schema: public; Owner: dl
+--
+
+CREATE FUNCTION insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_seq_src text, v_accno text, v_name text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+    DECLARE
+      v_return int;
+      v_sequence_id int;
+
+    BEGIN
+      v_sequence_id := insert_sequence(v_seq_src, v_accno, v_name);
+
+      INSERT INTO hmm_result_row_sequences(hmm_result_row_id, sequence_id)
+        VALUES(v_hmm_result_row_id, v_sequence_id)
+      ;
+
+      SELECT currval('hmm_result_row_sequences_id_seq') INTO v_return;
+
+      RETURN v_return;
+    END;
+  $$;
+
+
+ALTER FUNCTION public.insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_seq_src text, v_accno text, v_name text) OWNER TO dl;
+
+--
 -- Name: insert_hmm_result_row_sequence(integer, text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: dl
 --
 
@@ -256,6 +282,27 @@ CREATE FUNCTION insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_se
 
 
 ALTER FUNCTION public.insert_hmm_result_row_sequence(v_hmm_result_row_id integer, v_seq_src text, v_db text, v_gi text, v_accno text, v_name text) OWNER TO dl;
+
+--
+-- Name: insert_sequence(text, text, text); Type: FUNCTION; Schema: public; Owner: dl
+--
+
+CREATE FUNCTION insert_sequence(v_seq_src text, v_accno text, v_name text) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+    DECLARE
+      v_return int
+    ;
+
+    BEGIN
+      v_return := insert_sequence(v_seq_src, NULL, NULL, v_accno, v_name);
+
+      RETURN v_return;
+    END;
+  $$;
+
+
+ALTER FUNCTION public.insert_sequence(v_seq_src text, v_accno text, v_name text) OWNER TO dl;
 
 --
 -- Name: insert_sequence(text, text, text, text, text); Type: FUNCTION; Schema: public; Owner: dl
@@ -405,12 +452,7 @@ ALTER TABLE public.hmm_result_domains OWNER TO dl;
 --
 
 CREATE VIEW align_length AS
- SELECT hmm_result_domains.hmm_result_row_id,
-    min(hmm_result_domains.hmm_from) AS min_hmm_from,
-    max(hmm_result_domains.hmm_to) AS max_hmm_to,
-    ((max(hmm_result_domains.hmm_to) - min(hmm_result_domains.hmm_from)) + 1) AS length
-   FROM hmm_result_domains
-  GROUP BY hmm_result_domains.hmm_result_row_id;
+    SELECT hmm_result_domains.hmm_result_row_id, min(hmm_result_domains.hmm_from) AS min_hmm_from, max(hmm_result_domains.hmm_to) AS max_hmm_to, ((max(hmm_result_domains.hmm_to) - min(hmm_result_domains.hmm_from)) + 1) AS length FROM hmm_result_domains GROUP BY hmm_result_domains.hmm_result_row_id;
 
 
 ALTER TABLE public.align_length OWNER TO dl;
@@ -420,12 +462,7 @@ ALTER TABLE public.align_length OWNER TO dl;
 --
 
 CREATE VIEW align_lengths AS
- SELECT hmm_result_domains.hmm_result_row_id,
-    min(hmm_result_domains.hmm_from) AS min_hmm_from,
-    max(hmm_result_domains.hmm_to) AS max_hmm_to,
-    ((max(hmm_result_domains.hmm_to) - min(hmm_result_domains.hmm_from)) + 1) AS length
-   FROM hmm_result_domains
-  GROUP BY hmm_result_domains.hmm_result_row_id;
+    SELECT hmm_result_domains.hmm_result_row_id, min(hmm_result_domains.hmm_from) AS min_hmm_from, max(hmm_result_domains.hmm_to) AS max_hmm_to, ((max(hmm_result_domains.hmm_to) - min(hmm_result_domains.hmm_from)) + 1) AS length FROM hmm_result_domains GROUP BY hmm_result_domains.hmm_result_row_id;
 
 
 ALTER TABLE public.align_lengths OWNER TO dl;
@@ -675,12 +712,7 @@ ALTER TABLE public.dbxref OWNER TO dl;
 --
 
 CREATE VIEW bioprojects AS
- SELECT bedbx.bioentry_id,
-    dbx.dbname,
-    dbx.accession,
-    dbx.version
-   FROM (bioentry_dbxref bedbx
-     JOIN dbxref dbx ON (((bedbx.dbxref_id = dbx.dbxref_id) AND ((dbx.dbname)::text = 'BioProject'::text))));
+    SELECT bedbx.bioentry_id, dbx.dbname, dbx.accession, dbx.version FROM (bioentry_dbxref bedbx JOIN dbxref dbx ON (((bedbx.dbxref_id = dbx.dbxref_id) AND ((dbx.dbname)::text = 'BioProject'::text))));
 
 
 ALTER TABLE public.bioprojects OWNER TO dl;
@@ -857,18 +889,7 @@ ALTER TABLE public.sequence_sources OWNER TO dl;
 --
 
 CREATE VIEW latest_hmm_results AS
- SELECT hr.id,
-    hr.hmm_profile_id,
-    hr.sequence_source_id,
-    hr.executed,
-    ss.source,
-    ss.name,
-    ss.version
-   FROM (hmm_results hr
-     JOIN sequence_sources ss ON ((hr.sequence_source_id = ss.id)))
-  WHERE (ss.version = ( SELECT max(sequence_sources.version) AS max
-           FROM sequence_sources
-          WHERE ((sequence_sources.source = ss.source) AND (sequence_sources.name = ss.name))));
+    SELECT hr.id, hr.hmm_profile_id, hr.sequence_source_id, hr.executed, ss.source, ss.name, ss.version FROM (hmm_results hr JOIN sequence_sources ss ON ((hr.sequence_source_id = ss.id))) WHERE (ss.version = (SELECT max(sequence_sources.version) AS max FROM sequence_sources WHERE ((sequence_sources.source = ss.source) AND (sequence_sources.name = ss.name))));
 
 
 ALTER TABLE public.latest_hmm_results OWNER TO dl;
@@ -880,7 +901,7 @@ ALTER TABLE public.latest_hmm_results OWNER TO dl;
 CREATE TABLE sequences (
     id integer NOT NULL,
     seq_src text NOT NULL,
-    db text NOT NULL,
+    db text,
     gi text,
     accno text NOT NULL,
     name text NOT NULL,
@@ -895,34 +916,7 @@ ALTER TABLE public.sequences OWNER TO dl;
 --
 
 CREATE VIEW seq_scores AS
- SELECT hr.sequence_source_id,
-    ss.source AS ss_source,
-    ss.name AS ss_name,
-    ss.version AS ss_version,
-    hr.hmm_profile_id,
-    hp.name AS hp_name,
-    hp.version AS hp_version,
-    hp.rank AS hp_rank,
-    hp.parent_id,
-    hrrs.sequence_id,
-    s.seq_src,
-    s.db,
-    s.gi,
-    s.accno,
-    s.name,
-    s.sequence,
-    hrr.tname,
-    hrr.qname,
-    hrr.e_value,
-    hrr.score,
-    hrr.bias,
-    hrr.best_score
-   FROM (((((sequence_sources ss
-     JOIN hmm_results hr ON ((ss.id = hr.sequence_source_id)))
-     JOIN hmm_profiles hp ON ((hr.hmm_profile_id = hp.id)))
-     JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id)))
-     JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id)))
-     JOIN sequences s ON ((hrrs.sequence_id = s.id)));
+    SELECT hr.sequence_source_id, ss.source AS ss_source, ss.name AS ss_name, ss.version AS ss_version, hr.hmm_profile_id, hp.name AS hp_name, hp.version AS hp_version, hp.rank AS hp_rank, hp.parent_id, hrrs.sequence_id, s.seq_src, s.db, s.gi, s.accno, s.name, s.sequence, hrr.tname, hrr.qname, hrr.e_value, hrr.score, hrr.bias, hrr.best_score FROM (((((sequence_sources ss JOIN hmm_results hr ON ((ss.id = hr.sequence_source_id))) JOIN hmm_profiles hp ON ((hr.hmm_profile_id = hp.id))) JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id))) JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id))) JOIN sequences s ON ((hrrs.sequence_id = s.id)));
 
 
 ALTER TABLE public.seq_scores OWNER TO dl;
@@ -932,43 +926,7 @@ ALTER TABLE public.seq_scores OWNER TO dl;
 --
 
 CREATE VIEW cscores AS
- SELECT cssc.sequence_source_id,
-    cssc.ss_version,
-    cssc.db,
-    cssc.gi,
-    cssc.accno,
-    cssc.name,
-    cssc.sequence,
-    cssc.hp_name AS cname,
-    cssc.e_value AS ce_value,
-    cssc.score AS cscore,
-    cssc.best_score AS cbest_score,
-    scssc.hp_name AS scname,
-    scssc.e_value AS sce_value,
-    scssc.score AS scscore,
-    scssc.best_score AS scbest_score,
-    gssc.hp_name AS gname,
-    gssc.e_value AS ge_value,
-    gssc.score AS gscore,
-    gssc.best_score AS gbest_score,
-        CASE
-            WHEN ((cssc.score < scssc.score) AND (scssc.score < gssc.score)) THEN 'class < subclass < group'::text
-            WHEN ((cssc.score > scssc.score) AND (scssc.score > gssc.score)) THEN 'class > subclass > group'::text
-            WHEN ((cssc.score > scssc.score) AND (scssc.score < gssc.score)) THEN 'class > subclass < group'::text
-            WHEN ((cssc.score < scssc.score) AND (scssc.score > gssc.score)) THEN 'class < subclass > group'::text
-            ELSE '--'::text
-        END AS score_pattern,
-        CASE
-            WHEN ((cssc.e_value < scssc.e_value) AND (scssc.e_value < gssc.e_value)) THEN 'class < subclass < group'::text
-            WHEN ((cssc.e_value > scssc.e_value) AND (scssc.e_value > gssc.e_value)) THEN 'class > subclass > group'::text
-            WHEN ((cssc.e_value > scssc.e_value) AND (scssc.e_value < gssc.e_value)) THEN 'class > subclass < group'::text
-            WHEN ((cssc.e_value < scssc.e_value) AND (scssc.e_value > gssc.e_value)) THEN 'class < subclass > group'::text
-            ELSE '--'::text
-        END AS e_value_pattern
-   FROM (((latest_hmm_results lhr
-     JOIN seq_scores cssc ON ((((lhr.sequence_source_id = cssc.sequence_source_id) AND (lhr.hmm_profile_id = cssc.hmm_profile_id)) AND (cssc.hp_rank = 'class'::text))))
-     LEFT JOIN best_seq_score_per_parent scssc ON (((((lhr.sequence_source_id = scssc.sequence_source_id) AND (cssc.sequence_id = scssc.sequence_id)) AND (cssc.hmm_profile_id = scssc.parent_id)) AND (scssc.hp_rank = 'subclass'::text))))
-     LEFT JOIN best_seq_score_per_parent gssc ON (((((lhr.sequence_source_id = gssc.sequence_source_id) AND (cssc.sequence_id = gssc.sequence_id)) AND (scssc.hmm_profile_id = gssc.parent_id)) AND (gssc.hp_rank = 'group'::text))));
+    SELECT cssc.sequence_source_id, cssc.ss_version, cssc.db, cssc.gi, cssc.accno, cssc.name, cssc.sequence, cssc.hp_name AS cname, cssc.e_value AS ce_value, cssc.score AS cscore, cssc.best_score AS cbest_score, scssc.hp_name AS scname, scssc.e_value AS sce_value, scssc.score AS scscore, scssc.best_score AS scbest_score, gssc.hp_name AS gname, gssc.e_value AS ge_value, gssc.score AS gscore, gssc.best_score AS gbest_score, CASE WHEN ((cssc.score < scssc.score) AND (scssc.score < gssc.score)) THEN 'class < subclass < group'::text WHEN ((cssc.score > scssc.score) AND (scssc.score > gssc.score)) THEN 'class > subclass > group'::text WHEN ((cssc.score > scssc.score) AND (scssc.score < gssc.score)) THEN 'class > subclass < group'::text WHEN ((cssc.score < scssc.score) AND (scssc.score > gssc.score)) THEN 'class < subclass > group'::text ELSE '--'::text END AS score_pattern, CASE WHEN ((cssc.e_value < scssc.e_value) AND (scssc.e_value < gssc.e_value)) THEN 'class < subclass < group'::text WHEN ((cssc.e_value > scssc.e_value) AND (scssc.e_value > gssc.e_value)) THEN 'class > subclass > group'::text WHEN ((cssc.e_value > scssc.e_value) AND (scssc.e_value < gssc.e_value)) THEN 'class > subclass < group'::text WHEN ((cssc.e_value < scssc.e_value) AND (scssc.e_value > gssc.e_value)) THEN 'class < subclass > group'::text ELSE '--'::text END AS e_value_pattern FROM (((latest_hmm_results lhr JOIN seq_scores cssc ON ((((lhr.sequence_source_id = cssc.sequence_source_id) AND (lhr.hmm_profile_id = cssc.hmm_profile_id)) AND (cssc.hp_rank = 'class'::text)))) LEFT JOIN best_seq_score_per_parent scssc ON (((((lhr.sequence_source_id = scssc.sequence_source_id) AND (cssc.sequence_id = scssc.sequence_id)) AND (cssc.hmm_profile_id = scssc.parent_id)) AND (scssc.hp_rank = 'subclass'::text)))) LEFT JOIN best_seq_score_per_parent gssc ON (((((lhr.sequence_source_id = gssc.sequence_source_id) AND (cssc.sequence_id = gssc.sequence_id)) AND (scssc.hmm_profile_id = gssc.parent_id)) AND (gssc.hp_rank = 'group'::text))));
 
 
 ALTER TABLE public.cscores OWNER TO dl;
@@ -1015,43 +973,7 @@ ALTER TABLE public.domain_presence OWNER TO dl;
 --
 
 CREATE VIEW fscores AS
- SELECT fssc.sequence_source_id,
-    fssc.ss_version,
-    fssc.db,
-    fssc.gi,
-    fssc.accno,
-    fssc.name,
-    fssc.sequence,
-    fssc.hp_name AS fname,
-    fssc.e_value AS fe_value,
-    fssc.score AS fscore,
-    fssc.best_score AS fbest_score,
-    cssc.hp_name AS cname,
-    cssc.e_value AS ce_value,
-    cssc.score AS cscore,
-    cssc.best_score AS cbest_score,
-    scssc.hp_name AS scname,
-    scssc.e_value AS sce_value,
-    scssc.score AS scscore,
-    scssc.best_score AS scbest_score,
-        CASE
-            WHEN ((fssc.score < cssc.score) AND (cssc.score < scssc.score)) THEN 'family < class < subclass'::text
-            WHEN ((fssc.score > cssc.score) AND (cssc.score > scssc.score)) THEN 'family > class > subclass'::text
-            WHEN ((fssc.score > cssc.score) AND (cssc.score < scssc.score)) THEN 'family > class < subclass'::text
-            WHEN ((fssc.score < cssc.score) AND (cssc.score > scssc.score)) THEN 'family < class > subclass'::text
-            ELSE '--'::text
-        END AS score_pattern,
-        CASE
-            WHEN ((fssc.e_value < cssc.e_value) AND (cssc.e_value < scssc.e_value)) THEN 'family < class < subclass'::text
-            WHEN ((fssc.e_value > cssc.e_value) AND (cssc.e_value > scssc.e_value)) THEN 'family > class > subclass'::text
-            WHEN ((fssc.e_value > cssc.e_value) AND (cssc.e_value < scssc.e_value)) THEN 'family > class < subclass'::text
-            WHEN ((fssc.e_value < cssc.e_value) AND (cssc.e_value > scssc.e_value)) THEN 'family < class > subclass'::text
-            ELSE '--'::text
-        END AS e_value_pattern
-   FROM (((latest_hmm_results lhr
-     JOIN seq_scores fssc ON ((((lhr.sequence_source_id = fssc.sequence_source_id) AND (lhr.hmm_profile_id = fssc.hmm_profile_id)) AND (fssc.hp_rank = 'family'::text))))
-     LEFT JOIN best_seq_score_per_parent cssc ON (((((lhr.sequence_source_id = cssc.sequence_source_id) AND (fssc.sequence_id = cssc.sequence_id)) AND (fssc.hmm_profile_id = cssc.parent_id)) AND (cssc.hp_rank = 'class'::text))))
-     LEFT JOIN best_seq_score_per_parent scssc ON (((((lhr.sequence_source_id = scssc.sequence_source_id) AND (fssc.sequence_id = scssc.sequence_id)) AND (cssc.hmm_profile_id = scssc.parent_id)) AND (scssc.hp_rank = 'subclass'::text))));
+    SELECT fssc.sequence_source_id, fssc.ss_version, fssc.db, fssc.gi, fssc.accno, fssc.name, fssc.sequence, fssc.hp_name AS fname, fssc.e_value AS fe_value, fssc.score AS fscore, fssc.best_score AS fbest_score, cssc.hp_name AS cname, cssc.e_value AS ce_value, cssc.score AS cscore, cssc.best_score AS cbest_score, scssc.hp_name AS scname, scssc.e_value AS sce_value, scssc.score AS scscore, scssc.best_score AS scbest_score, CASE WHEN ((fssc.score < cssc.score) AND (cssc.score < scssc.score)) THEN 'family < class < subclass'::text WHEN ((fssc.score > cssc.score) AND (cssc.score > scssc.score)) THEN 'family > class > subclass'::text WHEN ((fssc.score > cssc.score) AND (cssc.score < scssc.score)) THEN 'family > class < subclass'::text WHEN ((fssc.score < cssc.score) AND (cssc.score > scssc.score)) THEN 'family < class > subclass'::text ELSE '--'::text END AS score_pattern, CASE WHEN ((fssc.e_value < cssc.e_value) AND (cssc.e_value < scssc.e_value)) THEN 'family < class < subclass'::text WHEN ((fssc.e_value > cssc.e_value) AND (cssc.e_value > scssc.e_value)) THEN 'family > class > subclass'::text WHEN ((fssc.e_value > cssc.e_value) AND (cssc.e_value < scssc.e_value)) THEN 'family > class < subclass'::text WHEN ((fssc.e_value < cssc.e_value) AND (cssc.e_value > scssc.e_value)) THEN 'family < class > subclass'::text ELSE '--'::text END AS e_value_pattern FROM (((latest_hmm_results lhr JOIN seq_scores fssc ON ((((lhr.sequence_source_id = fssc.sequence_source_id) AND (lhr.hmm_profile_id = fssc.hmm_profile_id)) AND (fssc.hp_rank = 'family'::text)))) LEFT JOIN best_seq_score_per_parent cssc ON (((((lhr.sequence_source_id = cssc.sequence_source_id) AND (fssc.sequence_id = cssc.sequence_id)) AND (fssc.hmm_profile_id = cssc.parent_id)) AND (cssc.hp_rank = 'class'::text)))) LEFT JOIN best_seq_score_per_parent scssc ON (((((lhr.sequence_source_id = scssc.sequence_source_id) AND (fssc.sequence_id = scssc.sequence_id)) AND (cssc.hmm_profile_id = scssc.parent_id)) AND (scssc.hp_rank = 'subclass'::text))));
 
 
 ALTER TABLE public.fscores OWNER TO dl;
@@ -1099,27 +1021,7 @@ ALTER SEQUENCE hmm_profiles_id_seq OWNED BY hmm_profiles.id;
 --
 
 CREATE VIEW hmm_profiles_with_results AS
- SELECT hr.hmm_profile_id,
-    hp.name AS hmm_profile_name,
-    hp.rank,
-    hp.length,
-    s.id AS sequence_id,
-    s.seq_src,
-    s.db,
-    s.gi,
-    s.accno,
-    s.name AS seq_name,
-    s.sequence,
-    hr.id AS hmm_result_id,
-    hrr.id AS hmm_result_row_id,
-    hrr.e_value,
-    hrr.score,
-    hrr.best_score
-   FROM ((((hmm_profiles hp
-     JOIN hmm_results hr ON ((hp.id = hr.hmm_profile_id)))
-     JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id)))
-     JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id)))
-     JOIN sequences s ON ((hrrs.sequence_id = s.id)));
+    SELECT hr.hmm_profile_id, hp.name AS hmm_profile_name, hp.rank, hp.length, s.id AS sequence_id, s.seq_src, s.db, s.gi, s.accno, s.name AS seq_name, s.sequence, hr.id AS hmm_result_id, hrr.id AS hmm_result_row_id, hrr.e_value, hrr.score, hrr.best_score FROM ((((hmm_profiles hp JOIN hmm_results hr ON ((hp.id = hr.hmm_profile_id))) JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id))) JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id))) JOIN sequences s ON ((hrrs.sequence_id = s.id)));
 
 
 ALTER TABLE public.hmm_profiles_with_results OWNER TO dl;
@@ -1213,27 +1115,7 @@ ALTER SEQUENCE hmm_results_id_seq OWNED BY hmm_results.id;
 --
 
 CREATE VIEW latest_hmm_profiles_with_results AS
- SELECT hr.hmm_profile_id,
-    hp.name AS hmm_profile_name,
-    hp.rank,
-    hp.length,
-    s.id AS sequence_id,
-    s.seq_src,
-    s.db,
-    s.gi,
-    s.accno,
-    s.name AS seq_name,
-    s.sequence,
-    hr.id AS hmm_result_id,
-    hrr.id AS hmm_result_row_id,
-    hrr.e_value,
-    hrr.score,
-    hrr.best_score
-   FROM ((((hmm_profiles hp
-     JOIN latest_hmm_results hr ON ((hp.id = hr.hmm_profile_id)))
-     JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id)))
-     JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id)))
-     JOIN sequences s ON ((hrrs.sequence_id = s.id)));
+    SELECT hr.hmm_profile_id, hp.name AS hmm_profile_name, hp.rank, hp.length, s.id AS sequence_id, s.seq_src, s.db, s.gi, s.accno, s.name AS seq_name, s.sequence, hr.id AS hmm_result_id, hrr.id AS hmm_result_row_id, hrr.e_value, hrr.score, hrr.best_score FROM ((((hmm_profiles hp JOIN latest_hmm_results hr ON ((hp.id = hr.hmm_profile_id))) JOIN hmm_result_rows hrr ON ((hr.id = hrr.hmm_result_id))) JOIN hmm_result_row_sequences hrrs ON ((hrr.id = hrrs.hmm_result_row_id))) JOIN sequences s ON ((hrrs.sequence_id = s.id)));
 
 
 ALTER TABLE public.latest_hmm_profiles_with_results OWNER TO dl;
@@ -1380,36 +1262,7 @@ ALTER TABLE public.taxon OWNER TO dl;
 --
 
 CREATE VIEW protein_fastas AS
- SELECT fasta(t.domain, t.phylum, t.strain, NULL::text, hp.class, hp.subclass, NULL::text, concat_ws('_'::text, s.db, s.accno), bs.seq) AS fasta,
-    t.domain AS tdomain,
-    t.kingdom AS tkingdom,
-    t.phylum AS tphylum,
-    t.class AS tclass,
-    t.family AS tfamily,
-    t.genus AS tgenus,
-    t.species AS tspecies,
-    t.strain AS tstrain,
-    hp.superfamily AS psuperfamily,
-    hp.family AS pfamily,
-    hp.class AS pclass,
-    hp.subclass AS psubclass,
-    hp."group" AS pgroup,
-    bss.ss_source,
-    bss.ss_name,
-    bss.ss_version,
-    s.accno,
-    bss.e_value,
-    bss.score
-   FROM (((((((((ncbi_taxon_hierarchies t
-     JOIN taxon tt ON ((t.ncbi_taxon_id = tt.ncbi_taxon_id)))
-     JOIN bioentry be ON ((tt.taxon_id = be.taxon_id)))
-     JOIN biosequence bs ON ((be.bioentry_id = bs.bioentry_id)))
-     JOIN sequences s ON ((concat_ws('.'::text, be.accession, be.version) = s.accno)))
-     JOIN hmm_result_row_sequences hrrs ON ((s.id = hrrs.sequence_id)))
-     JOIN hmm_result_rows hrr ON ((hrrs.hmm_result_row_id = hrr.id)))
-     JOIN hmm_results hr ON ((hrr.hmm_result_id = hr.id)))
-     JOIN hmm_profile_hierarchies hp ON ((hr.hmm_profile_id = hp.hmm_profile_id)))
-     JOIN best_seq_score_per_parent bss ON ((((hr.sequence_source_id = bss.sequence_source_id) AND (hp.hmm_profile_id = bss.hmm_profile_id)) AND (s.id = bss.sequence_id))));
+    SELECT fasta(t.domain, t.phylum, t.strain, NULL::text, hp.class, hp.subclass, NULL::text, pg_catalog.concat_ws('_'::text, s.db, s.accno), bs.seq) AS fasta, t.domain AS tdomain, t.kingdom AS tkingdom, t.phylum AS tphylum, t.class AS tclass, t.family AS tfamily, t.genus AS tgenus, t.species AS tspecies, t.strain AS tstrain, hp.superfamily AS psuperfamily, hp.family AS pfamily, hp.class AS pclass, hp.subclass AS psubclass, hp."group" AS pgroup, bss.ss_source, bss.ss_name, bss.ss_version, s.accno, bss.e_value, bss.score FROM (((((((((ncbi_taxon_hierarchies t JOIN taxon tt ON ((t.ncbi_taxon_id = tt.ncbi_taxon_id))) JOIN bioentry be ON ((tt.taxon_id = be.taxon_id))) JOIN biosequence bs ON ((be.bioentry_id = bs.bioentry_id))) JOIN sequences s ON ((pg_catalog.concat_ws('.'::text, be.accession, be.version) = s.accno))) JOIN hmm_result_row_sequences hrrs ON ((s.id = hrrs.sequence_id))) JOIN hmm_result_rows hrr ON ((hrrs.hmm_result_row_id = hrr.id))) JOIN hmm_results hr ON ((hrr.hmm_result_id = hr.id))) JOIN hmm_profile_hierarchies hp ON ((hr.hmm_profile_id = hp.hmm_profile_id))) JOIN best_seq_score_per_parent bss ON ((((hr.sequence_source_id = bss.sequence_source_id) AND (hp.hmm_profile_id = bss.hmm_profile_id)) AND (s.id = bss.sequence_id))));
 
 
 ALTER TABLE public.protein_fastas OWNER TO dl;
@@ -1523,17 +1376,7 @@ ALTER TABLE public.term OWNER TO dl;
 --
 
 CREATE VIEW seqfeature_comments AS
- SELECT be.bioentry_id,
-    be.accession,
-    t.name AS seqfeature_name,
-    sfqt.name AS comment_name,
-    sfq.value AS comment_value
-   FROM (((((bioentry be
-     JOIN seqfeature sf ON ((be.bioentry_id = sf.bioentry_id)))
-     JOIN location l ON ((sf.seqfeature_id = l.seqfeature_id)))
-     JOIN term t ON ((sf.type_term_id = t.term_id)))
-     JOIN seqfeature_qualifier_value sfq ON ((sf.seqfeature_id = sfq.seqfeature_id)))
-     JOIN term sfqt ON ((sfq.term_id = sfqt.term_id)));
+    SELECT be.bioentry_id, be.accession, t.name AS seqfeature_name, sfqt.name AS comment_name, sfq.value AS comment_value FROM (((((bioentry be JOIN seqfeature sf ON ((be.bioentry_id = sf.bioentry_id))) JOIN location l ON ((sf.seqfeature_id = l.seqfeature_id))) JOIN term t ON ((sf.type_term_id = t.term_id))) JOIN seqfeature_qualifier_value sfq ON ((sf.seqfeature_id = sfq.seqfeature_id))) JOIN term sfqt ON ((sfq.term_id = sfqt.term_id)));
 
 
 ALTER TABLE public.seqfeature_comments OWNER TO dl;
@@ -1665,17 +1508,7 @@ ALTER TABLE public.taxon_name OWNER TO dl;
 --
 
 CREATE VIEW taxon_with_scientific_name AS
- SELECT t.taxon_id,
-    t.ncbi_taxon_id,
-    t.parent_taxon_id,
-    t.node_rank,
-    t.genetic_code,
-    t.mito_genetic_code,
-    t.left_value,
-    t.right_value,
-    tn.name
-   FROM (taxon t
-     JOIN taxon_name tn ON (((t.taxon_id = tn.taxon_id) AND ((tn.name_class)::text = 'scientific name'::text))));
+    SELECT t.taxon_id, t.ncbi_taxon_id, t.parent_taxon_id, t.node_rank, t.genetic_code, t.mito_genetic_code, t.left_value, t.right_value, tn.name FROM (taxon t JOIN taxon_name tn ON (((t.taxon_id = tn.taxon_id) AND ((tn.name_class)::text = 'scientific name'::text))));
 
 
 ALTER TABLE public.taxon_with_scientific_name OWNER TO dl;
@@ -1685,17 +1518,7 @@ ALTER TABLE public.taxon_with_scientific_name OWNER TO dl;
 --
 
 CREATE VIEW taxon_with_scientific_names AS
- SELECT t.taxon_id,
-    t.ncbi_taxon_id,
-    t.parent_taxon_id,
-    t.node_rank,
-    t.genetic_code,
-    t.mito_genetic_code,
-    t.left_value,
-    t.right_value,
-    tn.name
-   FROM (taxon t
-     JOIN taxon_name tn ON (((t.taxon_id = tn.taxon_id) AND ((tn.name_class)::text = 'scientific name'::text))));
+    SELECT t.taxon_id, t.ncbi_taxon_id, t.parent_taxon_id, t.node_rank, t.genetic_code, t.mito_genetic_code, t.left_value, t.right_value, tn.name FROM (taxon t JOIN taxon_name tn ON (((t.taxon_id = tn.taxon_id) AND ((tn.name_class)::text = 'scientific name'::text))));
 
 
 ALTER TABLE public.taxon_with_scientific_names OWNER TO dl;
