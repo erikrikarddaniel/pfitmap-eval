@@ -18,7 +18,7 @@ UPDATE sequences
 
 -- PDB accessions start with 'pdb' (and contains the chain!)
 UPDATE sequences
-  SET db = 'dbb'
+  SET db = 'pdb'
   WHERE db IS NULL AND accno ~ '^pdb'
 ;
 
