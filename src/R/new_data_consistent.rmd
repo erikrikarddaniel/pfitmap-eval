@@ -1,0 +1,107 @@
+---
+title: "Consistency checks after loading new data"
+author: "daniel.lundin@lnu.se"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+knit: (function(fname, encoding) { rmarkdown::render(fname, encoding = encoding, output_file = sprintf('%s/%s.%s.pdf', dirname(fname), sub('.rmd', '', basename(fname)), format(Sys.time(), "%Y%m%d"))) })
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 9
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+```{r setup, echo=F}
+
+knitr::opts_chunk$set(fig.path='figures/')
+
+```
+
+```{r libraries, echo=F}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(feather))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(kfigr))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(tidyr))
+
+```
+
+```{r constants, echo=F}
+
+```
+
+```{r functions, echo=F}
+
+```
+
+```{r read-data, echo=F}
+
+# cp = read_feather('classified_proteins.prop_matching_ge_0.9.feather')   # Fails
+cp = read_tsv('classified_proteins.prop_matching_ge_0.9.tsv', col_types=read_rds('classified_proteins.spec.rds'))
+
+```
+
+# Sequence sources
+
+In the `classified_proteins` table sequences from the following sequence
+sources are loaded.
+
+```{r seq-sources, echo=F}
+
+seq_sources = cp %>% 
+  select(ss_source, ss_name, ss_version) %>% 
+  distinct() %>% 
+  arrange(ss_source, ss_name, desc(ss_version))
+
+kable(seq_sources)
+
+```
+
+This script will compare the latest two versions of each source and name.
+
+```{r latest-seq-sources, echo=F}
+
+latest2seq_sources = seq_sources %>%
+  group_by(ss_source, ss_name) %>%
+  top_n(2, ss_version) %>%
+  mutate(ss_n=min_rank(ss_version)) %>%
+  ungroup()
+
+```
+
+# Statistics per protein class
+
+```{r class-stats, echo=F}
+
+class_stats = cp %>%
+  group_by(ss_source, ss_name, ss_version, db, psuperfamily, pfamily, pclass) %>%
+  summarise(n=n()) %>%
+  ungroup()
+
+```
+
+```{r class-comp, echo=F}
+
+class_comp = class_stats %>%
+  inner_join(
+    latest2seq_sources %>% filter(ss_n==2) %>% select(-ss_n), 
+    by=c('ss_source', 'ss_name', 'ss_version')
+  ) %>%
+  left_join(
+    class_stats %>%
+      inner_join(
+      	latest2seq_sources %>% filter(ss_n==1) %>% select(-ss_n), 
+      	by=c('ss_source', 'ss_name', 'ss_version')
+      ),
+    by = c("ss_source", "ss_name", "db", "psuperfamily", "pfamily", "pclass")
+  ) %>%
+  arrange(psuperfamily, pfamily, pclass)
+
+```
