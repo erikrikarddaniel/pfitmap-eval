@@ -1,7 +1,7 @@
 DROP TABLE classified_proteins;
 
 CREATE TABLE classified_proteins AS
-  SELECT DISTINCT ON (s.accno)
+  SELECT DISTINCT ON (bss.ss_source,bss.ss_name,bss.ss_version,s.accno)
     s.seq_src,
     s.db,
     s.accno,
@@ -60,10 +60,17 @@ CREATE TABLE classified_proteins AS
       hp.hmm_profile_id = bss.hmm_profile_id AND
       s.id = bss.sequence_id LEFT JOIN
     bioprojects bp ON be.bioentry_id = bp.bioentry_id LEFT JOIN
-    seqfeature_comments sfcg ON be.bioentry_id = sfcg.bioentry_id AND sfcg.seqfeature_name = 'CDS' and sfcg.comment_name = 'gene'
+    seqfeature_comments sfcg ON 
+      be.bioentry_id = sfcg.bioentry_id AND 
+      sfcg.seqfeature_name = 'CDS' AND 
+      sfcg.comment_name = 'gene'
   WHERE
-    t.species IS NOT NULL
+    t.species IS NOT NULL 
+    --AND s.accno IN ('AAB81405.1', 'AAK33447.1', 'NP_046714.1', 'WP_000451372.1', 'WP_059321938.1')	-- Use for debugging
   ORDER BY
+    bss.ss_source,
+    bss.ss_name,
+    bss.ss_version,
     s.accno,
     bss.score DESC
 ;
