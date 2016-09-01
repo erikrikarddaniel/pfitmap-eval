@@ -1,3 +1,4 @@
 *.pdf
 !per_profile_score_distribution.pdf
 *.feather
+*.tsv
