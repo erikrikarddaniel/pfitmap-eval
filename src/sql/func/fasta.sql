@@ -8,7 +8,7 @@ CREATE OR REPLACE FUNCTION
       v_return		text;
 
     BEGIN
-      v_return := '>' || regexp_replace(regexp_replace(replace(replace(name, '[', ''), ']', ''), '[-:|.()]', '', 'g'), '  *', '_', 'g') || E'\n' || seq;
+      v_return := '>' || regexp_replace(regexp_replace(replace(replace(replace(name, '''', ''), '[', ''), ']', ''), '[-:|.()]', '', 'g'), '  *', '_', 'g') || E'\n' || seq;
 
       RETURN v_return;
     END;
