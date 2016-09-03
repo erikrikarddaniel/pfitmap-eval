@@ -30,11 +30,14 @@ $ import_hmmer --verbose --profile Rhodopsin --ss NCBI:NR:20160205 dbname Rhodop
 
 ### Database updates
 
-Update the best_score column in hmm_result_rows:
+Update the best_score column in hmm_result_rows and update
+the db field in the sequences database using patterns in
+NCBI accessions:
 
 ```
 $ cd src/sql/dml
 $ psql dbname -f update_best_score.sql
+$ psql dbname -f update_sequences_db.sql
 ```
 
 Load the 'best_seq_score_per_parent' table:
