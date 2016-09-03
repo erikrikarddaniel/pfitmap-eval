@@ -113,6 +113,5 @@ completed, a couple of work tables called 'best_seq_score_per_parent' and 'class
 
 ```
  $ cd src/sql/ddl
- $ psql dbname -f best_seq_score_per_parent.sql
  $ psql dbname -f classified_proteins.sql
  ```
