@@ -1,6 +1,26 @@
-DROP TABLE classified_proteins;
+--DROP TABLE classified_proteins;
 
-CREATE TABLE classified_proteins AS
+DELETE FROM classified_proteins
+  WHERE
+    ss_source = 'NCBI' AND 
+    ss_name = 'NR' AND 
+    ss_version = ( 
+      SELECT MAX(ss.version)
+      FROM sequence_sources ss
+      WHERE ss.source = 'NCBI' AND ss.name = 'NR'
+    )
+  ;
+
+--CREATE TABLE classified_proteins AS
+INSERT INTO classified_proteins (
+    seq_src, db, accno, bioproject, gene, seq,
+    tdomain, tkingdom, tphylum, tclass, torder, tfamily, tgenus, tspecies, tstrain,
+    psuperfamily, pfamily, pclass, psubclass, pgroup, profile_version, profile_length,
+    align_length, align_start, align_end, prop_matching,
+    ss_source, ss_name, ss_version,
+    e_value, score,
+    fasta
+  )
   SELECT DISTINCT ON (bss.ss_source,bss.ss_name,bss.ss_version,s.accno)
     s.seq_src,
     s.db,
@@ -22,6 +42,7 @@ CREATE TABLE classified_proteins AS
     hp."class" AS pclass,
     hp.subclass AS psubclass,
     hp.group AS pgroup,
+    hp.version AS profile_version,
     hpp.length AS profile_length,
     al.length AS align_length,
     al.min_hmm_from AS align_start,
@@ -65,8 +86,14 @@ CREATE TABLE classified_proteins AS
       sfcg.seqfeature_name = 'CDS' AND 
       sfcg.comment_name = 'gene'
   WHERE
-    t.species IS NOT NULL 
-    --AND s.accno IN ('AAB81405.1', 'AAK33447.1', 'NP_046714.1', 'WP_000451372.1', 'WP_059321938.1')	-- Use for debugging
+    t.species IS NOT NULL AND
+    bss.ss_source = 'NCBI' AND bss.ss_name = 'NR' AND bss.ss_version = ( 
+      SELECT MAX(ss.version)
+      FROM sequence_sources ss
+      WHERE ss.source = 'NCBI' AND ss.name = 'NR'
+    )
+    --AND s.accno IN ('AAB81405.1', 'AAK33447.1', 'NP_046714.1', 'WP_000451372.1', 'WP_059321938.1')	-- NrdF examples: Use for debugging
+    --AND  s.accno in ('NP_001025.1', 'NP_001159403.1', 'NP_033130.1', 'XP_006520164.1')		-- NrdBe examples
   ORDER BY
     bss.ss_source,
     bss.ss_name,
