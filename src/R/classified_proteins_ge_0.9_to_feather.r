@@ -10,7 +10,7 @@ suppressPackageStartupMessages(library(readr))
 # Connect and define table source
 db = src_postgres('pfitmap-eval-prod')
 
-cp = collect(tbl(db, 'classified_proteins') %>% filter(prop_matching>=0.9), n=Inf)
+cp = collect(tbl(db, 'classified_proteins') %>% filter(prop_matching>=0.9) %>% select(-fasta), n=Inf)
 
 write_feather(cp, 'classified_proteins.prop_matching_ge_0.9.feather')
 
