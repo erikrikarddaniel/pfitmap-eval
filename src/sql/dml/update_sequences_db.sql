@@ -21,6 +21,11 @@ UPDATE sequences
   SET db = 'pdb'
   WHERE db IS NULL AND accno ~ '^pdb'
 ;
+-- They also have a different format in the NR file than in GenBank
+UPDATE sequences 
+  SET accno = replace(substring(accno, 5), '|', '_') || '.0' 
+  WHERE accno ~ '^pdb'
+;
 
 -- GenBank have a bunch of prefixes
 UPDATE sequences
