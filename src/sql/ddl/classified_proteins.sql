@@ -1,3 +1,5 @@
+BEGIN;
+
 --DROP TABLE classified_proteins;
 
 DELETE FROM classified_proteins
@@ -60,7 +62,7 @@ INSERT INTO classified_proteins (
       NULL,		-- Protein family
       hp."class",
       hp.subclass,
-      NULL,		-- Protein group
+      hp.group,		-- Protein group
       concat_ws('_', s.db, s.accno),
       bs.seq
     ) AS fasta
@@ -101,3 +103,5 @@ INSERT INTO classified_proteins (
     s.accno,
     bss.score DESC
 ;
+
+COMMIT;
