@@ -1,0 +1,75 @@
+---
+title: "NrdB with ATP cones"
+author: "daniel.lundin@lnu.se"
+date: "`r format(Sys.time(), '%Y-%m-%d')`"
+knit: (function(fname, encoding) { rmarkdown::render(fname, encoding = encoding, output_file = sprintf('%s/%s.%s.pdf', dirname(fname), sub('.rmd', '', basename(fname)), format(Sys.time(), "%Y%m%d"))) })
+output:
+  pdf_document:
+    fig_caption: yes
+    fig_height: 9
+    fig_width: 8
+    number_sections: yes
+    toc: yes
+  html_document:
+    toc: yes
+---
+
+```{r setup, echo=F}
+
+knitr::opts_chunk$set(fig.path='figures/')
+
+```
+
+```{r libraries, echo=F}
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(kfigr))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(tidyr))
+
+```
+
+```{r constants, echo=F}
+
+```
+
+```{r functions, echo=F}
+
+```
+
+```{r db-connect, echo=F}
+
+db = src_postgres('pfitmap-eval-prod')
+
+```
+
+```{r read-data, echo=F}
+
+```
+
+```{r table-defs, echo=F}
+
+# Reusable tbl objects
+fullen_nrdb = tbl(db, 'classified_proteins') %>%
+  filter(pclass == 'NrdB') %>%
+  filter(db %in% c('gb', 'ref')) %>%
+  filter(prop_matching >= 0.9)
+
+```
+
+# Database source and date
+
+The most current data in the pfitmap database at the time when this script was
+executed (`r figr('db-version', T, type='Table')`).
+
+```{r db-version, echo=F}
+
+kable(
+  collect(tbl(db, 'latest_hmm_results')) %>% select(source, name, version) %>% distinct()
+)
+
+```
+
