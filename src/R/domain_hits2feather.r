@@ -49,7 +49,7 @@ domain_hits = collect(
     by='hmm_result_row_id'
   ) %>%
   transmute(
-    ss_source, ss_name, ss_version, accno,
+    ss_source, ss_name, ss_version, accno, db,
     hmm_profile_name, hmm_profile_version, hmm_profile_length, 
     score, e_value, align_length, prop_matching = (as.numeric(align_length)/as.numeric(hmm_profile_length))
   ),
