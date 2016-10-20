@@ -10,9 +10,11 @@ CREATE TABLE domain_presence (
   accno			TEXT	NOT NULL,
   domain		TEXT	NOT NULL,
   profile_length	TEXT	NOT NULL,
-  align_length		INT	NOT NULL,
+  profile_from		INT	NOT NULL,
+  profile_to		INT	NOT NULL,
   align_from		INT	NOT NULL,
   align_to		INT	NOT NULL,
+  align_length		INT	NOT NULL,
   prop_matching		FLOAT	NOT NULL,
   score			FLOAT	NOT NULL,
   ss_source		TEXT	NOT NULL,
@@ -22,11 +24,4 @@ CREATE TABLE domain_presence (
 
 ALTER TABLE domain_presence
   ADD PRIMARY KEY (domain, ss_source, ss_name, ss_version, seq_src, accno)
-;
-
-ALTER TABLE domain_presence
-  ADD COLUMN
-    profile_from	INT,
-  ADD COLUMN
-    profile_to		INT
 ;
