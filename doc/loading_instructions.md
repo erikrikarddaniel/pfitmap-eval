@@ -120,5 +120,5 @@ You can also insert/replace rows in the domain_presence table:
 
 ```
 $ cd src/sql/dml
-$ psql dbname -f insert_domain_prsence.sql
+$ psql dbname -f insert_domain_presence.sql
 ```
