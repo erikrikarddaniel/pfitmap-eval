@@ -8,20 +8,19 @@ suppressPackageStartupMessages(library(feather))
 suppressPackageStartupMessages(library(readr))
 
 # Connect and define table source
-db = src_postgres('pfitmap-eval-prod')
+sqldb = src_postgres('pfitmap-eval-prod')
 
 domain_hits = collect(
-  tbl(db, 'domain_presence') %>%
-    select(
-      ss_source, ss_name, ss_version, accno, db,
-      domain, profile_length,
-      ali_from = align_from, ali_to = align_to,
-      hmm_from = profile_from, hmm_to = profile_to,
-      score, align_length,
-      prop_matching = (as.numeric(align_length)/as.numeric(profile_length))
-    ),
+  tbl(sqldb, 'domain_presence'),
   n = Inf
-)
+) %>%
+  transmute(
+    ss_source, ss_name, ss_version, accno, seq_src, db, domain, profile_length,
+    ali_from = align_from, ali_to = align_to,
+    hmm_from = profile_from, hmm_to = profile_to,
+    score, align_length,
+    prop_matching = as.numeric(align_length)/as.numeric(profile_length)
+  )
 
 write_feather(domain_hits, 'domain_hits.feather')
 
