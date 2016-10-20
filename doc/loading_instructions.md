@@ -119,6 +119,6 @@ completed, a couple of work tables called 'best_seq_score_per_parent' and 'class
 You can also insert/replace rows in the domain_presence table:
 
 ```
-$ cd src/sql/ddl
-$ psql dbname -f domain_prsence.sql
+$ cd src/sql/dml
+$ psql dbname -f insert_domain_presence.sql
 ```
