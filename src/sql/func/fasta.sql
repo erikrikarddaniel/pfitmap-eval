@@ -1,3 +1,12 @@
+/**
+ * fasta.sql
+ *
+ * Defines functions to return sequences in fasta format.
+ *
+ * erik.rikard.daniel@gmail.com
+ */
+
+-- The simplest version: name and sequence as text.
 CREATE OR REPLACE FUNCTION
   fasta(
     name		text,
@@ -15,6 +24,9 @@ CREATE OR REPLACE FUNCTION
   $$
   LANGUAGE plpgsql
 ;
+
+-- Organism, protein name and accession number plus sequence. Calls the above
+-- for the actual formatting.
 CREATE OR REPLACE FUNCTION
   fasta(
     org_name		text,
@@ -34,6 +46,9 @@ CREATE OR REPLACE FUNCTION
   $$
   LANGUAGE plpgsql
 ;
+
+-- A lot of parameters which are boiled down to three plus sequence which are
+-- used to call the above function.
 CREATE OR REPLACE FUNCTION
   fasta(
     domain		text,
