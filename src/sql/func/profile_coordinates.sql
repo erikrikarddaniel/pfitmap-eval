@@ -16,7 +16,8 @@ CREATE TYPE profile_coordinates as (
   hmm_result_row_id	int,
   hmm_from		int, hmm_to	int,
   ali_from		int, ali_to	int,
-  env_from		int, env_to	int
+  env_from		int, env_to	int,
+  length		int
 );
 
 CREATE OR REPLACE FUNCTION
@@ -35,7 +36,8 @@ CREATE OR REPLACE FUNCTION
         hmm_result_row_id,
 	hmm_from,		hmm_to,
 	ali_from,		ali_to,
-	env_from,		env_to
+	env_from,		env_to,
+	0 AS length
       FROM hmm_result_domains 
       WHERE hmm_result_row_id = hrr_id 
       ORDER BY hmm_from
@@ -54,11 +56,13 @@ CREATE OR REPLACE FUNCTION
 	ELSE
 	  RAISE NOTICE 'No overlap';
 	  current_hmm_from := -1;
+	  r_row.length := r_row.hmm_to - r_row.hmm_from + 1;
 	  RETURN NEXT r_row;
 	  r_row := hrd_row;
 	END IF;
       END IF;
     END LOOP;
+    r_row.length := r_row.hmm_to - r_row.hmm_from + 1;
     RETURN NEXT r_row;
   END;
 $$ LANGUAGE plpgsql;
