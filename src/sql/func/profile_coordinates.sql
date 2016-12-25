@@ -42,19 +42,15 @@ CREATE OR REPLACE FUNCTION
       WHERE hmm_result_row_id = hrr_id 
       ORDER BY hmm_from
     LOOP
-      RAISE NOTICE 'Row: % - %', hrd_row.hmm_from, hrd_row.hmm_to;
       IF current_hmm_from = -1 THEN
-	RAISE NOTICE 'Starting new row';
 	r_row := hrd_row;
 	current_hmm_from := r_row.hmm_from;
       ELSE
 	IF hrd_row.hmm_from <= r_row.hmm_to THEN
-	  RAISE NOTICE 'Overlap';
 	  r_row.hmm_to := hrd_row.hmm_to;
 	  r_row.ali_to := hrd_row.ali_to;
 	  r_row.env_to := hrd_row.env_to;
 	ELSE
-	  RAISE NOTICE 'No overlap';
 	  current_hmm_from := -1;
 	  r_row.length := r_row.hmm_to - r_row.hmm_from + 1;
 	  RETURN NEXT r_row;
