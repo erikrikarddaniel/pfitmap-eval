@@ -27,11 +27,9 @@ CREATE OR REPLACE FUNCTION
 
       FOR v_domain IN
 	SELECT
-	  hrd.env_from,
-	  hrd.env_to
+	  (env_non_overlapping_coordinates(hrr.id)).*
 	FROM
-	  hmm_result_domains hrd JOIN
-	  hmm_result_rows hrr ON hrd.hmm_result_row_id = hrr.id JOIN
+	  hmm_result_rows hrr JOIN
 	  hmm_results hr ON hrr.hmm_result_id = hr.id JOIN
 	  hmm_profiles hp ON hr.hmm_profile_id = hp.id JOIN
 	  hmm_result_row_sequences hrrs ON hrr.id = hrrs.hmm_result_row_id JOIN
@@ -44,7 +42,7 @@ CREATE OR REPLACE FUNCTION
 	  ss.name = p_ss_name AND
 	  ss.version = p_ss_version
       LOOP
-	v_return := v_return || substring(p_sequence from v_domain.env_from for ( v_domain.env_to - v_domain.env_from + 1 ));
+	v_return := v_return || substring(p_sequence from v_domain."from" for ( v_domain."to" - v_domain."from" + 1 ));
       END LOOP;
 
       RETURN v_return;
