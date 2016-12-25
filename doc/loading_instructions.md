@@ -47,6 +47,13 @@ $ cd src/sql/ddl
 $ psql dbname -f best_seq_score_per_parent.sql
 ```
 
+Load the align_lengths table:
+
+```bash
+$ cd src/sql/ddl
+$ psql dbname -f align_lengths.sql
+```
+
 ## NCBI data
 
 ### NCBI taxonomy
