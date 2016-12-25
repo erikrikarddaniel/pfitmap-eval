@@ -7,15 +7,7 @@ CREATE OR REPLACE VIEW align_lengths AS
     MAX(ali_to) max_ali_to,
     SUM(length) length
   FROM (
-    SELECT
-      hmm_result_row_id,
-      hmm_from,
-      hmm_to,
-      ali_from,
-      ali_to,
-      hmm_to - hmm_from + 1 length
-    FROM
-      hmm_result_domains
+    SELECT (profile_coordinates(id)).* FROM hmm_result_rows
   ) a
   GROUP BY
     hmm_result_row_id
