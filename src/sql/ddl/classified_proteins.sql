@@ -1,10 +1,12 @@
-# This script replaces all rows in classified_proteins, the "export table" from
-# the latest NCBI:NR release imported with new rows from the database.
-#
-# Note that deleting the latest release works also when you want to transfer
-# newly imported rows.
-#
-# Author: daniel.lundin@dbb.su.s
+/**
+ * This script replaces all rows in classified_proteins, the "export table" from
+ * the latest NCBI:NR release imported with new rows from the database.
+ *
+ * Note that deleting the latest release works also when you want to transfer
+ * newly imported rows.
+ *
+ * Author: daniel.lundin@dbb.su.s
+ */
 
 BEGIN;
 
