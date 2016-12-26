@@ -23,7 +23,6 @@ DELETE FROM domain_presence
 INSERT INTO domain_presence (
     seq_src, db, accno, domain, 
     profile_length, align_length, 
-    align_from, align_to, 
     profile_from, profile_to, 
     prop_matching, score,
     ss_source, ss_name, ss_version
@@ -35,8 +34,6 @@ INSERT INTO domain_presence (
     hp.name AS domain,
     hp.length AS profile_length,
     al.length AS align_length,
-    al.min_ali_from AS align_from,
-    al.max_ali_to AS align_to,
     al.min_hmm_from AS profile_from,
     al.max_hmm_to AS profile_to,
     al.length::float/hp.length::float AS prop_matching,

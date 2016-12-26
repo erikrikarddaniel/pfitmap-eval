@@ -25,3 +25,11 @@ CREATE TABLE domain_presence (
 ALTER TABLE domain_presence
   ADD PRIMARY KEY (domain, ss_source, ss_name, ss_version, seq_src, accno)
 ;
+
+ALTER TABLE domain_presence
+  DROP COLUMN align_from
+;
+
+ALTER TABLE domain_presence
+  DROP COLUMN align_to
+;

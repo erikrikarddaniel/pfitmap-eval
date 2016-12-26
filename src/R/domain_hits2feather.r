@@ -16,7 +16,6 @@ domain_hits = collect(
 ) %>%
   transmute(
     ss_source, ss_name, ss_version, accno, seq_src, db, domain, profile_length,
-    ali_from = align_from, ali_to = align_to,
     hmm_from = profile_from, hmm_to = profile_to,
     score, align_length,
     prop_matching = as.numeric(align_length)/as.numeric(profile_length)
