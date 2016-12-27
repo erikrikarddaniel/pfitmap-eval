@@ -119,8 +119,8 @@ Data will eventually be exported to the pfitmap-2 database. Until that work is
 completed, a couple of work tables called 'best_seq_score_per_parent' and 'classified_proteins' can be constructed:
 
 ```
- $ cd src/sql/ddl
- $ psql dbname -f classified_proteins.sql
+ $ cd src/sql/dml
+ $ psql dbname -f insert_classified_proteins.sql
  ```
 
 You can also insert/replace rows in the domain_presence table:
@@ -129,3 +129,6 @@ You can also insert/replace rows in the domain_presence table:
 $ cd src/sql/dml
 $ psql dbname -f insert_domain_presence.sql
 ```
+
+... and export tab separated and feather formated files via the `src/R/classified_proteins_ge_0.9_to_feather.r`
+and `../../src/R/domain_hits2feather.r` R scripts.
