@@ -15,7 +15,6 @@ import os
 import sys
 import traceback
 
-BATCH_SIZE = 200
 TOOL = 'fetch_ncbi_store'
 
 def _fetch(accnos, email, storedir):
@@ -43,9 +42,15 @@ def _fetch(accnos, email, storedir):
       oh.close()
 
   except Exception as e:
+    f = open('accnos_exception', 'a')
+    f.write("----------------------------------------")
+    f.write("\n".join(accnos))
     traceback.format_exc()
+
   finally:
     fh.close()
+    if vars(args)['verbose']:
+      sys.stderr.write(":")
 
 
 if __name__=='__main__':
@@ -53,6 +58,7 @@ if __name__=='__main__':
   parser.add_argument('email', help='Email for NCBI web service')
   parser.add_argument('accno_file', help='File with accession numbers, one per line, to fetch')
   parser.add_argument('storedir', help='Directory in which files will be stored')
+  parser.add_argument('batch_size', help='Number of accessions fetched per batch, 200 is usually fine, lower if you have problems')
   parser.add_argument('--verbose', dest='verbose', action='store_true')
   parser.add_argument('--no-verbose', dest='verbose', action='store_false')
   parser.set_defaults(verbose=True)
@@ -64,12 +70,12 @@ accnos = []
 file = open(vars(args)['accno_file'])
 
 if vars(args)['verbose']:
-  sys.stderr.write("Fetching data for accessions in %s with %d batch size, progress: " % (vars(args)['accno_file'], BATCH_SIZE))
+  sys.stderr.write("Fetching data for accessions in %s with %d batch size, progress: " % (vars(args)['accno_file'], int(vars(args)['batch_size'])))
 
 for line in file:
   accnos.append(line.rstrip('\n'))
 
-  if len(accnos) > 0 and len(accnos) % BATCH_SIZE == 0:
+  if len(accnos) > 0 and len(accnos) % int(vars(args)['batch_size']) == 0:
     _fetch(accnos, vars(args)['email'], vars(args)['storedir'])
     accnos = []
 
