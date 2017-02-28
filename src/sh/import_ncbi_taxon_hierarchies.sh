@@ -6,4 +6,4 @@
 
 psql $DB -c 'TRUNCATE TABLE ncbi_taxon_hierarchies;'
 
-psql $DB -c 'COPY ncbi_taxon_hierarchies FROM STDIN;' < taxflat.tsv
+tail -n +2 taxflat.tsv | psql $DB -c 'COPY ncbi_taxon_hierarchies FROM STDIN;'
