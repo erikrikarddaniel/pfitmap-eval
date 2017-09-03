@@ -2,7 +2,7 @@ SELECT
   substring(s.accno from '^[^.]*') AS accno,
   s.accno AS accno_version,
   hrr.e_value,
-  hrr.score,
+  hrd.score,
   hrd.hmm_from, hrd.hmm_to,
   hrd.ali_from, hrd.ali_to,
   hrd.env_from, hrd.env_to,
@@ -15,8 +15,10 @@ FROM
   hmm_profiles hp ON hr.hmm_profile_id = hp.id JOIN
   hmm_result_domains hrd ON hrr.id = hrd.hmm_result_row_id JOIN
   bioentry be ON substring(s.accno from '^[^.]*') = be.accession JOIN
-  biosequence bs ON be.bioentry_id = bs.bioentry_id
+  biosequence bs ON be.bioentry_id = bs.bioentry_id JOIN
+  sequence_sources ss ON hr.sequence_source_id = ss.id
 WHERE
   hp.name = 'ATPcone' AND
-  hrr.score > 40
+  hrd.score > 40 AND
+  ss.id = ( SELECT MAX(id) FROM sequence_sources )
 ;
