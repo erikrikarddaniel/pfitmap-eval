@@ -1,7 +1,9 @@
 SELECT
   substring(s.accno from '^[^.]*') AS accno,
   s.accno AS accno_version,
-  hrr.e_value,
+  row_number() OVER (PARTITION BY s.accno ORDER BY hrd.score DESC) AS conenum,
+  hrd.c_e_value,
+  hrd.i_e_value,
   hrd.score,
   hrd.hmm_from, hrd.hmm_to,
   hrd.ali_from, hrd.ali_to,
@@ -19,6 +21,9 @@ FROM
   sequence_sources ss ON hr.sequence_source_id = ss.id
 WHERE
   hp.name = 'ATPcone' AND
-  hrd.score > 40 AND
+  hrd.score > 30 AND
   ss.id = ( SELECT MAX(id) FROM sequence_sources )
+ORDER BY
+  s.accno,
+  conenum DESC
 ;
