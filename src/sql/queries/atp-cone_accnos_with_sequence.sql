@@ -20,8 +20,9 @@ FROM
   biosequence bs ON be.bioentry_id = bs.bioentry_id JOIN
   sequence_sources ss ON hr.sequence_source_id = ss.id
 WHERE
+  s.db = 'ref' AND
   hp.name = 'ATPcone' AND
-  hrd.score > 30 AND
+  hrd.score > 10 AND
   ss.id = ( SELECT MAX(id) FROM sequence_sources )
 ORDER BY
   s.accno,
