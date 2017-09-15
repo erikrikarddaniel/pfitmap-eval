@@ -8,7 +8,7 @@ SELECT
   hrd.hmm_from, hrd.hmm_to,
   hrd.ali_from, hrd.ali_to,
   hrd.env_from, hrd.env_to,
-  bs.seq
+  substr(bs.seq, hrd.ali_from, hrd.ali_to - hrd.ali_from + 1) AS seq
 FROM
   sequences s JOIN
   hmm_result_row_sequences hrrs ON s.id = hrrs.sequence_id JOIN
